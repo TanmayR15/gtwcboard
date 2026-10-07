@@ -111,8 +111,6 @@
   .backbtn:active { transform: translate(4px, 4px); box-shadow: none; }
   h1.pixel.link { cursor: pointer; }
   h1.pixel.link:hover { color: var(--overall); }
-  .btn.sched { border-color: var(--overall); color: var(--overall); }
-  .btn.sched.active { background: var(--orange-tint); }
 
   /* home page */
   .flag { height: 16px; margin: -14px -14px 14px; border-bottom: 3px solid var(--panel-edge);
@@ -147,12 +145,6 @@
   .card .small { font-size: 17px; color: var(--ink-muted); }
   .card.lead { border-left: 6px solid var(--gold); }
   .card.win { border-left: 6px solid var(--blue); }
-  .menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin-bottom: 18px; }
-  .tile { font-family: 'Press Start 2P', monospace; font-size: 11px; padding: 22px 12px; text-align: center; background: var(--panel); color: var(--ink);
-    border: 3px solid var(--ink); cursor: pointer; box-shadow: 5px 5px 0 var(--shadow); }
-  .tile:hover { background: var(--panel-edge); }
-  .tile:active { transform: translate(5px, 5px); box-shadow: none; }
-  .tile.s { border-color: var(--overall); color: var(--overall); }
 
   /* schedule page */
   .round { background: var(--panel); border: 3px solid var(--panel-edge); margin-bottom: 12px; box-shadow: 4px 4px 0 var(--shadow); }
@@ -692,12 +684,6 @@ function renderHome() {
   }
   if (cards.children.length) wrap.appendChild(cards);
 
-  // Big menu tiles.
-  wrap.appendChild(el("div", { class: "menu" }, [
-    el("button", { class: "tile", text: "STANDINGS", onclick: () => go("standings") }),
-    el("button", { class: "tile", text: "RESULTS", onclick: () => go("results") }),
-    el("button", { class: "tile s", text: "SCHEDULE", onclick: () => openSchedule(null) }),
-  ]));
   return wrap;
 }
 
@@ -785,11 +771,11 @@ function render() {
     el("div", { class: "updated", text: updated ? "UPDATED: " + updated : "" }),
   ]));
 
-  if (!onHome) {
+  {
     app.appendChild(el("div", { class: "toolbar" }, [
       el("button", { class: "btn main" + (state.page === "standings" ? " active" : ""), text: "STANDINGS", onclick: () => go("standings") }),
       el("button", { class: "btn main" + (state.page === "results" ? " active" : ""), text: "RESULTS", onclick: () => go("results") }),
-      el("button", { class: "btn sched" + (state.page === "schedule" ? " active" : ""), text: "SCHEDULE", onclick: () => go("schedule") }),
+      el("button", { class: "btn main" + (state.page === "schedule" ? " active" : ""), text: "SCHEDULE", onclick: () => go("schedule") }),
     ]));
   }
 
