@@ -15,9 +15,9 @@ import re
 import sys
 import time
 import unicodedata
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from urllib.parse import unquote
+from urllib.parse import quote, unquote
 
 import requests
 from bs4 import BeautifulSoup
@@ -385,22 +385,219 @@ def verify_overall(tables):
             print(f"check {entity}: OK (Sprint + Endurance = Overall for all {len(overall)})")
 
 
+# ---------------------------------------------------------------- schedule
+MONTHS = {}
+for _i, _m in enumerate(["january", "february", "march", "april", "may", "june", "july",
+                         "august", "september", "october", "november", "december"], 1):
+    MONTHS[_m] = _i
+    MONTHS[_m[:3]] = _i
+WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+
+# Built-in 2026 calendar (taken from the official calendar page): round, event id, url slug,
+# name, country, first day, last day. Session times are read from each event page.
+SCHEDULE_2026 = [
+    (1, 246, "circuit-paul-ricard", "Circuit Paul Ricard", "France", "2026-04-10", "2026-04-12"),
+    (2, 247, "brands-hatch", "Brands Hatch", "Great Britain", "2026-05-02", "2026-05-03"),
+    (3, 248, "monza", "Monza", "Italy", "2026-05-28", "2026-05-31"),
+    (4, 249, "crowdstrike-24-hours-of-spa", "CrowdStrike 24 Hours of Spa", "Belgium", "2026-06-23", "2026-06-28"),
+    (5, 250, "misano", "Misano", "Italy", "2026-07-16", "2026-07-19"),
+    (6, 251, "magny-cours", "Magny-Cours", "France", "2026-07-30", "2026-08-02"),
+    (7, 252, "n\u00fcrburgring", "N\u00fcrburgring", "Germany", "2026-08-28", "2026-08-30"),
+    (8, 253, "zandvoort", "Zandvoort", "Netherlands", "2026-09-17", "2026-09-20"),
+    (9, 254, "barcelona", "Barcelona", "Spain", "2026-10-01", "2026-10-04"),
+    (10, 255, "portimao", "Portimao", "Portugal", "2026-10-15", "2026-10-18"),
+]
+
+_TIME = r"(\d{1,2}):(\d{2})"
+_GMT_AFTER = re.compile(_TIME + r"(?:\s*[-\u2013]\s*" + _TIME + r")?\s*(?:GMT|UTC)\b", re.I)
+_GMT_BEFORE = re.compile(r"(?:GMT|UTC)\s*[:\-]?\s*" + _TIME + r"(?:\s*[-\u2013]\s*" + _TIME + r")?", re.I)
+_LOCAL_AFTER = re.compile(_TIME + r"(?:\s*[-\u2013]\s*" + _TIME + r")?\s*(?:Local|CES?T|WES?T|BST|WET|CET)\b", re.I)
+_ANY_TIME = re.compile(_TIME + r"(?:\s*[-\u2013]\s*" + _TIME + r")?")
+_WORDS_TO_DROP = re.compile(r"\b(local|gmt|utc|cest|cet|west|wet|bst|time)\b", re.I)
+
+
+def _mins(h, m):
+    return int(h) * 60 + int(m)
+
+
+def _flatten_lines(html: str):
+    """Turn a page into plain text lines. Every table row becomes ONE line (cells joined by ' | ')."""
+    soup = BeautifulSoup(html, "lxml")
+    for tag in soup(["script", "style", "noscript"]):
+        tag.decompose()
+    for tr in soup.find_all("tr"):
+        cells = [cell_text(c) for c in tr.find_all(["td", "th"])]
+        cells = [c for c in cells if c]
+        tr.replace_with("\n" + " | ".join(cells) + "\n")
+    lines = []
+    for raw in soup.get_text("\n").splitlines():
+        t = re.sub(r"\s+", " ", raw).strip()
+        if t:
+            lines.append(t)
+    return lines
+
+
+def _parse_day(line, year, start, end):
+    """Return an ISO date if this line is a day heading such as 'Thursday, 15 October'."""
+    if _ANY_TIME.search(line):
+        return None
+    low = line.lower()
+    wd = next((w for w in WEEKDAYS if w in low), None)
+    m = re.search(r"(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]{3,9})\.?(?:\s+(\d{4}))?", line)
+    if m and m.group(2).lower() in MONTHS and (wd or len(line) <= 24):
+        try:
+            return datetime(int(m.group(3) or year), MONTHS[m.group(2).lower()], int(m.group(1))).strftime("%Y-%m-%d")
+        except ValueError:
+            return None
+    if wd and len(line) <= 24 and start and end:
+        s, e = datetime.strptime(start, "%Y-%m-%d"), datetime.strptime(end, "%Y-%m-%d")
+        for k in range((e - s).days + 1):
+            d = s + timedelta(days=k)
+            if d.weekday() == WEEKDAYS.index(wd):
+                return d.strftime("%Y-%m-%d")
+    return None
+
+
+def _kind(name):
+    n = name.lower()
+    if re.search(r"qualif|superpole", n):
+        return "qualifying"
+    if re.search(r"\brace\b", n) and not re.search(r"pre[- ]?race|warm", n):
+        return "race"
+    if re.search(r"practice|\bfp\b", n):
+        return "practice"
+    if re.search(r"test|bronze|prologue|briefing|parade|warm|pit", n):
+        return "other"
+    return "other"
+
+
+def parse_event_schedule(html: str, year: int, start=None, end=None):
+    """Read an event page and return sessions [{name, kind, day, utc, (end_utc)}].
+
+    Needs a GMT/UTC time for each session (the official page shows Local and GMT). Rows without a
+    clear GMT time are skipped, never guessed.
+    """
+    lines = _flatten_lines(html)
+    page_text = " ".join(lines).lower()
+    local_first = page_text.find("local") != -1 and (page_text.find("gmt") == -1 or page_text.find("local") < page_text.find("gmt"))
+    sessions, day, prev_name, pending = [], None, "", []
+
+    def emit(name, g, loc):
+        nonlocal sessions
+        name = re.sub(r"[|/]+", " ", _WORDS_TO_DROP.sub("", _ANY_TIME.sub("", name)))
+        name = re.sub(r"\s+", " ", name).strip(" -\u2013:|/,")
+        if not name or not day or g is None:
+            return
+        d = datetime.strptime(day, "%Y-%m-%d")
+        if loc is not None and _mins(*g[:2]) - _mins(*loc[:2]) > 720:
+            d -= timedelta(days=1)          # local time is just after midnight, GMT is the day before
+        rec = {"name": name, "kind": _kind(name), "day": day,
+               "utc": d.strftime("%Y-%m-%d") + "T%02d:%02d:00Z" % (int(g[0]), int(g[1]))}
+        if g[2] is not None:
+            e2 = d
+            if _mins(g[2], g[3]) < _mins(g[0], g[1]):
+                e2 += timedelta(days=1)
+            rec["end_utc"] = e2.strftime("%Y-%m-%d") + "T%02d:%02d:00Z" % (int(g[2]), int(g[3]))
+        if rec not in sessions:
+            sessions.append(rec)
+
+    def times_from(line):
+        """(gmt_tuple, local_tuple) from a single line, using labels or the header order."""
+        gm = _GMT_AFTER.search(line)
+        g = gm.groups() if gm else None
+        if g is None:
+            gm = _GMT_BEFORE.search(line)
+            g = gm.groups() if gm else None
+        lm = _LOCAL_AFTER.search(line)
+        loc = lm.groups() if lm else None
+        if g is None:
+            groups = list(_ANY_TIME.finditer(line))
+            # two separate time groups with no label: use the header order (Local first or GMT first)
+            if len(groups) == 2:
+                a, b = groups[0].groups(), groups[1].groups()
+                g, loc = (b, a) if local_first else (a, b)
+        return g, loc
+
+    for line in lines:
+        d = _parse_day(line, year, start, end)
+        if d:
+            day, prev_name, pending = d, "", []
+            continue
+        if not _ANY_TIME.search(line):
+            prev_name, pending = line, []
+            continue
+        pure = not re.sub(r"[\d:\s\-\u2013|/]|local|gmt|utc", "", line, flags=re.I)
+        if pure and prev_name and not re.search(r"[A-Za-z]{4,}", _WORDS_TO_DROP.sub("", line)):
+            # the cells of one row are on separate lines: name, then time, then time
+            pending.append(line)
+            if _GMT_AFTER.search(line) or _GMT_BEFORE.search(line) or len(pending) == 2:
+                g, loc = times_from(" ".join(pending))
+                emit(prev_name, g, loc)
+                pending = []
+            continue
+        g, loc = times_from(line)
+        emit(line, g, loc)
+    return sessions
+
+
+def scrape_schedule(old):
+    """Build data/schedule.json. Dates come from the built-in calendar; times from each event page.
+
+    Polite: only events that are running, upcoming within 21 days, or never fetched are requested.
+    """
+    if SEASON != 2026:
+        print("schedule: no built-in calendar for this season, skipped")
+        return old, 0, 0
+    old_by_round = {r.get("round"): r for r in old.get("rounds", [])}
+    today = datetime.now(timezone.utc).date()
+    out, ok, fail = [], 0, 0
+    for rnd, eid, slug, name, country, start, end in SCHEDULE_2026:
+        prev = old_by_round.get(rnd, {})
+        rec = {"round": rnd, "event_id": eid, "name": name, "country": country,
+               "start": start, "end": end, "sessions": prev.get("sessions", [])}
+        if prev.get("tried"):
+            rec["tried"] = True
+        s_d, e_d = datetime.strptime(start, "%Y-%m-%d").date(), datetime.strptime(end, "%Y-%m-%d").date()
+        active = (e_d + timedelta(days=2) >= today) and (s_d - timedelta(days=21) <= today)
+        if active or (not rec["sessions"] and not rec.get("tried")):
+            rec["tried"] = True     # a past round whose page gave nothing is not requested again
+            html = fetch(f"{BASE}/event/{eid}/{quote(slug)}")
+            if html is None:
+                fail += 1
+            else:
+                sessions = parse_event_schedule(html, SEASON, start, end)
+                if sessions:
+                    rec["sessions"] = sorted(sessions, key=lambda s: s["utc"])
+                    ok += 1
+                    print(f"schedule {name}: {len(sessions)} sessions", flush=True)
+                else:
+                    fail += 1
+                    print(f"schedule {name}: no sessions could be read (kept old data)", flush=True)
+        out.append(rec)
+    new = dict(old)
+    new["rounds"] = out
+    return new, ok, fail
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--only", choices=["standings", "results"],
+    parser.add_argument("--only", choices=["standings", "results", "schedule"],
                         help="run just one part (default: both)")
     args = parser.parse_args()
 
     DATA_DIR.mkdir(exist_ok=True)
     stand_path = DATA_DIR / "standings.json"
     res_path = DATA_DIR / "results.json"
+    sched_path = DATA_DIR / "schedule.json"
     stand_old = read_json(stand_path, {"season": SEASON, "tables": {}})
     res_old = read_json(res_path, {"season": SEASON, "rounds": []})
+    sched_old = read_json(sched_path, {"season": SEASON, "rounds": []})
 
     stand_new, res_new = json.loads(json.dumps(stand_old)), json.loads(json.dumps(res_old))
+    sched_new = json.loads(json.dumps(sched_old))
     s_ok = s_fail = r_ok = r_fail = 0
     blocked = False
-    if args.only != "results":
+    if args.only in (None, "standings"):
         try:
             stand_new, s_ok, s_fail = scrape_standings(stand_new)
         except Blocked as e:
@@ -408,21 +605,31 @@ def main():
             print(f"STOPPED: {e}", flush=True)
         verify_overall(stand_new.get("tables", {}))
         print(f"standings tables parsed: {s_ok}, failed fetches: {s_fail}")
-    if args.only != "standings" and not blocked:
+    if args.only in (None, "results") and not blocked:
         try:
             res_new, r_ok, r_fail = scrape_results(res_new)
         except Blocked as e:
             blocked = True
             print(f"STOPPED: {e}", flush=True)
         print(f"result sessions parsed: {r_ok}, failed fetches: {r_fail}")
+    if args.only in (None, "schedule") and not blocked:
+        try:
+            sched_new, c_ok, c_fail = scrape_schedule(sched_new)
+            print(f"schedule events parsed: {c_ok}, problems: {c_fail}")
+        except Blocked as e:
+            blocked = True
+            print(f"STOPPED: {e}", flush=True)
+        except Exception as e:      # the schedule is a bonus: never fail the whole run for it
+            print(f"schedule skipped: {type(e).__name__}: {e}", flush=True)
 
-    if args.only != "results" and s_ok == 0 and not blocked:
+    if args.only in (None, "standings") and s_ok == 0 and not blocked:
         print("ERROR: no standings table could be parsed. The site layout may have changed.")
         sys.exit(1)
 
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     changed = False
-    for path, new, old in ((stand_path, stand_new, stand_old), (res_path, res_new, res_old)):
+    for path, new, old in ((stand_path, stand_new, stand_old), (res_path, res_new, res_old),
+                           (sched_path, sched_new, sched_old)):
         new["season"] = SEASON
         if strip_updated(new) != strip_updated(old):
             new["updated"] = stamp

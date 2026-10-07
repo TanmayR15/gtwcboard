@@ -1,0 +1,15 @@
+1.   home page (clicking gtwce pit board title takes u there or a home button or a back button like bt terminal)
+
+2.   Next race countdown
+
+3.   Season progress bar: a pixel bar showing how many rounds are done.
+
+4. Help button (?): a small popup explaining the points rules and points for each position in each cup.
+
+5. Points progression chart: needs per-round standings history, which the scraper doesn't store yet.
+
+6.   change colour of overall border to orange
+
+7. team logos
+
+8. experiment with other themes
