@@ -1,0 +1,4414 @@
+{
+ "season": 2026,
+ "updated": "2026-10-05 21:36 UTC",
+ "tables": {
+  "overall": {
+   "overall": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Lucas Auer",
+      "total": 131.5
+     },
+     {
+      "pos": 1,
+      "name": "Maro Engel",
+      "total": 131.5
+     },
+     {
+      "pos": 2,
+      "name": "Ricardo Feller",
+      "total": 102.0
+     },
+     {
+      "pos": 2,
+      "name": "Bastian Buus",
+      "total": 102.0
+     },
+     {
+      "pos": 3,
+      "name": "Kelvin Van Der Linde",
+      "total": 97.0
+     },
+     {
+      "pos": 3,
+      "name": "Charles Weerts",
+      "total": 97.0
+     },
+     {
+      "pos": 4,
+      "name": "Luca Stolz",
+      "total": 86.0
+     },
+     {
+      "pos": 5,
+      "name": "Daniel Juncadella",
+      "total": 80.0
+     },
+     {
+      "pos": 6,
+      "name": "Nicki Thiim",
+      "total": 75.5
+     },
+     {
+      "pos": 7,
+      "name": "Arthur Leclerc",
+      "total": 75.5
+     },
+     {
+      "pos": 8,
+      "name": "Thomas Neubauer",
+      "total": 65.5
+     },
+     {
+      "pos": 9,
+      "name": "Marco Sorensen",
+      "total": 59.0
+     },
+     {
+      "pos": 9,
+      "name": "Mattia Drudi",
+      "total": 59.0
+     },
+     {
+      "pos": 10,
+      "name": "Jordan Pepper",
+      "total": 58.0
+     },
+     {
+      "pos": 11,
+      "name": "Thierry Vermeulen",
+      "total": 56.5
+     },
+     {
+      "pos": 11,
+      "name": "Ben Green",
+      "total": 56.5
+     },
+     {
+      "pos": 12,
+      "name": "Jules Gounon",
+      "total": 53.5
+     },
+     {
+      "pos": 13,
+      "name": "Thomas Fleming",
+      "total": 51.5
+     },
+     {
+      "pos": 13,
+      "name": "Louis Prette",
+      "total": 51.5
+     },
+     {
+      "pos": 14,
+      "name": "Dorian Boccolacci",
+      "total": 49.5
+     },
+     {
+      "pos": 15,
+      "name": "Chris Lulham",
+      "total": 47.5
+     },
+     {
+      "pos": 16,
+      "name": "Max Hesse",
+      "total": 46.5
+     },
+     {
+      "pos": 16,
+      "name": "Valentino Rossi",
+      "total": 46.5
+     },
+     {
+      "pos": 17,
+      "name": "Morris Schuring",
+      "total": 44.0
+     },
+     {
+      "pos": 18,
+      "name": "Dean Macdonald",
+      "total": 39.5
+     },
+     {
+      "pos": 19,
+      "name": "Ariel Levi",
+      "total": 34.5
+     },
+     {
+      "pos": 20,
+      "name": "Benjamin Goethe",
+      "total": 32.0
+     },
+     {
+      "pos": 21,
+      "name": "Dylan Pereira",
+      "total": 31.0
+     },
+     {
+      "pos": 21,
+      "name": "Alex Aka",
+      "total": 31.0
+     },
+     {
+      "pos": 22,
+      "name": "Marvin Kirchhöfer",
+      "total": 31.0
+     },
+     {
+      "pos": 23,
+      "name": "Thomas Preining",
+      "total": 30.0
+     },
+     {
+      "pos": 24,
+      "name": "Tommaso Mosca",
+      "total": 29.0
+     },
+     {
+      "pos": 25,
+      "name": "Patric Niederhauser",
+      "total": 28.0
+     },
+     {
+      "pos": 25,
+      "name": "Luca Engstler",
+      "total": 28.0
+     },
+     {
+      "pos": 26,
+      "name": "Augusto Farfus",
+      "total": 26.0
+     },
+     {
+      "pos": 26,
+      "name": "Jake Dennis",
+      "total": 26.0
+     },
+     {
+      "pos": 26,
+      "name": "Raffaele Marciello",
+      "total": 26.0
+     },
+     {
+      "pos": 27,
+      "name": "Rocco Mazzola",
+      "total": 25.0
+     },
+     {
+      "pos": 27,
+      "name": "Sebastian Øgaard",
+      "total": 25.0
+     },
+     {
+      "pos": 28,
+      "name": "Joseph Loake",
+      "total": 21.5
+     },
+     {
+      "pos": 29,
+      "name": "Christopher Haase",
+      "total": 20.0
+     },
+     {
+      "pos": 29,
+      "name": "Simon Reicher",
+      "total": 20.0
+     },
+     {
+      "pos": 30,
+      "name": "Alessio Picariello",
+      "total": 20.0
+     },
+     {
+      "pos": 31,
+      "name": "Dennis Marschall",
+      "total": 18.0
+     },
+     {
+      "pos": 32,
+      "name": "Matteo Cairoli",
+      "total": 17.5
+     },
+     {
+      "pos": 32,
+      "name": "Konsta Lappalainen",
+      "total": 17.5
+     },
+     {
+      "pos": 33,
+      "name": "Matisse Lismont",
+      "total": 17.5
+     },
+     {
+      "pos": 33,
+      "name": "Ignacio Montenegro",
+      "total": 17.5
+     },
+     {
+      "pos": 34,
+      "name": "Dustin Blattner",
+      "total": 17.0
+     },
+     {
+      "pos": 35,
+      "name": "Kobe Pauwels",
+      "total": 16.5
+     },
+     {
+      "pos": 36,
+      "name": "Alessio Rovera",
+      "total": 16.0
+     },
+     {
+      "pos": 36,
+      "name": "Nicklas Nielsen",
+      "total": 16.0
+     },
+     {
+      "pos": 37,
+      "name": "Fabio Scherer",
+      "total": 16.0
+     },
+     {
+      "pos": 37,
+      "name": "Thomas Drouet",
+      "total": 16.0
+     },
+     {
+      "pos": 37,
+      "name": "Arjun Maini",
+      "total": 16.0
+     },
+     {
+      "pos": 38,
+      "name": "Amaury Cordeel",
+      "total": 16.0
+     },
+     {
+      "pos": 39,
+      "name": "Fabian Schiller",
+      "total": 16.0
+     },
+     {
+      "pos": 39,
+      "name": "Maxime Martin",
+      "total": 16.0
+     },
+     {
+      "pos": 39,
+      "name": "Maximilian Götz",
+      "total": 16.0
+     },
+     {
+      "pos": 40,
+      "name": "Andrea Frassineti",
+      "total": 15.5
+     },
+     {
+      "pos": 41,
+      "name": "Romain Andriolo",
+      "total": 15.5
+     },
+     {
+      "pos": 42,
+      "name": "Lorens Lecertua",
+      "total": 15.0
+     },
+     {
+      "pos": 42,
+      "name": "Baptiste Moulin",
+      "total": 15.0
+     },
+     {
+      "pos": 43,
+      "name": "Ben Tuck",
+      "total": 13.0
+     },
+     {
+      "pos": 43,
+      "name": "Mathys Jaubert",
+      "total": 13.0
+     },
+     {
+      "pos": 44,
+      "name": "Matias Zagazeta",
+      "total": 13.0
+     },
+     {
+      "pos": 45,
+      "name": "Daniel Harper",
+      "total": 13.0
+     },
+     {
+      "pos": 46,
+      "name": "Markus Winkelhock",
+      "total": 12.0
+     },
+     {
+      "pos": 47,
+      "name": "Frederic Makowiecki",
+      "total": 12.0
+     },
+     {
+      "pos": 47,
+      "name": "Matt Campbell",
+      "total": 12.0
+     },
+     {
+      "pos": 47,
+      "name": "Ayhancan Guven",
+      "total": 12.0
+     },
+     {
+      "pos": 48,
+      "name": "David Pittard",
+      "total": 11.0
+     },
+     {
+      "pos": 49,
+      "name": "Sean Gelael",
+      "total": 10.0
+     },
+     {
+      "pos": 49,
+      "name": "Lilou Wadoux",
+      "total": 10.0
+     },
+     {
+      "pos": 50,
+      "name": "James Kellett",
+      "total": 9.0
+     },
+     {
+      "pos": 50,
+      "name": "Leyton Fourie",
+      "total": 9.0
+     },
+     {
+      "pos": 50,
+      "name": "Darren Leung",
+      "total": 9.0
+     },
+     {
+      "pos": 51,
+      "name": "Loris Spinelli",
+      "total": 8.5
+     },
+     {
+      "pos": 51,
+      "name": "Mattia Michelotto",
+      "total": 8.5
+     },
+     {
+      "pos": 52,
+      "name": "Arthur Rougier",
+      "total": 8.5
+     },
+     {
+      "pos": 52,
+      "name": "James Kell",
+      "total": 8.5
+     },
+     {
+      "pos": 53,
+      "name": "Maxwell Lynn",
+      "total": 8.0
+     },
+     {
+      "pos": 53,
+      "name": "Ben Dörr",
+      "total": 8.0
+     },
+     {
+      "pos": 53,
+      "name": "Horatio Fitz-Simon",
+      "total": 8.0
+     },
+     {
+      "pos": 54,
+      "name": "Christian Krognes",
+      "total": 7.0
+     },
+     {
+      "pos": 54,
+      "name": "Henrique Chaves",
+      "total": 7.0
+     },
+     {
+      "pos": 54,
+      "name": "Jamie Day",
+      "total": 7.0
+     },
+     {
+      "pos": 55,
+      "name": "Gilles Magnus",
+      "total": 7.0
+     },
+     {
+      "pos": 55,
+      "name": "Robin Knutsson",
+      "total": 7.0
+     },
+     {
+      "pos": 56,
+      "name": "Peter Dempsey",
+      "total": 6.0
+     },
+     {
+      "pos": 56,
+      "name": "Eddie Cheever",
+      "total": 6.0
+     },
+     {
+      "pos": 57,
+      "name": "Marco Mapelli",
+      "total": 6.0
+     },
+     {
+      "pos": 58,
+      "name": "Sven Müller",
+      "total": 4.5
+     },
+     {
+      "pos": 59,
+      "name": "Simon Gachet",
+      "total": 4.5
+     },
+     {
+      "pos": 60,
+      "name": "Nico Menzel",
+      "total": 4.0
+     },
+     {
+      "pos": 60,
+      "name": "Lorenzo Patrese",
+      "total": 4.0
+     },
+     {
+      "pos": 61,
+      "name": "Tim Tramnitz",
+      "total": 3.0
+     },
+     {
+      "pos": 61,
+      "name": "Jens Klingmann",
+      "total": 3.0
+     },
+     {
+      "pos": 61,
+      "name": "Ugo De Wilde",
+      "total": 3.0
+     },
+     {
+      "pos": 62,
+      "name": "Jop Rappange",
+      "total": 2.0
+     },
+     {
+      "pos": 63,
+      "name": "Lorcan Hanafin",
+      "total": 2.0
+     },
+     {
+      "pos": 63,
+      "name": "Jonathan Adam",
+      "total": 2.0
+     },
+     {
+      "pos": 63,
+      "name": "Giacomo Petrobelli",
+      "total": 2.0
+     },
+     {
+      "pos": 65,
+      "name": "Angus Whiteside",
+      "total": 1.0
+     },
+     {
+      "pos": 65,
+      "name": "Tanart Sathienthirakul",
+      "total": 1.0
+     },
+     {
+      "pos": 65,
+      "name": "Francesco Simonazzi",
+      "total": 1.0
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "Team WRT",
+      "total": 142.5
+     },
+     {
+      "pos": 2,
+      "name": "Winward Racing",
+      "total": 137.5
+     },
+     {
+      "pos": 3,
+      "name": "Lionspeed GP",
+      "total": 104.0
+     },
+     {
+      "pos": 4,
+      "name": "2Seas Motorsport",
+      "total": 88.0
+     },
+     {
+      "pos": 5,
+      "name": "AF Corse",
+      "total": 87.5
+     },
+     {
+      "pos": 6,
+      "name": "Garage 59",
+      "total": 85.5
+     },
+     {
+      "pos": 7,
+      "name": "Comtoyou Racing",
+      "total": 81.0
+     },
+     {
+      "pos": 8,
+      "name": "Emil Frey Racing",
+      "total": 71.0
+     },
+     {
+      "pos": 9,
+      "name": "Tresor Attempto Racing",
+      "total": 67.5
+     },
+     {
+      "pos": 10,
+      "name": "Boutsen VDS",
+      "total": 66.5
+     },
+     {
+      "pos": 11,
+      "name": "Rutronik Racing",
+      "total": 34.0
+     },
+     {
+      "pos": 12,
+      "name": "Rowe Racing",
+      "total": 33.0
+     },
+     {
+      "pos": 13,
+      "name": "CSA Racing",
+      "total": 30.5
+     },
+     {
+      "pos": 14,
+      "name": "Eastalent Racing",
+      "total": 23.0
+     },
+     {
+      "pos": 15,
+      "name": "Kessel Racing",
+      "total": 21.0
+     },
+     {
+      "pos": 16,
+      "name": "GetSpeed",
+      "total": 19.5
+     },
+     {
+      "pos": 17,
+      "name": "HRT Ford Racing",
+      "total": 16.0
+     },
+     {
+      "pos": 18,
+      "name": "Walkenhorst Motorsport",
+      "total": 12.0
+     },
+     {
+      "pos": 19,
+      "name": "Paradine Competition",
+      "total": 11.0
+     },
+     {
+      "pos": 20,
+      "name": "VSR",
+      "total": 10.5
+     },
+     {
+      "pos": 21,
+      "name": "Team RJN",
+      "total": 8.0
+     },
+     {
+      "pos": 22,
+      "name": "Ziggo Sport Tempesta Racing",
+      "total": 6.0
+     },
+     {
+      "pos": 23,
+      "name": "Optimum Motorsport",
+      "total": 2.5
+     },
+     {
+      "pos": 24,
+      "name": "KPX Motorsport",
+      "total": 2.0
+     },
+     {
+      "pos": 25,
+      "name": "Ecurie Ecosse Blackthorn",
+      "total": 2.0
+     },
+     {
+      "pos": 26,
+      "name": "Dinamic GT",
+      "total": 1.0
+     },
+     {
+      "pos": 26,
+      "name": "Rinaldi Racing",
+      "total": 1.0
+     }
+    ]
+   },
+   "gold": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Thomas Fleming",
+      "total": 169.5
+     },
+     {
+      "pos": 1,
+      "name": "Louis Prette",
+      "total": 169.5
+     },
+     {
+      "pos": 2,
+      "name": "Simon Gachet",
+      "total": 136.0
+     },
+     {
+      "pos": 3,
+      "name": "Arthur Rougier",
+      "total": 129.5
+     },
+     {
+      "pos": 3,
+      "name": "James Kell",
+      "total": 129.5
+     },
+     {
+      "pos": 4,
+      "name": "Dylan Pereira",
+      "total": 120.5
+     },
+     {
+      "pos": 5,
+      "name": "Alex Aka",
+      "total": 119.5
+     },
+     {
+      "pos": 6,
+      "name": "Robin Knutsson",
+      "total": 114.5
+     },
+     {
+      "pos": 6,
+      "name": "Gilles Magnus",
+      "total": 114.5
+     },
+     {
+      "pos": 7,
+      "name": "Matias Zagazeta",
+      "total": 106.0
+     },
+     {
+      "pos": 7,
+      "name": "Tommaso Mosca",
+      "total": 106.0
+     },
+     {
+      "pos": 8,
+      "name": "Jens Klingmann",
+      "total": 89.0
+     },
+     {
+      "pos": 8,
+      "name": "Ugo De Wilde",
+      "total": 89.0
+     },
+     {
+      "pos": 8,
+      "name": "Tim Tramnitz",
+      "total": 89.0
+     },
+     {
+      "pos": 9,
+      "name": "Benjamin Goethe",
+      "total": 86.0
+     },
+     {
+      "pos": 10,
+      "name": "Malte Ebdrup",
+      "total": 78.0
+     },
+     {
+      "pos": 10,
+      "name": "Frederik Schandorff",
+      "total": 78.0
+     },
+     {
+      "pos": 10,
+      "name": "Simon Birch",
+      "total": 78.0
+     },
+     {
+      "pos": 11,
+      "name": "Romain Andriolo",
+      "total": 72.0
+     },
+     {
+      "pos": 12,
+      "name": "Mattia Michelotto",
+      "total": 71.5
+     },
+     {
+      "pos": 12,
+      "name": "Loris Spinelli",
+      "total": 71.5
+     },
+     {
+      "pos": 13,
+      "name": "David Pittard",
+      "total": 43.0
+     },
+     {
+      "pos": 13,
+      "name": "Jop Rappange",
+      "total": 43.0
+     },
+     {
+      "pos": 14,
+      "name": "Dennis Lind",
+      "total": 43.0
+     },
+     {
+      "pos": 14,
+      "name": "Antoine Doquin",
+      "total": 43.0
+     },
+     {
+      "pos": 15,
+      "name": "Freddie Tomlinson",
+      "total": 36.0
+     },
+     {
+      "pos": 15,
+      "name": "Harry George",
+      "total": 36.0
+     },
+     {
+      "pos": 15,
+      "name": "Adam Smalley",
+      "total": 36.0
+     },
+     {
+      "pos": 16,
+      "name": "Andrea Frassineti",
+      "total": 30.0
+     },
+     {
+      "pos": 17,
+      "name": "Alessandro Ghiretti",
+      "total": 30.0
+     },
+     {
+      "pos": 18,
+      "name": "Ruben Del Sarte",
+      "total": 24.0
+     },
+     {
+      "pos": 19,
+      "name": "Conrad Laursen",
+      "total": 23.0
+     },
+     {
+      "pos": 20,
+      "name": "Jim Pla",
+      "total": 22.0
+     },
+     {
+      "pos": 21,
+      "name": "Mikkel Mac",
+      "total": 22.0
+     },
+     {
+      "pos": 22,
+      "name": "Nico Menzel",
+      "total": 18.0
+     },
+     {
+      "pos": 23,
+      "name": "Christian Hahn",
+      "total": 12.0
+     },
+     {
+      "pos": 23,
+      "name": "Robert De Haan",
+      "total": 12.0
+     },
+     {
+      "pos": 23,
+      "name": "Ashley Sutton",
+      "total": 12.0
+     },
+     {
+      "pos": 24,
+      "name": "Lenny Ried",
+      "total": 12.0
+     },
+     {
+      "pos": 24,
+      "name": "Mikkel Pedersen",
+      "total": 12.0
+     },
+     {
+      "pos": 25,
+      "name": "Lorenzo Fluxa Cross",
+      "total": 9.0
+     },
+     {
+      "pos": 26,
+      "name": "Lorenzo Ferrari",
+      "total": 1.0
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "AF Corse",
+      "total": 185.0
+     },
+     {
+      "pos": 2,
+      "name": "Garage 59",
+      "total": 173.0
+     },
+     {
+      "pos": 3,
+      "name": "CSA Racing",
+      "total": 159.5
+     },
+     {
+      "pos": 4,
+      "name": "Tresor Attempto Racing",
+      "total": 122.0
+     },
+     {
+      "pos": 5,
+      "name": "Boutsen VDS",
+      "total": 117.5
+     },
+     {
+      "pos": 6,
+      "name": "Rowe Racing",
+      "total": 89.0
+     },
+     {
+      "pos": 7,
+      "name": "VSR",
+      "total": 73.0
+     },
+     {
+      "pos": 8,
+      "name": "KPX Motorsport",
+      "total": 48.0
+     },
+     {
+      "pos": 9,
+      "name": "Steller Motorsport",
+      "total": 43.0
+     },
+     {
+      "pos": 10,
+      "name": "Optimum Motorsport",
+      "total": 36.0
+     },
+     {
+      "pos": 11,
+      "name": "Paradine Competition",
+      "total": 12.0
+     }
+    ]
+   },
+   "silver": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Ignacio Montenegro",
+      "total": 210.0
+     },
+     {
+      "pos": 1,
+      "name": "Matisse Lismont",
+      "total": 210.0
+     },
+     {
+      "pos": 2,
+      "name": "Guilherme Oliveira",
+      "total": 108.5
+     },
+     {
+      "pos": 2,
+      "name": "Mikey Porter",
+      "total": 108.5
+     },
+     {
+      "pos": 3,
+      "name": "Oliver Soderstrom",
+      "total": 105.0
+     },
+     {
+      "pos": 4,
+      "name": "Gilles Stadsbader",
+      "total": 104.5
+     },
+     {
+      "pos": 4,
+      "name": "Jef Machiels",
+      "total": 104.5
+     },
+     {
+      "pos": 5,
+      "name": "Aurélien Panis",
+      "total": 101.5
+     },
+     {
+      "pos": 5,
+      "name": "Anthony Bartone",
+      "total": 101.5
+     },
+     {
+      "pos": 6,
+      "name": "Ariel Levi",
+      "total": 100.5
+     },
+     {
+      "pos": 7,
+      "name": "Mateo Villagomez",
+      "total": 92.5
+     },
+     {
+      "pos": 8,
+      "name": "Amaury Cordeel",
+      "total": 87.0
+     },
+     {
+      "pos": 9,
+      "name": "Jamie Day",
+      "total": 86.5
+     },
+     {
+      "pos": 10,
+      "name": "Arthur Dorison",
+      "total": 73.0
+     },
+     {
+      "pos": 11,
+      "name": "Aliaksandr Malykhin",
+      "total": 64.0
+     },
+     {
+      "pos": 12,
+      "name": "Andrea Frassineti",
+      "total": 56.5
+     },
+     {
+      "pos": 13,
+      "name": "Eduardo Coseteng",
+      "total": 56.0
+     },
+     {
+      "pos": 14,
+      "name": "Max Hofer",
+      "total": 49.0
+     },
+     {
+      "pos": 15,
+      "name": "Aleksei Nesov",
+      "total": 47.5
+     },
+     {
+      "pos": 16,
+      "name": "Matias Zagazeta",
+      "total": 45.0
+     },
+     {
+      "pos": 17,
+      "name": "Rocco Mazzola",
+      "total": 44.0
+     },
+     {
+      "pos": 17,
+      "name": "Sebastian Øgaard",
+      "total": 44.0
+     },
+     {
+      "pos": 18,
+      "name": "Cesar Gazeau",
+      "total": 40.0
+     },
+     {
+      "pos": 19,
+      "name": "Kobe Pauwels",
+      "total": 38.0
+     },
+     {
+      "pos": 19,
+      "name": "Sébastien Baud",
+      "total": 38.0
+     },
+     {
+      "pos": 20,
+      "name": "Tanart Sathienthirakul",
+      "total": 37.0
+     },
+     {
+      "pos": 21,
+      "name": "Gaspard Simon",
+      "total": 36.5
+     },
+     {
+      "pos": 22,
+      "name": "Mathieu Detry",
+      "total": 36.0
+     },
+     {
+      "pos": 23,
+      "name": "Rafael Duran",
+      "total": 35.0
+     },
+     {
+      "pos": 23,
+      "name": "Dylan Medler",
+      "total": 35.0
+     },
+     {
+      "pos": 23,
+      "name": "David Perel",
+      "total": 35.0
+     },
+     {
+      "pos": 24,
+      "name": "Nicolas Baert",
+      "total": 34.0
+     },
+     {
+      "pos": 25,
+      "name": "Finn Wiebelhaus",
+      "total": 31.0
+     },
+     {
+      "pos": 25,
+      "name": "Maxime Oosten",
+      "total": 31.0
+     },
+     {
+      "pos": 26,
+      "name": "Francesco Braschi",
+      "total": 31.0
+     },
+     {
+      "pos": 27,
+      "name": "Maxime Robin",
+      "total": 30.5
+     },
+     {
+      "pos": 28,
+      "name": "Salman Owega",
+      "total": 29.0
+     },
+     {
+      "pos": 28,
+      "name": "Dante Rappange",
+      "total": 29.0
+     },
+     {
+      "pos": 29,
+      "name": "Alessandro Balzan",
+      "total": 29.0
+     },
+     {
+      "pos": 30,
+      "name": "Carl Bennett",
+      "total": 26.5
+     },
+     {
+      "pos": 30,
+      "name": "Felix Hirsiger",
+      "total": 26.5
+     },
+     {
+      "pos": 31,
+      "name": "Niklas Kalus",
+      "total": 25.0
+     },
+     {
+      "pos": 32,
+      "name": "Horatio Fitz-Simon",
+      "total": 22.0
+     },
+     {
+      "pos": 32,
+      "name": "Maxwell Lynn",
+      "total": 22.0
+     },
+     {
+      "pos": 32,
+      "name": "Ben Dörr",
+      "total": 22.0
+     },
+     {
+      "pos": 33,
+      "name": "Lorens Lecertua",
+      "total": 21.0
+     },
+     {
+      "pos": 33,
+      "name": "Romain Andriolo",
+      "total": 21.0
+     },
+     {
+      "pos": 33,
+      "name": "Baptiste Moulin",
+      "total": 21.0
+     },
+     {
+      "pos": 34,
+      "name": "Etienne Cheli",
+      "total": 20.0
+     },
+     {
+      "pos": 34,
+      "name": "Ivan Klymenko",
+      "total": 20.0
+     },
+     {
+      "pos": 34,
+      "name": "Ezequiel Perez Companc",
+      "total": 20.0
+     },
+     {
+      "pos": 35,
+      "name": "Angus Whiteside",
+      "total": 20.0
+     },
+     {
+      "pos": 35,
+      "name": "Francesco Simonazzi",
+      "total": 20.0
+     },
+     {
+      "pos": 36,
+      "name": "Max Reis",
+      "total": 18.0
+     },
+     {
+      "pos": 37,
+      "name": "Mark Kastelic",
+      "total": 17.0
+     },
+     {
+      "pos": 38,
+      "name": "Mikkel Pedersen",
+      "total": 14.0
+     },
+     {
+      "pos": 39,
+      "name": "Karol Basz",
+      "total": 13.0
+     },
+     {
+      "pos": 40,
+      "name": "Lucas Legeret",
+      "total": 11.0
+     },
+     {
+      "pos": 41,
+      "name": "Levente Revesz",
+      "total": 9.0
+     },
+     {
+      "pos": 41,
+      "name": "Rui Andrade",
+      "total": 9.0
+     },
+     {
+      "pos": 41,
+      "name": "Yannick Mettler",
+      "total": 9.0
+     },
+     {
+      "pos": 41,
+      "name": "Christian Mansell",
+      "total": 9.0
+     },
+     {
+      "pos": 42,
+      "name": "Loris Cabirou",
+      "total": 8.0
+     },
+     {
+      "pos": 43,
+      "name": "Christian Hahn",
+      "total": 7.0
+     },
+     {
+      "pos": 43,
+      "name": "Josh Rowledge",
+      "total": 7.0
+     },
+     {
+      "pos": 43,
+      "name": "Robert Thompson",
+      "total": 7.0
+     },
+     {
+      "pos": 45,
+      "name": "Ethan Ischer",
+      "total": 6.0
+     },
+     {
+      "pos": 46,
+      "name": "Enzo Trulli",
+      "total": 4.0
+     },
+     {
+      "pos": 47,
+      "name": "Sai Sanjay",
+      "total": 3.0
+     },
+     {
+      "pos": 48,
+      "name": "Riccardo Pera",
+      "total": 2.5
+     },
+     {
+      "pos": 49,
+      "name": "Zac Meakin",
+      "total": 2.0
+     },
+     {
+      "pos": 49,
+      "name": "Tommy Pintos",
+      "total": 2.0
+     },
+     {
+      "pos": 49,
+      "name": "Jayden Kelly",
+      "total": 2.0
+     },
+     {
+      "pos": 50,
+      "name": "Simon Birch",
+      "total": 1.0
+     },
+     {
+      "pos": 50,
+      "name": "Magnus Gustavsen",
+      "total": 1.0
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "Team WRT",
+      "total": 211.5
+     },
+     {
+      "pos": 2,
+      "name": "AF Corse",
+      "total": 113.5
+     },
+     {
+      "pos": 3,
+      "name": "Comtoyou Racing",
+      "total": 113.0
+     },
+     {
+      "pos": 4,
+      "name": "Optimum Motorsport",
+      "total": 111.5
+     },
+     {
+      "pos": 5,
+      "name": "GetSpeed",
+      "total": 106.5
+     },
+     {
+      "pos": 6,
+      "name": "Tresor Attempto Racing",
+      "total": 102.5
+     },
+     {
+      "pos": 7,
+      "name": "Walkenhorst Motorsport",
+      "total": 92.5
+     },
+     {
+      "pos": 8,
+      "name": "Pure Rxcing",
+      "total": 72.0
+     },
+     {
+      "pos": 9,
+      "name": "HRT Ford Racing",
+      "total": 56.0
+     },
+     {
+      "pos": 10,
+      "name": "Dinamic GT",
+      "total": 50.5
+     },
+     {
+      "pos": 11,
+      "name": "Rinaldi Racing",
+      "total": 35.0
+     },
+     {
+      "pos": 12,
+      "name": "Sainteloc Racing",
+      "total": 23.0
+     },
+     {
+      "pos": 13,
+      "name": "Team RJN",
+      "total": 23.0
+     },
+     {
+      "pos": 14,
+      "name": "CSA Racing",
+      "total": 21.0
+     },
+     {
+      "pos": 15,
+      "name": "Paradine Competition",
+      "total": 7.0
+     },
+     {
+      "pos": 16,
+      "name": "Lionspeed GP",
+      "total": 6.0
+     },
+     {
+      "pos": 17,
+      "name": "Razoon - more than racing",
+      "total": 4.0
+     },
+     {
+      "pos": 18,
+      "name": "Greystone GT",
+      "total": 3.0
+     }
+    ]
+   },
+   "bronze": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Dennis Marschall",
+      "total": 161.5
+     },
+     {
+      "pos": 2,
+      "name": "Marvin Dienst",
+      "total": 141.0
+     },
+     {
+      "pos": 2,
+      "name": "Rinat Salikhov",
+      "total": 141.0
+     },
+     {
+      "pos": 3,
+      "name": "Darren Leung",
+      "total": 136.0
+     },
+     {
+      "pos": 4,
+      "name": "Eddie Cheever",
+      "total": 135.0
+     },
+     {
+      "pos": 5,
+      "name": "Charles Dawson",
+      "total": 126.5
+     },
+     {
+      "pos": 5,
+      "name": "Kiern Jewiss",
+      "total": 126.5
+     },
+     {
+      "pos": 6,
+      "name": "Dustin Blattner",
+      "total": 122.5
+     },
+     {
+      "pos": 7,
+      "name": "Peter Dempsey",
+      "total": 116.0
+     },
+     {
+      "pos": 8,
+      "name": "James Kellett",
+      "total": 71.0
+     },
+     {
+      "pos": 9,
+      "name": "Augusto Farfus",
+      "total": 65.0
+     },
+     {
+      "pos": 10,
+      "name": "Gabriel Rindone",
+      "total": 62.0
+     },
+     {
+      "pos": 11,
+      "name": "Gabriele Piana",
+      "total": 58.0
+     },
+     {
+      "pos": 12,
+      "name": "Reece Barr",
+      "total": 57.0
+     },
+     {
+      "pos": 13,
+      "name": "Lorenzo Patrese",
+      "total": 52.0
+     },
+     {
+      "pos": 14,
+      "name": "Mathys Jaubert",
+      "total": 50.0
+     },
+     {
+      "pos": 14,
+      "name": "Ben Tuck",
+      "total": 50.0
+     },
+     {
+      "pos": 15,
+      "name": "Antares Au",
+      "total": 50.0
+     },
+     {
+      "pos": 16,
+      "name": "Fabian Schiller",
+      "total": 46.0
+     },
+     {
+      "pos": 18,
+      "name": "Dmitry Gvazava",
+      "total": 36.5
+     },
+     {
+      "pos": 18,
+      "name": "Loris Cabirou",
+      "total": 36.5
+     },
+     {
+      "pos": 19,
+      "name": "Leyton Fourie",
+      "total": 36.0
+     },
+     {
+      "pos": 19,
+      "name": "David Pittard",
+      "total": 36.0
+     },
+     {
+      "pos": 20,
+      "name": "Calan Williams",
+      "total": 34.0
+     },
+     {
+      "pos": 20,
+      "name": "Javier Sagrera",
+      "total": 34.0
+     },
+     {
+      "pos": 20,
+      "name": "Ahmad Al Harthy",
+      "total": 34.0
+     },
+     {
+      "pos": 21,
+      "name": "Riccardo Pera",
+      "total": 33.0
+     },
+     {
+      "pos": 21,
+      "name": "Loek Hartog",
+      "total": 33.0
+     },
+     {
+      "pos": 22,
+      "name": "Giacomo Petrobelli",
+      "total": 33.0
+     },
+     {
+      "pos": 22,
+      "name": "Jonathan Adam",
+      "total": 33.0
+     },
+     {
+      "pos": 23,
+      "name": "Lorcan Hanafin",
+      "total": 32.0
+     },
+     {
+      "pos": 24,
+      "name": "Christopher Froggatt",
+      "total": 31.0
+     },
+     {
+      "pos": 25,
+      "name": "Patrick Kolb",
+      "total": 31.0
+     },
+     {
+      "pos": 25,
+      "name": "Alex Fontana",
+      "total": 31.0
+     },
+     {
+      "pos": 25,
+      "name": "Bashar Mardini",
+      "total": 31.0
+     },
+     {
+      "pos": 26,
+      "name": "Dries Vanthoor",
+      "total": 25.0
+     },
+     {
+      "pos": 27,
+      "name": "Huub van Eijndhoven",
+      "total": 23.0
+     },
+     {
+      "pos": 27,
+      "name": "Ralf Bohn",
+      "total": 23.0
+     },
+     {
+      "pos": 28,
+      "name": "Carrie Schreiner",
+      "total": 23.0
+     },
+     {
+      "pos": 29,
+      "name": "Axcil Jefferies",
+      "total": 21.0
+     },
+     {
+      "pos": 30,
+      "name": "Robert Renauer",
+      "total": 19.0
+     },
+     {
+      "pos": 31,
+      "name": "Jonathan Hui",
+      "total": 19.0
+     },
+     {
+      "pos": 32,
+      "name": "Michelle Gatting",
+      "total": 17.0
+     },
+     {
+      "pos": 32,
+      "name": "Martin Rump",
+      "total": 17.0
+     },
+     {
+      "pos": 32,
+      "name": "Sven Müller",
+      "total": 17.0
+     },
+     {
+      "pos": 33,
+      "name": "Sebastian Øgaard",
+      "total": 17.0
+     },
+     {
+      "pos": 34,
+      "name": "Marco Pulcini",
+      "total": 16.5
+     },
+     {
+      "pos": 34,
+      "name": "David Fumanelli",
+      "total": 16.5
+     },
+     {
+      "pos": 35,
+      "name": "Mikael Grenier",
+      "total": 16.0
+     },
+     {
+      "pos": 35,
+      "name": "Tom Kalender",
+      "total": 16.0
+     },
+     {
+      "pos": 36,
+      "name": "Garnet Patterson",
+      "total": 16.0
+     },
+     {
+      "pos": 37,
+      "name": "Daan Arrow",
+      "total": 15.0
+     },
+     {
+      "pos": 38,
+      "name": "Romain Leroux",
+      "total": 14.0
+     },
+     {
+      "pos": 39,
+      "name": "Jarrod Waberski",
+      "total": 11.0
+     },
+     {
+      "pos": 40,
+      "name": "Robert De Haan",
+      "total": 10.0
+     },
+     {
+      "pos": 41,
+      "name": "Thomas Kiefer",
+      "total": 9.0
+     },
+     {
+      "pos": 41,
+      "name": "Rolf Ineichen",
+      "total": 9.0
+     },
+     {
+      "pos": 41,
+      "name": "Tim Heinemann",
+      "total": 9.0
+     },
+     {
+      "pos": 42,
+      "name": "Marcelo Tomasoni",
+      "total": 8.0
+     },
+     {
+      "pos": 43,
+      "name": "Gerhard Tweraser",
+      "total": 8.0
+     },
+     {
+      "pos": 44,
+      "name": "Mex Jansen",
+      "total": 7.0
+     },
+     {
+      "pos": 45,
+      "name": "Felice Jelmini",
+      "total": 7.0
+     },
+     {
+      "pos": 46,
+      "name": "Daniele Di Amato",
+      "total": 6.0
+     },
+     {
+      "pos": 47,
+      "name": "Alfred Renauer",
+      "total": 4.0
+     },
+     {
+      "pos": 47,
+      "name": "Mathieu Jaminet",
+      "total": 4.0
+     },
+     {
+      "pos": 48,
+      "name": "Scott Noble",
+      "total": 4.0
+     },
+     {
+      "pos": 48,
+      "name": "Aaron Walker",
+      "total": 4.0
+     },
+     {
+      "pos": 48,
+      "name": "Lewis Williamson",
+      "total": 4.0
+     },
+     {
+      "pos": 48,
+      "name": "Jason Hart",
+      "total": 4.0
+     },
+     {
+      "pos": 49,
+      "name": "Pierre-Louis Chovet",
+      "total": 3.0
+     },
+     {
+      "pos": 50,
+      "name": "Armand Fumal",
+      "total": 2.0
+     },
+     {
+      "pos": 50,
+      "name": "Andres Latorre",
+      "total": 2.0
+     },
+     {
+      "pos": 50,
+      "name": "Bayley Hall",
+      "total": 2.0
+     },
+     {
+      "pos": 50,
+      "name": "Tobias Müller",
+      "total": 2.0
+     },
+     {
+      "pos": 50,
+      "name": "Benjamin Paque",
+      "total": 2.0
+     },
+     {
+      "pos": 50,
+      "name": "Dominik Olbert",
+      "total": 2.0
+     },
+     {
+      "pos": 51,
+      "name": "Michael Blanchemain",
+      "total": 1.0
+     },
+     {
+      "pos": 51,
+      "name": "Jim Pla",
+      "total": 1.0
+     },
+     {
+      "pos": 52,
+      "name": "Sergio Sette Camara",
+      "total": 1.0
+     },
+     {
+      "pos": 52,
+      "name": "Aaron Muss",
+      "total": 1.0
+     },
+     {
+      "pos": 52,
+      "name": "Tom Wood",
+      "total": 1.0
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "Kessel Racing",
+      "total": 164.5
+     },
+     {
+      "pos": 2,
+      "name": "Winward Racing",
+      "total": 141.0
+     },
+     {
+      "pos": 3,
+      "name": "Paradine Competition",
+      "total": 136.0
+     },
+     {
+      "pos": 4,
+      "name": "Ziggo Sport Tempesta Racing",
+      "total": 135.0
+     },
+     {
+      "pos": 5,
+      "name": "2Seas Motorsport",
+      "total": 126.5
+     },
+     {
+      "pos": 6,
+      "name": "GetSpeed",
+      "total": 66.0
+     },
+     {
+      "pos": 7,
+      "name": "Rutronik Racing",
+      "total": 50.0
+     },
+     {
+      "pos": 8,
+      "name": "Dinamic GT",
+      "total": 40.0
+     },
+     {
+      "pos": 9,
+      "name": "Century Motorsport",
+      "total": 34.0
+     },
+     {
+      "pos": 10,
+      "name": "Ecurie Ecosse Blackthorn",
+      "total": 33.0
+     },
+     {
+      "pos": 11,
+      "name": "Lionspeed GP",
+      "total": 31.0
+     },
+     {
+      "pos": 12,
+      "name": "Herberth Motorsport",
+      "total": 26.0
+     },
+     {
+      "pos": 13,
+      "name": "Tresor Attempto Racing",
+      "total": 25.0
+     },
+     {
+      "pos": 14,
+      "name": "Comtoyou Racing",
+      "total": 9.5
+     },
+     {
+      "pos": 15,
+      "name": "JMW Motorsport",
+      "total": 9.0
+     },
+     {
+      "pos": 16,
+      "name": "Sainteloc Racing",
+      "total": 2.0
+     },
+     {
+      "pos": 17,
+      "name": "Razoon - more than racing",
+      "total": 2.0
+     }
+    ]
+   }
+  },
+  "sprint": {
+   "overall": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Ricardo Feller",
+      "total": 72.0
+     },
+     {
+      "pos": 1,
+      "name": "Bastian Buus",
+      "total": 72.0
+     },
+     {
+      "pos": 2,
+      "name": "Arthur Leclerc",
+      "total": 65.5
+     },
+     {
+      "pos": 2,
+      "name": "Thomas Neubauer",
+      "total": 65.5
+     },
+     {
+      "pos": 3,
+      "name": "Daniel Juncadella",
+      "total": 59.0
+     },
+     {
+      "pos": 4,
+      "name": "Ben Green",
+      "total": 56.5
+     },
+     {
+      "pos": 4,
+      "name": "Thierry Vermeulen",
+      "total": 56.5
+     },
+     {
+      "pos": 5,
+      "name": "Kelvin Van Der Linde",
+      "total": 55.0
+     },
+     {
+      "pos": 5,
+      "name": "Charles Weerts",
+      "total": 55.0
+     },
+     {
+      "pos": 6,
+      "name": "Maro Engel",
+      "total": 45.5
+     },
+     {
+      "pos": 6,
+      "name": "Lucas Auer",
+      "total": 45.5
+     },
+     {
+      "pos": 7,
+      "name": "Max Hesse",
+      "total": 33.5
+     },
+     {
+      "pos": 7,
+      "name": "Valentino Rossi",
+      "total": 33.5
+     },
+     {
+      "pos": 8,
+      "name": "Jules Gounon",
+      "total": 32.5
+     },
+     {
+      "pos": 9,
+      "name": "Dorian Boccolacci",
+      "total": 30.5
+     },
+     {
+      "pos": 10,
+      "name": "Chris Lulham",
+      "total": 26.5
+     },
+     {
+      "pos": 11,
+      "name": "Dean Macdonald",
+      "total": 26.5
+     },
+     {
+      "pos": 12,
+      "name": "Morris Schuring",
+      "total": 25.0
+     },
+     {
+      "pos": 13,
+      "name": "Dylan Pereira",
+      "total": 25.0
+     },
+     {
+      "pos": 13,
+      "name": "Alex Aka",
+      "total": 25.0
+     },
+     {
+      "pos": 14,
+      "name": "Luca Engstler",
+      "total": 22.0
+     },
+     {
+      "pos": 14,
+      "name": "Patric Niederhauser",
+      "total": 22.0
+     },
+     {
+      "pos": 15,
+      "name": "Thomas Fleming",
+      "total": 19.5
+     },
+     {
+      "pos": 15,
+      "name": "Louis Prette",
+      "total": 19.5
+     },
+     {
+      "pos": 16,
+      "name": "Marvin Kirchhöfer",
+      "total": 18.0
+     },
+     {
+      "pos": 17,
+      "name": "Konsta Lappalainen",
+      "total": 17.5
+     },
+     {
+      "pos": 17,
+      "name": "Matteo Cairoli",
+      "total": 17.5
+     },
+     {
+      "pos": 18,
+      "name": "Matisse Lismont",
+      "total": 17.5
+     },
+     {
+      "pos": 18,
+      "name": "Ignacio Montenegro",
+      "total": 17.5
+     },
+     {
+      "pos": 19,
+      "name": "Kobe Pauwels",
+      "total": 16.5
+     },
+     {
+      "pos": 19,
+      "name": "Nicki Thiim",
+      "total": 16.5
+     },
+     {
+      "pos": 20,
+      "name": "Jordan Pepper",
+      "total": 16.0
+     },
+     {
+      "pos": 20,
+      "name": "Amaury Cordeel",
+      "total": 16.0
+     },
+     {
+      "pos": 21,
+      "name": "Tommaso Mosca",
+      "total": 13.0
+     },
+     {
+      "pos": 21,
+      "name": "Matias Zagazeta",
+      "total": 13.0
+     },
+     {
+      "pos": 22,
+      "name": "Andrea Frassineti",
+      "total": 9.5
+     },
+     {
+      "pos": 22,
+      "name": "Ariel Levi",
+      "total": 9.5
+     },
+     {
+      "pos": 23,
+      "name": "Mattia Michelotto",
+      "total": 8.5
+     },
+     {
+      "pos": 23,
+      "name": "Loris Spinelli",
+      "total": 8.5
+     },
+     {
+      "pos": 24,
+      "name": "Christopher Haase",
+      "total": 8.0
+     },
+     {
+      "pos": 24,
+      "name": "Simon Reicher",
+      "total": 8.0
+     },
+     {
+      "pos": 25,
+      "name": "Peter Dempsey",
+      "total": 6.0
+     },
+     {
+      "pos": 25,
+      "name": "Eddie Cheever",
+      "total": 6.0
+     },
+     {
+      "pos": 26,
+      "name": "Arthur Rougier",
+      "total": 4.5
+     },
+     {
+      "pos": 26,
+      "name": "James Kell",
+      "total": 4.5
+     },
+     {
+      "pos": 27,
+      "name": "Gilles Magnus",
+      "total": 3.0
+     },
+     {
+      "pos": 27,
+      "name": "Robin Knutsson",
+      "total": 3.0
+     },
+     {
+      "pos": 28,
+      "name": "Jop Rappange",
+      "total": 2.0
+     },
+     {
+      "pos": 28,
+      "name": "David Pittard",
+      "total": 2.0
+     },
+     {
+      "pos": 29,
+      "name": "Alessio Picariello",
+      "total": 1.0
+     },
+     {
+      "pos": 29,
+      "name": "Dennis Marschall",
+      "total": 1.0
+     },
+     {
+      "pos": 30,
+      "name": "Simon Gachet",
+      "total": 0.5
+     },
+     {
+      "pos": 30,
+      "name": "Romain Andriolo",
+      "total": 0.5
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "Team WRT",
+      "total": 86.5
+     },
+     {
+      "pos": 2,
+      "name": "Lionspeed GP",
+      "total": 74.0
+     },
+     {
+      "pos": 3,
+      "name": "Emil Frey Racing",
+      "total": 71.0
+     },
+     {
+      "pos": 4,
+      "name": "AF Corse",
+      "total": 70.5
+     },
+     {
+      "pos": 5,
+      "name": "2Seas Motorsport",
+      "total": 63.0
+     },
+     {
+      "pos": 6,
+      "name": "Garage 59",
+      "total": 51.5
+     },
+     {
+      "pos": 7,
+      "name": "Winward Racing",
+      "total": 51.5
+     },
+     {
+      "pos": 8,
+      "name": "Boutsen VDS",
+      "total": 37.5
+     },
+     {
+      "pos": 9,
+      "name": "Tresor Attempto Racing",
+      "total": 36.5
+     },
+     {
+      "pos": 10,
+      "name": "Rutronik Racing",
+      "total": 27.0
+     },
+     {
+      "pos": 11,
+      "name": "Comtoyou Racing",
+      "total": 21.0
+     },
+     {
+      "pos": 12,
+      "name": "Eastalent Racing",
+      "total": 11.0
+     },
+     {
+      "pos": 13,
+      "name": "VSR",
+      "total": 10.5
+     },
+     {
+      "pos": 14,
+      "name": "CSA Racing",
+      "total": 9.5
+     },
+     {
+      "pos": 15,
+      "name": "Ziggo Sport Tempesta Racing",
+      "total": 6.0
+     },
+     {
+      "pos": 16,
+      "name": "Optimum Motorsport",
+      "total": 2.5
+     },
+     {
+      "pos": 17,
+      "name": "KPX Motorsport",
+      "total": 2.0
+     },
+     {
+      "pos": 18,
+      "name": "Kessel Racing",
+      "total": 1.0
+     },
+     {
+      "pos": 19,
+      "name": "Walkenhorst Motorsport",
+      "total": 1.0
+     },
+     {
+      "pos": 20,
+      "name": "GetSpeed",
+      "total": 0.5
+     }
+    ]
+   },
+   "gold": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Tommaso Mosca",
+      "total": 106.0
+     },
+     {
+      "pos": 1,
+      "name": "Matias Zagazeta",
+      "total": 106.0
+     },
+     {
+      "pos": 2,
+      "name": "Dylan Pereira",
+      "total": 90.5
+     },
+     {
+      "pos": 2,
+      "name": "Alex Aka",
+      "total": 90.5
+     },
+     {
+      "pos": 3,
+      "name": "Louis Prette",
+      "total": 83.5
+     },
+     {
+      "pos": 3,
+      "name": "Thomas Fleming",
+      "total": 83.5
+     },
+     {
+      "pos": 4,
+      "name": "Romain Andriolo",
+      "total": 72.0
+     },
+     {
+      "pos": 4,
+      "name": "Simon Gachet",
+      "total": 72.0
+     },
+     {
+      "pos": 5,
+      "name": "Loris Spinelli",
+      "total": 71.5
+     },
+     {
+      "pos": 5,
+      "name": "Mattia Michelotto",
+      "total": 71.5
+     },
+     {
+      "pos": 6,
+      "name": "Gilles Magnus",
+      "total": 66.5
+     },
+     {
+      "pos": 6,
+      "name": "Robin Knutsson",
+      "total": 66.5
+     },
+     {
+      "pos": 7,
+      "name": "Arthur Rougier",
+      "total": 65.5
+     },
+     {
+      "pos": 7,
+      "name": "James Kell",
+      "total": 65.5
+     },
+     {
+      "pos": 8,
+      "name": "David Pittard",
+      "total": 43.0
+     },
+     {
+      "pos": 8,
+      "name": "Jop Rappange",
+      "total": 43.0
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "AF Corse",
+      "total": 107.0
+     },
+     {
+      "pos": 2,
+      "name": "CSA Racing",
+      "total": 95.5
+     },
+     {
+      "pos": 3,
+      "name": "Tresor Attempto Racing",
+      "total": 92.0
+     },
+     {
+      "pos": 4,
+      "name": "Garage 59",
+      "total": 87.0
+     },
+     {
+      "pos": 5,
+      "name": "VSR",
+      "total": 73.0
+     },
+     {
+      "pos": 6,
+      "name": "Boutsen VDS",
+      "total": 69.5
+     },
+     {
+      "pos": 7,
+      "name": "KPX Motorsport",
+      "total": 48.0
+     }
+    ]
+   },
+   "silver": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Matisse Lismont",
+      "total": 123.0
+     },
+     {
+      "pos": 1,
+      "name": "Ignacio Montenegro",
+      "total": 123.0
+     },
+     {
+      "pos": 2,
+      "name": "Jamie Day",
+      "total": 88.0
+     },
+     {
+      "pos": 2,
+      "name": "Mateo Villagomez",
+      "total": 88.0
+     },
+     {
+      "pos": 3,
+      "name": "Mikey Porter",
+      "total": 79.5
+     },
+     {
+      "pos": 3,
+      "name": "Guilherme Oliveira",
+      "total": 79.5
+     },
+     {
+      "pos": 4,
+      "name": "Arthur Dorison",
+      "total": 67.0
+     },
+     {
+      "pos": 4,
+      "name": "Oliver Soderstrom",
+      "total": 67.0
+     },
+     {
+      "pos": 5,
+      "name": "Aurélien Panis",
+      "total": 62.0
+     },
+     {
+      "pos": 5,
+      "name": "Anthony Bartone",
+      "total": 62.0
+     },
+     {
+      "pos": 6,
+      "name": "Jef Machiels",
+      "total": 60.5
+     },
+     {
+      "pos": 6,
+      "name": "Gilles Stadsbader",
+      "total": 60.5
+     },
+     {
+      "pos": 7,
+      "name": "Andrea Frassineti",
+      "total": 56.5
+     },
+     {
+      "pos": 7,
+      "name": "Ariel Levi",
+      "total": 56.5
+     },
+     {
+      "pos": 8,
+      "name": "Maxime Robin",
+      "total": 33.0
+     },
+     {
+      "pos": 8,
+      "name": "Gaspard Simon",
+      "total": 33.0
+     },
+     {
+      "pos": 9,
+      "name": "Carl Bennett",
+      "total": 27.5
+     },
+     {
+      "pos": 9,
+      "name": "Felix Hirsiger",
+      "total": 27.5
+     },
+     {
+      "pos": 10,
+      "name": "Mark Kastelic",
+      "total": 18.5
+     },
+     {
+      "pos": 10,
+      "name": "Tanart Sathienthirakul",
+      "total": 18.5
+     },
+     {
+      "pos": 11,
+      "name": "Aliaksandr Malykhin",
+      "total": 15.5
+     },
+     {
+      "pos": 12,
+      "name": "Aleksei Nesov",
+      "total": 10.5
+     },
+     {
+      "pos": 13,
+      "name": "Riccardo Pera",
+      "total": 3.0
+     },
+     {
+      "pos": 14,
+      "name": "Mikkel Pedersen",
+      "total": 2.0
+     },
+     {
+      "pos": 15,
+      "name": "Simon Birch",
+      "total": 1.0
+     },
+     {
+      "pos": 15,
+      "name": "Magnus Gustavsen",
+      "total": 1.0
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "Team WRT",
+      "total": 124.5
+     },
+     {
+      "pos": 2,
+      "name": "Walkenhorst Motorsport",
+      "total": 86.5
+     },
+     {
+      "pos": 3,
+      "name": "Optimum Motorsport",
+      "total": 82.5
+     },
+     {
+      "pos": 4,
+      "name": "Comtoyou Racing",
+      "total": 75.0
+     },
+     {
+      "pos": 5,
+      "name": "AF Corse",
+      "total": 68.5
+     },
+     {
+      "pos": 6,
+      "name": "GetSpeed",
+      "total": 64.5
+     },
+     {
+      "pos": 7,
+      "name": "Tresor Attempto Racing",
+      "total": 58.5
+     },
+     {
+      "pos": 8,
+      "name": "Dinamic GT",
+      "total": 28.5
+     },
+     {
+      "pos": 9,
+      "name": "Pure Rxcing",
+      "total": 23.0
+     },
+     {
+      "pos": 10,
+      "name": "Lionspeed GP",
+      "total": 6.0
+     },
+     {
+      "pos": 11,
+      "name": "Razoon - more than racing",
+      "total": 4.0
+     }
+    ]
+   },
+   "bronze": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Peter Dempsey",
+      "total": 104.0
+     },
+     {
+      "pos": 1,
+      "name": "Eddie Cheever",
+      "total": 104.0
+     },
+     {
+      "pos": 2,
+      "name": "Rinat Salikhov",
+      "total": 83.0
+     },
+     {
+      "pos": 2,
+      "name": "Marvin Dienst",
+      "total": 83.0
+     },
+     {
+      "pos": 3,
+      "name": "Kiern Jewiss",
+      "total": 69.5
+     },
+     {
+      "pos": 3,
+      "name": "Charles Dawson",
+      "total": 69.5
+     },
+     {
+      "pos": 4,
+      "name": "Darren Leung",
+      "total": 65.0
+     },
+     {
+      "pos": 4,
+      "name": "Augusto Farfus",
+      "total": 65.0
+     },
+     {
+      "pos": 5,
+      "name": "Dennis Marschall",
+      "total": 59.5
+     },
+     {
+      "pos": 6,
+      "name": "Gabriel Rindone",
+      "total": 46.0
+     },
+     {
+      "pos": 6,
+      "name": "Fabian Schiller",
+      "total": 46.0
+     },
+     {
+      "pos": 7,
+      "name": "Dmitry Gvazava",
+      "total": 36.5
+     },
+     {
+      "pos": 7,
+      "name": "Loris Cabirou",
+      "total": 36.5
+     },
+     {
+      "pos": 8,
+      "name": "Dustin Blattner",
+      "total": 35.5
+     },
+     {
+      "pos": 10,
+      "name": "Carrie Schreiner",
+      "total": 17.0
+     },
+     {
+      "pos": 10,
+      "name": "Sebastian Øgaard",
+      "total": 17.0
+     },
+     {
+      "pos": 11,
+      "name": "David Fumanelli",
+      "total": 16.5
+     },
+     {
+      "pos": 11,
+      "name": "Marco Pulcini",
+      "total": 16.5
+     },
+     {
+      "pos": 12,
+      "name": "Marcelo Tomasoni",
+      "total": 7.0
+     },
+     {
+      "pos": 12,
+      "name": "Felice Jelmini",
+      "total": 7.0
+     },
+     {
+      "pos": 13,
+      "name": "Jim Pla",
+      "total": 1.0
+     },
+     {
+      "pos": 13,
+      "name": "Michael Blanchemain",
+      "total": 1.0
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "Ziggo Sport Tempesta Racing",
+      "total": 104.0
+     },
+     {
+      "pos": 2,
+      "name": "Winward Racing",
+      "total": 83.0
+     },
+     {
+      "pos": 3,
+      "name": "2Seas Motorsport",
+      "total": 69.5
+     },
+     {
+      "pos": 4,
+      "name": "Paradine Competition",
+      "total": 65.0
+     },
+     {
+      "pos": 5,
+      "name": "Kessel Racing",
+      "total": 62.5
+     },
+     {
+      "pos": 6,
+      "name": "GetSpeed",
+      "total": 48.0
+     },
+     {
+      "pos": 7,
+      "name": "Dinamic GT",
+      "total": 40.0
+     },
+     {
+      "pos": 8,
+      "name": "Tresor Attempto Racing",
+      "total": 19.0
+     },
+     {
+      "pos": 9,
+      "name": "Comtoyou Racing",
+      "total": 8.5
+     },
+     {
+      "pos": 10,
+      "name": "Sainteloc Racing",
+      "total": 2.0
+     }
+    ]
+   }
+  },
+  "endurance": {
+   "overall": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Lucas Auer",
+      "total": 86.0
+     },
+     {
+      "pos": 1,
+      "name": "Maro Engel",
+      "total": 86.0
+     },
+     {
+      "pos": 1,
+      "name": "Luca Stolz",
+      "total": 86.0
+     },
+     {
+      "pos": 2,
+      "name": "Nicki Thiim",
+      "total": 59.0
+     },
+     {
+      "pos": 2,
+      "name": "Marco Sorensen",
+      "total": 59.0
+     },
+     {
+      "pos": 2,
+      "name": "Mattia Drudi",
+      "total": 59.0
+     },
+     {
+      "pos": 3,
+      "name": "Kelvin Van Der Linde",
+      "total": 42.0
+     },
+     {
+      "pos": 3,
+      "name": "Jordan Pepper",
+      "total": 42.0
+     },
+     {
+      "pos": 3,
+      "name": "Charles Weerts",
+      "total": 42.0
+     },
+     {
+      "pos": 4,
+      "name": "Louis Prette",
+      "total": 32.0
+     },
+     {
+      "pos": 4,
+      "name": "Thomas Fleming",
+      "total": 32.0
+     },
+     {
+      "pos": 4,
+      "name": "Benjamin Goethe",
+      "total": 32.0
+     },
+     {
+      "pos": 5,
+      "name": "Ricardo Feller",
+      "total": 30.0
+     },
+     {
+      "pos": 5,
+      "name": "Bastian Buus",
+      "total": 30.0
+     },
+     {
+      "pos": 5,
+      "name": "Thomas Preining",
+      "total": 30.0
+     },
+     {
+      "pos": 6,
+      "name": "Augusto Farfus",
+      "total": 26.0
+     },
+     {
+      "pos": 6,
+      "name": "Raffaele Marciello",
+      "total": 26.0
+     },
+     {
+      "pos": 6,
+      "name": "Jake Dennis",
+      "total": 26.0
+     },
+     {
+      "pos": 7,
+      "name": "Rocco Mazzola",
+      "total": 25.0
+     },
+     {
+      "pos": 7,
+      "name": "Ariel Levi",
+      "total": 25.0
+     },
+     {
+      "pos": 7,
+      "name": "Sebastian Øgaard",
+      "total": 25.0
+     },
+     {
+      "pos": 8,
+      "name": "Jules Gounon",
+      "total": 21.0
+     },
+     {
+      "pos": 8,
+      "name": "Chris Lulham",
+      "total": 21.0
+     },
+     {
+      "pos": 8,
+      "name": "Daniel Juncadella",
+      "total": 21.0
+     },
+     {
+      "pos": 9,
+      "name": "Alessio Picariello",
+      "total": 19.0
+     },
+     {
+      "pos": 9,
+      "name": "Dorian Boccolacci",
+      "total": 19.0
+     },
+     {
+      "pos": 9,
+      "name": "Morris Schuring",
+      "total": 19.0
+     },
+     {
+      "pos": 10,
+      "name": "Dennis Marschall",
+      "total": 17.0
+     },
+     {
+      "pos": 10,
+      "name": "Dustin Blattner",
+      "total": 17.0
+     },
+     {
+      "pos": 11,
+      "name": "Tommaso Mosca",
+      "total": 16.0
+     },
+     {
+      "pos": 11,
+      "name": "Nicklas Nielsen",
+      "total": 16.0
+     },
+     {
+      "pos": 11,
+      "name": "Alessio Rovera",
+      "total": 16.0
+     },
+     {
+      "pos": 12,
+      "name": "Thomas Drouet",
+      "total": 16.0
+     },
+     {
+      "pos": 12,
+      "name": "Fabio Scherer",
+      "total": 16.0
+     },
+     {
+      "pos": 12,
+      "name": "Arjun Maini",
+      "total": 16.0
+     },
+     {
+      "pos": 13,
+      "name": "Fabian Schiller",
+      "total": 16.0
+     },
+     {
+      "pos": 13,
+      "name": "Maximilian Götz",
+      "total": 16.0
+     },
+     {
+      "pos": 13,
+      "name": "Maxime Martin",
+      "total": 16.0
+     },
+     {
+      "pos": 14,
+      "name": "Romain Andriolo",
+      "total": 15.0
+     },
+     {
+      "pos": 14,
+      "name": "Lorens Lecertua",
+      "total": 15.0
+     },
+     {
+      "pos": 14,
+      "name": "Baptiste Moulin",
+      "total": 15.0
+     },
+     {
+      "pos": 15,
+      "name": "Ben Tuck",
+      "total": 13.0
+     },
+     {
+      "pos": 15,
+      "name": "Mathys Jaubert",
+      "total": 13.0
+     },
+     {
+      "pos": 16,
+      "name": "Dean Macdonald",
+      "total": 13.0
+     },
+     {
+      "pos": 16,
+      "name": "Marvin Kirchhöfer",
+      "total": 13.0
+     },
+     {
+      "pos": 16,
+      "name": "Joseph Loake",
+      "total": 13.0
+     },
+     {
+      "pos": 17,
+      "name": "Daniel Harper",
+      "total": 13.0
+     },
+     {
+      "pos": 17,
+      "name": "Max Hesse",
+      "total": 13.0
+     },
+     {
+      "pos": 17,
+      "name": "Valentino Rossi",
+      "total": 13.0
+     },
+     {
+      "pos": 18,
+      "name": "Christopher Haase",
+      "total": 12.0
+     },
+     {
+      "pos": 18,
+      "name": "Markus Winkelhock",
+      "total": 12.0
+     },
+     {
+      "pos": 18,
+      "name": "Simon Reicher",
+      "total": 12.0
+     },
+     {
+      "pos": 19,
+      "name": "Frederic Makowiecki",
+      "total": 12.0
+     },
+     {
+      "pos": 19,
+      "name": "Matt Campbell",
+      "total": 12.0
+     },
+     {
+      "pos": 19,
+      "name": "Ayhancan Guven",
+      "total": 12.0
+     },
+     {
+      "pos": 20,
+      "name": "Lilou Wadoux",
+      "total": 10.0
+     },
+     {
+      "pos": 20,
+      "name": "Sean Gelael",
+      "total": 10.0
+     },
+     {
+      "pos": 20,
+      "name": "Arthur Leclerc",
+      "total": 10.0
+     },
+     {
+      "pos": 21,
+      "name": "Darren Leung",
+      "total": 9.0
+     },
+     {
+      "pos": 21,
+      "name": "Leyton Fourie",
+      "total": 9.0
+     },
+     {
+      "pos": 21,
+      "name": "David Pittard",
+      "total": 9.0
+     },
+     {
+      "pos": 21,
+      "name": "James Kellett",
+      "total": 9.0
+     },
+     {
+      "pos": 22,
+      "name": "Horatio Fitz-Simon",
+      "total": 8.0
+     },
+     {
+      "pos": 22,
+      "name": "Maxwell Lynn",
+      "total": 8.0
+     },
+     {
+      "pos": 22,
+      "name": "Ben Dörr",
+      "total": 8.0
+     },
+     {
+      "pos": 23,
+      "name": "Henrique Chaves",
+      "total": 7.0
+     },
+     {
+      "pos": 23,
+      "name": "Christian Krognes",
+      "total": 7.0
+     },
+     {
+      "pos": 23,
+      "name": "Jamie Day",
+      "total": 7.0
+     },
+     {
+      "pos": 24,
+      "name": "Alex Aka",
+      "total": 6.0
+     },
+     {
+      "pos": 24,
+      "name": "Patric Niederhauser",
+      "total": 6.0
+     },
+     {
+      "pos": 24,
+      "name": "Andrea Frassineti",
+      "total": 6.0
+     },
+     {
+      "pos": 24,
+      "name": "Dylan Pereira",
+      "total": 6.0
+     },
+     {
+      "pos": 24,
+      "name": "Marco Mapelli",
+      "total": 6.0
+     },
+     {
+      "pos": 24,
+      "name": "Luca Engstler",
+      "total": 6.0
+     },
+     {
+      "pos": 25,
+      "name": "Lorenzo Patrese",
+      "total": 4.0
+     },
+     {
+      "pos": 25,
+      "name": "Simon Gachet",
+      "total": 4.0
+     },
+     {
+      "pos": 25,
+      "name": "Robin Knutsson",
+      "total": 4.0
+     },
+     {
+      "pos": 25,
+      "name": "Nico Menzel",
+      "total": 4.0
+     },
+     {
+      "pos": 25,
+      "name": "Arthur Rougier",
+      "total": 4.0
+     },
+     {
+      "pos": 25,
+      "name": "James Kell",
+      "total": 4.0
+     },
+     {
+      "pos": 25,
+      "name": "Gilles Magnus",
+      "total": 4.0
+     },
+     {
+      "pos": 26,
+      "name": "Tim Tramnitz",
+      "total": 3.0
+     },
+     {
+      "pos": 26,
+      "name": "Ugo De Wilde",
+      "total": 3.0
+     },
+     {
+      "pos": 26,
+      "name": "Jens Klingmann",
+      "total": 3.0
+     },
+     {
+      "pos": 27,
+      "name": "Lorcan Hanafin",
+      "total": 2.0
+     },
+     {
+      "pos": 27,
+      "name": "Jonathan Adam",
+      "total": 2.0
+     },
+     {
+      "pos": 27,
+      "name": "Giacomo Petrobelli",
+      "total": 2.0
+     },
+     {
+      "pos": 28,
+      "name": "Tanart Sathienthirakul",
+      "total": 1.0
+     },
+     {
+      "pos": 28,
+      "name": "Francesco Simonazzi",
+      "total": 1.0
+     },
+     {
+      "pos": 28,
+      "name": "Angus Whiteside",
+      "total": 1.0
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "Winward Racing",
+      "total": 86.0
+     },
+     {
+      "pos": 2,
+      "name": "Comtoyou Racing",
+      "total": 60.0
+     },
+     {
+      "pos": 3,
+      "name": "Team WRT",
+      "total": 56.0
+     },
+     {
+      "pos": 4,
+      "name": "Garage 59",
+      "total": 34.0
+     },
+     {
+      "pos": 5,
+      "name": "Rowe Racing",
+      "total": 33.0
+     },
+     {
+      "pos": 6,
+      "name": "Tresor Attempto Racing",
+      "total": 31.0
+     },
+     {
+      "pos": 7,
+      "name": "Lionspeed GP",
+      "total": 30.0
+     },
+     {
+      "pos": 8,
+      "name": "Boutsen VDS",
+      "total": 29.0
+     },
+     {
+      "pos": 9,
+      "name": "2Seas Motorsport",
+      "total": 25.0
+     },
+     {
+      "pos": 10,
+      "name": "CSA Racing",
+      "total": 21.0
+     },
+     {
+      "pos": 11,
+      "name": "Kessel Racing",
+      "total": 20.0
+     },
+     {
+      "pos": 12,
+      "name": "GetSpeed",
+      "total": 19.0
+     },
+     {
+      "pos": 13,
+      "name": "AF Corse",
+      "total": 17.0
+     },
+     {
+      "pos": 14,
+      "name": "HRT Ford Racing",
+      "total": 16.0
+     },
+     {
+      "pos": 15,
+      "name": "Eastalent Racing",
+      "total": 12.0
+     },
+     {
+      "pos": 16,
+      "name": "Paradine Competition",
+      "total": 11.0
+     },
+     {
+      "pos": 17,
+      "name": "Walkenhorst Motorsport",
+      "total": 11.0
+     },
+     {
+      "pos": 18,
+      "name": "Team RJN",
+      "total": 8.0
+     },
+     {
+      "pos": 19,
+      "name": "Rutronik Racing",
+      "total": 7.0
+     },
+     {
+      "pos": 20,
+      "name": "Ecurie Ecosse Blackthorn",
+      "total": 2.0
+     },
+     {
+      "pos": 21,
+      "name": "Dinamic GT",
+      "total": 1.0
+     },
+     {
+      "pos": 21,
+      "name": "Rinaldi Racing",
+      "total": 1.0
+     }
+    ]
+   },
+   "gold": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Ugo De Wilde",
+      "total": 89.0
+     },
+     {
+      "pos": 1,
+      "name": "Jens Klingmann",
+      "total": 89.0
+     },
+     {
+      "pos": 1,
+      "name": "Tim Tramnitz",
+      "total": 89.0
+     },
+     {
+      "pos": 2,
+      "name": "Benjamin Goethe",
+      "total": 86.0
+     },
+     {
+      "pos": 2,
+      "name": "Louis Prette",
+      "total": 86.0
+     },
+     {
+      "pos": 2,
+      "name": "Thomas Fleming",
+      "total": 86.0
+     },
+     {
+      "pos": 3,
+      "name": "Simon Birch",
+      "total": 78.0
+     },
+     {
+      "pos": 3,
+      "name": "Frederik Schandorff",
+      "total": 78.0
+     },
+     {
+      "pos": 3,
+      "name": "Malte Ebdrup",
+      "total": 78.0
+     },
+     {
+      "pos": 4,
+      "name": "Arthur Rougier",
+      "total": 64.0
+     },
+     {
+      "pos": 4,
+      "name": "Simon Gachet",
+      "total": 64.0
+     },
+     {
+      "pos": 4,
+      "name": "James Kell",
+      "total": 64.0
+     },
+     {
+      "pos": 5,
+      "name": "Gilles Magnus",
+      "total": 48.0
+     },
+     {
+      "pos": 5,
+      "name": "Robin Knutsson",
+      "total": 48.0
+     },
+     {
+      "pos": 6,
+      "name": "Antoine Doquin",
+      "total": 43.0
+     },
+     {
+      "pos": 6,
+      "name": "Dennis Lind",
+      "total": 43.0
+     },
+     {
+      "pos": 7,
+      "name": "Freddie Tomlinson",
+      "total": 36.0
+     },
+     {
+      "pos": 7,
+      "name": "Adam Smalley",
+      "total": 36.0
+     },
+     {
+      "pos": 7,
+      "name": "Harry George",
+      "total": 36.0
+     },
+     {
+      "pos": 8,
+      "name": "Dylan Pereira",
+      "total": 30.0
+     },
+     {
+      "pos": 8,
+      "name": "Andrea Frassineti",
+      "total": 30.0
+     },
+     {
+      "pos": 9,
+      "name": "Alessandro Ghiretti",
+      "total": 30.0
+     },
+     {
+      "pos": 10,
+      "name": "Alex Aka",
+      "total": 29.0
+     },
+     {
+      "pos": 11,
+      "name": "Ruben Del Sarte",
+      "total": 24.0
+     },
+     {
+      "pos": 12,
+      "name": "Conrad Laursen",
+      "total": 23.0
+     },
+     {
+      "pos": 13,
+      "name": "Jim Pla",
+      "total": 22.0
+     },
+     {
+      "pos": 14,
+      "name": "Mikkel Mac",
+      "total": 22.0
+     },
+     {
+      "pos": 15,
+      "name": "Nico Menzel",
+      "total": 18.0
+     },
+     {
+      "pos": 16,
+      "name": "Christian Hahn",
+      "total": 12.0
+     },
+     {
+      "pos": 16,
+      "name": "Robert De Haan",
+      "total": 12.0
+     },
+     {
+      "pos": 16,
+      "name": "Ashley Sutton",
+      "total": 12.0
+     },
+     {
+      "pos": 17,
+      "name": "Lenny Ried",
+      "total": 12.0
+     },
+     {
+      "pos": 17,
+      "name": "Mikkel Pedersen",
+      "total": 12.0
+     },
+     {
+      "pos": 18,
+      "name": "Lorenzo Fluxa Cross",
+      "total": 9.0
+     },
+     {
+      "pos": 19,
+      "name": "Lorenzo Ferrari",
+      "total": 1.0
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "Rowe Racing",
+      "total": 89.0
+     },
+     {
+      "pos": 2,
+      "name": "Garage 59",
+      "total": 86.0
+     },
+     {
+      "pos": 3,
+      "name": "AF Corse",
+      "total": 78.0
+     },
+     {
+      "pos": 4,
+      "name": "CSA Racing",
+      "total": 64.0
+     },
+     {
+      "pos": 5,
+      "name": "Boutsen VDS",
+      "total": 48.0
+     },
+     {
+      "pos": 6,
+      "name": "Steller Motorsport",
+      "total": 43.0
+     },
+     {
+      "pos": 7,
+      "name": "Optimum Motorsport",
+      "total": 36.0
+     },
+     {
+      "pos": 8,
+      "name": "Tresor Attempto Racing",
+      "total": 30.0
+     },
+     {
+      "pos": 9,
+      "name": "Paradine Competition",
+      "total": 12.0
+     }
+    ]
+   },
+   "silver": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Ignacio Montenegro",
+      "total": 87.0
+     },
+     {
+      "pos": 1,
+      "name": "Amaury Cordeel",
+      "total": 87.0
+     },
+     {
+      "pos": 1,
+      "name": "Matisse Lismont",
+      "total": 87.0
+     },
+     {
+      "pos": 2,
+      "name": "Eduardo Coseteng",
+      "total": 56.0
+     },
+     {
+      "pos": 3,
+      "name": "Aliaksandr Malykhin",
+      "total": 49.0
+     },
+     {
+      "pos": 3,
+      "name": "Max Hofer",
+      "total": 49.0
+     },
+     {
+      "pos": 4,
+      "name": "Jef Machiels",
+      "total": 45.0
+     },
+     {
+      "pos": 4,
+      "name": "Matias Zagazeta",
+      "total": 45.0
+     },
+     {
+      "pos": 4,
+      "name": "Gilles Stadsbader",
+      "total": 45.0
+     },
+     {
+      "pos": 5,
+      "name": "Ariel Levi",
+      "total": 44.0
+     },
+     {
+      "pos": 5,
+      "name": "Sebastian Øgaard",
+      "total": 44.0
+     },
+     {
+      "pos": 5,
+      "name": "Rocco Mazzola",
+      "total": 44.0
+     },
+     {
+      "pos": 6,
+      "name": "Aurélien Panis",
+      "total": 40.0
+     },
+     {
+      "pos": 6,
+      "name": "Anthony Bartone",
+      "total": 40.0
+     },
+     {
+      "pos": 6,
+      "name": "Cesar Gazeau",
+      "total": 40.0
+     },
+     {
+      "pos": 7,
+      "name": "Oliver Soderstrom",
+      "total": 38.0
+     },
+     {
+      "pos": 7,
+      "name": "Kobe Pauwels",
+      "total": 38.0
+     },
+     {
+      "pos": 7,
+      "name": "Sébastien Baud",
+      "total": 38.0
+     },
+     {
+      "pos": 8,
+      "name": "Aleksei Nesov",
+      "total": 37.0
+     },
+     {
+      "pos": 9,
+      "name": "Mathieu Detry",
+      "total": 36.0
+     },
+     {
+      "pos": 10,
+      "name": "David Perel",
+      "total": 35.0
+     },
+     {
+      "pos": 10,
+      "name": "Rafael Duran",
+      "total": 35.0
+     },
+     {
+      "pos": 10,
+      "name": "Dylan Medler",
+      "total": 35.0
+     },
+     {
+      "pos": 11,
+      "name": "Maxime Oosten",
+      "total": 31.0
+     },
+     {
+      "pos": 11,
+      "name": "Finn Wiebelhaus",
+      "total": 31.0
+     },
+     {
+      "pos": 12,
+      "name": "Francesco Braschi",
+      "total": 31.0
+     },
+     {
+      "pos": 13,
+      "name": "Dante Rappange",
+      "total": 29.0
+     },
+     {
+      "pos": 13,
+      "name": "Mikey Porter",
+      "total": 29.0
+     },
+     {
+      "pos": 13,
+      "name": "Salman Owega",
+      "total": 29.0
+     },
+     {
+      "pos": 13,
+      "name": "Guilherme Oliveira",
+      "total": 29.0
+     },
+     {
+      "pos": 14,
+      "name": "Alessandro Balzan",
+      "total": 29.0
+     },
+     {
+      "pos": 15,
+      "name": "Nicolas Baert",
+      "total": 25.0
+     },
+     {
+      "pos": 15,
+      "name": "Niklas Kalus",
+      "total": 25.0
+     },
+     {
+      "pos": 16,
+      "name": "Ben Dörr",
+      "total": 22.0
+     },
+     {
+      "pos": 16,
+      "name": "Maxwell Lynn",
+      "total": 22.0
+     },
+     {
+      "pos": 16,
+      "name": "Horatio Fitz-Simon",
+      "total": 22.0
+     },
+     {
+      "pos": 17,
+      "name": "Lorens Lecertua",
+      "total": 21.0
+     },
+     {
+      "pos": 17,
+      "name": "Romain Andriolo",
+      "total": 21.0
+     },
+     {
+      "pos": 17,
+      "name": "Baptiste Moulin",
+      "total": 21.0
+     },
+     {
+      "pos": 18,
+      "name": "Ivan Klymenko",
+      "total": 20.0
+     },
+     {
+      "pos": 18,
+      "name": "Ezequiel Perez Companc",
+      "total": 20.0
+     },
+     {
+      "pos": 18,
+      "name": "Etienne Cheli",
+      "total": 20.0
+     },
+     {
+      "pos": 19,
+      "name": "Tanart Sathienthirakul",
+      "total": 20.0
+     },
+     {
+      "pos": 19,
+      "name": "Angus Whiteside",
+      "total": 20.0
+     },
+     {
+      "pos": 19,
+      "name": "Francesco Simonazzi",
+      "total": 20.0
+     },
+     {
+      "pos": 20,
+      "name": "Max Reis",
+      "total": 18.0
+     },
+     {
+      "pos": 21,
+      "name": "Karol Basz",
+      "total": 13.0
+     },
+     {
+      "pos": 22,
+      "name": "Mikkel Pedersen",
+      "total": 12.0
+     },
+     {
+      "pos": 23,
+      "name": "Lucas Legeret",
+      "total": 11.0
+     },
+     {
+      "pos": 24,
+      "name": "Levente Revesz",
+      "total": 9.0
+     },
+     {
+      "pos": 24,
+      "name": "Yannick Mettler",
+      "total": 9.0
+     },
+     {
+      "pos": 24,
+      "name": "Christian Mansell",
+      "total": 9.0
+     },
+     {
+      "pos": 24,
+      "name": "Rui Andrade",
+      "total": 9.0
+     },
+     {
+      "pos": 25,
+      "name": "Loris Cabirou",
+      "total": 8.0
+     },
+     {
+      "pos": 26,
+      "name": "Josh Rowledge",
+      "total": 7.0
+     },
+     {
+      "pos": 26,
+      "name": "Christian Hahn",
+      "total": 7.0
+     },
+     {
+      "pos": 26,
+      "name": "Robert Thompson",
+      "total": 7.0
+     },
+     {
+      "pos": 27,
+      "name": "Arthur Dorison",
+      "total": 6.0
+     },
+     {
+      "pos": 28,
+      "name": "Ethan Ischer",
+      "total": 6.0
+     },
+     {
+      "pos": 28,
+      "name": "Mateo Villagomez",
+      "total": 6.0
+     },
+     {
+      "pos": 28,
+      "name": "Gaspard Simon",
+      "total": 6.0
+     },
+     {
+      "pos": 29,
+      "name": "Enzo Trulli",
+      "total": 4.0
+     },
+     {
+      "pos": 30,
+      "name": "Sai Sanjay",
+      "total": 3.0
+     },
+     {
+      "pos": 31,
+      "name": "Zac Meakin",
+      "total": 2.0
+     },
+     {
+      "pos": 31,
+      "name": "Tommy Pintos",
+      "total": 2.0
+     },
+     {
+      "pos": 31,
+      "name": "Jayden Kelly",
+      "total": 2.0
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "Team WRT",
+      "total": 87.0
+     },
+     {
+      "pos": 2,
+      "name": "HRT Ford Racing",
+      "total": 56.0
+     },
+     {
+      "pos": 3,
+      "name": "Pure Rxcing",
+      "total": 49.0
+     },
+     {
+      "pos": 4,
+      "name": "AF Corse",
+      "total": 45.0
+     },
+     {
+      "pos": 5,
+      "name": "Tresor Attempto Racing",
+      "total": 44.0
+     },
+     {
+      "pos": 6,
+      "name": "GetSpeed",
+      "total": 42.0
+     },
+     {
+      "pos": 7,
+      "name": "Comtoyou Racing",
+      "total": 38.0
+     },
+     {
+      "pos": 8,
+      "name": "Rinaldi Racing",
+      "total": 35.0
+     },
+     {
+      "pos": 9,
+      "name": "Optimum Motorsport",
+      "total": 29.0
+     },
+     {
+      "pos": 10,
+      "name": "Sainteloc Racing",
+      "total": 23.0
+     },
+     {
+      "pos": 11,
+      "name": "Team RJN",
+      "total": 23.0
+     },
+     {
+      "pos": 12,
+      "name": "Dinamic GT",
+      "total": 22.0
+     },
+     {
+      "pos": 13,
+      "name": "CSA Racing",
+      "total": 21.0
+     },
+     {
+      "pos": 14,
+      "name": "Paradine Competition",
+      "total": 7.0
+     },
+     {
+      "pos": 15,
+      "name": "Walkenhorst Motorsport",
+      "total": 6.0
+     },
+     {
+      "pos": 16,
+      "name": "Greystone GT",
+      "total": 3.0
+     }
+    ]
+   },
+   "bronze": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Dennis Marschall",
+      "total": 102.0
+     },
+     {
+      "pos": 2,
+      "name": "Dustin Blattner",
+      "total": 87.0
+     },
+     {
+      "pos": 3,
+      "name": "Darren Leung",
+      "total": 71.0
+     },
+     {
+      "pos": 3,
+      "name": "James Kellett",
+      "total": 71.0
+     },
+     {
+      "pos": 4,
+      "name": "Gabriele Piana",
+      "total": 58.0
+     },
+     {
+      "pos": 4,
+      "name": "Rinat Salikhov",
+      "total": 58.0
+     },
+     {
+      "pos": 4,
+      "name": "Marvin Dienst",
+      "total": 58.0
+     },
+     {
+      "pos": 5,
+      "name": "Kiern Jewiss",
+      "total": 57.0
+     },
+     {
+      "pos": 5,
+      "name": "Reece Barr",
+      "total": 57.0
+     },
+     {
+      "pos": 5,
+      "name": "Charles Dawson",
+      "total": 57.0
+     },
+     {
+      "pos": 6,
+      "name": "Lorenzo Patrese",
+      "total": 52.0
+     },
+     {
+      "pos": 7,
+      "name": "Ben Tuck",
+      "total": 50.0
+     },
+     {
+      "pos": 7,
+      "name": "Mathys Jaubert",
+      "total": 50.0
+     },
+     {
+      "pos": 8,
+      "name": "Antares Au",
+      "total": 50.0
+     },
+     {
+      "pos": 9,
+      "name": "Leyton Fourie",
+      "total": 36.0
+     },
+     {
+      "pos": 9,
+      "name": "David Pittard",
+      "total": 36.0
+     },
+     {
+      "pos": 10,
+      "name": "Calan Williams",
+      "total": 34.0
+     },
+     {
+      "pos": 10,
+      "name": "Javier Sagrera",
+      "total": 34.0
+     },
+     {
+      "pos": 10,
+      "name": "Ahmad Al Harthy",
+      "total": 34.0
+     },
+     {
+      "pos": 11,
+      "name": "Riccardo Pera",
+      "total": 33.0
+     },
+     {
+      "pos": 11,
+      "name": "Loek Hartog",
+      "total": 33.0
+     },
+     {
+      "pos": 12,
+      "name": "Giacomo Petrobelli",
+      "total": 33.0
+     },
+     {
+      "pos": 12,
+      "name": "Jonathan Adam",
+      "total": 33.0
+     },
+     {
+      "pos": 13,
+      "name": "Lorcan Hanafin",
+      "total": 32.0
+     },
+     {
+      "pos": 14,
+      "name": "Christopher Froggatt",
+      "total": 31.0
+     },
+     {
+      "pos": 14,
+      "name": "Eddie Cheever",
+      "total": 31.0
+     },
+     {
+      "pos": 15,
+      "name": "Patrick Kolb",
+      "total": 31.0
+     },
+     {
+      "pos": 15,
+      "name": "Alex Fontana",
+      "total": 31.0
+     },
+     {
+      "pos": 15,
+      "name": "Bashar Mardini",
+      "total": 31.0
+     },
+     {
+      "pos": 16,
+      "name": "Dries Vanthoor",
+      "total": 25.0
+     },
+     {
+      "pos": 17,
+      "name": "Ralf Bohn",
+      "total": 23.0
+     },
+     {
+      "pos": 17,
+      "name": "Huub van Eijndhoven",
+      "total": 23.0
+     },
+     {
+      "pos": 18,
+      "name": "Axcil Jefferies",
+      "total": 21.0
+     },
+     {
+      "pos": 19,
+      "name": "Robert Renauer",
+      "total": 19.0
+     },
+     {
+      "pos": 20,
+      "name": "Jonathan Hui",
+      "total": 19.0
+     },
+     {
+      "pos": 21,
+      "name": "Martin Rump",
+      "total": 17.0
+     },
+     {
+      "pos": 21,
+      "name": "Michelle Gatting",
+      "total": 17.0
+     },
+     {
+      "pos": 21,
+      "name": "Sven Müller",
+      "total": 17.0
+     },
+     {
+      "pos": 22,
+      "name": "Mikael Grenier",
+      "total": 16.0
+     },
+     {
+      "pos": 22,
+      "name": "Tom Kalender",
+      "total": 16.0
+     },
+     {
+      "pos": 22,
+      "name": "Gabriel Rindone",
+      "total": 16.0
+     },
+     {
+      "pos": 23,
+      "name": "Garnet Patterson",
+      "total": 16.0
+     },
+     {
+      "pos": 25,
+      "name": "Daan Arrow",
+      "total": 15.0
+     },
+     {
+      "pos": 26,
+      "name": "Romain Leroux",
+      "total": 14.0
+     },
+     {
+      "pos": 27,
+      "name": "Peter Dempsey",
+      "total": 12.0
+     },
+     {
+      "pos": 28,
+      "name": "Jarrod Waberski",
+      "total": 11.0
+     },
+     {
+      "pos": 29,
+      "name": "Robert De Haan",
+      "total": 10.0
+     },
+     {
+      "pos": 30,
+      "name": "Thomas Kiefer",
+      "total": 9.0
+     },
+     {
+      "pos": 30,
+      "name": "Rolf Ineichen",
+      "total": 9.0
+     },
+     {
+      "pos": 30,
+      "name": "Tim Heinemann",
+      "total": 9.0
+     },
+     {
+      "pos": 31,
+      "name": "Gerhard Tweraser",
+      "total": 8.0
+     },
+     {
+      "pos": 32,
+      "name": "Mex Jansen",
+      "total": 7.0
+     },
+     {
+      "pos": 33,
+      "name": "Carrie Schreiner",
+      "total": 6.0
+     },
+     {
+      "pos": 33,
+      "name": "Daniele Di Amato",
+      "total": 6.0
+     },
+     {
+      "pos": 34,
+      "name": "Alfred Renauer",
+      "total": 4.0
+     },
+     {
+      "pos": 34,
+      "name": "Mathieu Jaminet",
+      "total": 4.0
+     },
+     {
+      "pos": 35,
+      "name": "Lewis Williamson",
+      "total": 4.0
+     },
+     {
+      "pos": 35,
+      "name": "Aaron Walker",
+      "total": 4.0
+     },
+     {
+      "pos": 35,
+      "name": "Jason Hart",
+      "total": 4.0
+     },
+     {
+      "pos": 35,
+      "name": "Scott Noble",
+      "total": 4.0
+     },
+     {
+      "pos": 36,
+      "name": "Pierre-Louis Chovet",
+      "total": 3.0
+     },
+     {
+      "pos": 37,
+      "name": "Bayley Hall",
+      "total": 2.0
+     },
+     {
+      "pos": 37,
+      "name": "Tobias Müller",
+      "total": 2.0
+     },
+     {
+      "pos": 37,
+      "name": "Andres Latorre",
+      "total": 2.0
+     },
+     {
+      "pos": 37,
+      "name": "Dominik Olbert",
+      "total": 2.0
+     },
+     {
+      "pos": 37,
+      "name": "Armand Fumal",
+      "total": 2.0
+     },
+     {
+      "pos": 37,
+      "name": "Benjamin Paque",
+      "total": 2.0
+     },
+     {
+      "pos": 38,
+      "name": "Marcelo Tomasoni",
+      "total": 1.0
+     },
+     {
+      "pos": 38,
+      "name": "Sergio Sette Camara",
+      "total": 1.0
+     },
+     {
+      "pos": 38,
+      "name": "Aaron Muss",
+      "total": 1.0
+     },
+     {
+      "pos": 38,
+      "name": "Tom Wood",
+      "total": 1.0
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "Kessel Racing",
+      "total": 102.0
+     },
+     {
+      "pos": 2,
+      "name": "Paradine Competition",
+      "total": 71.0
+     },
+     {
+      "pos": 3,
+      "name": "Winward Racing",
+      "total": 58.0
+     },
+     {
+      "pos": 4,
+      "name": "2Seas Motorsport",
+      "total": 57.0
+     },
+     {
+      "pos": 5,
+      "name": "Rutronik Racing",
+      "total": 50.0
+     },
+     {
+      "pos": 6,
+      "name": "Century Motorsport",
+      "total": 34.0
+     },
+     {
+      "pos": 7,
+      "name": "Ecurie Ecosse Blackthorn",
+      "total": 33.0
+     },
+     {
+      "pos": 8,
+      "name": "Ziggo Sport Tempesta Racing",
+      "total": 31.0
+     },
+     {
+      "pos": 9,
+      "name": "Lionspeed GP",
+      "total": 31.0
+     },
+     {
+      "pos": 10,
+      "name": "Herberth Motorsport",
+      "total": 26.0
+     },
+     {
+      "pos": 11,
+      "name": "GetSpeed",
+      "total": 18.0
+     },
+     {
+      "pos": 12,
+      "name": "JMW Motorsport",
+      "total": 9.0
+     },
+     {
+      "pos": 13,
+      "name": "Tresor Attempto Racing",
+      "total": 6.0
+     },
+     {
+      "pos": 14,
+      "name": "Razoon - more than racing",
+      "total": 2.0
+     },
+     {
+      "pos": 15,
+      "name": "Comtoyou Racing",
+      "total": 1.0
+     }
+    ]
+   }
+  }
+ }
+}
