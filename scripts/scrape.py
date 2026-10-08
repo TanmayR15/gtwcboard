@@ -544,7 +544,7 @@ def parse_event_schedule(html: str, year: int, start=None, end=None):
 
 
 # The event page lists start times only; the "Event Timetable PDF" it links to has the time ranges.
-SCHEDULE_VERSION = 3          # bump to make the next run re-read every event once
+SCHEDULE_VERSION = 4          # bump to make the next run re-read every event once
 
 
 def find_timetable_pdf(html: str):
@@ -557,9 +557,8 @@ def find_timetable_pdf(html: str):
     return None
 
 
-_TT = r"(\d{1,2}):(\d{2})(?::\d{2})?"
-_ROW3 = re.compile(r"^\s*" + _TT + r"\s+" + _TT + r"\s+" + _TT + r"\s+(.*)$")      # Start End Duration ... Session
-_ROWDASH = re.compile(_TT + r"\s*[-–—]\s*" + _TT)
+_TIME_TOKEN = re.compile(r"(?<![\d:])(\d{1,2}):(\d{2})(?::\d{2})?(?![\d:])")
+_SESSION_WORDS = ("race", "practice", "qualif", "session", "test")
 
 
 def normname_simple(s):
@@ -569,23 +568,40 @@ def normname_simple(s):
 def parse_timetable_ranges(text: str):
     """Rows of the official timetable PDF -> [{'text', 'start', 'end'}] with minutes after midnight (local time).
 
-    The PDF has columns 'Start End Duration Category Session', e.g.
-    '16:00 19:00 03:00 GT World Challenge powered by AWS Race (rolling start, three hours)'.
-    A row only counts when Duration really equals End minus Start. 'HH:MM - HH:MM' rows are accepted too.
+    The PDF has columns 'Start End Duration Category Session' (for example
+    '16:00 19:00 03:00 GT World Challenge powered by AWS Race (rolling start, three hours)').
+    Text extraction does not always keep that order, so every line is read by its time values:
+    three times where one equals the gap between the other two = start, end, duration.
+    Otherwise two times with a later second one on a session-like line = start, end.
     """
     out = []
     for line in text.splitlines():
-        m = _ROW3.match(line)
-        if m:
-            h1, m1, h2, m2, h3, m3, rest = m.groups()
-            st, en, du = int(h1) * 60 + int(m1), int(h2) * 60 + int(m2), int(h3) * 60 + int(m3)
-            if du > 0 and (en - st) % 1440 == du % 1440:
-                out.append({"text": normname_simple(rest), "start": st, "end": en})
+        toks = [(m.start(), m.end(), int(m.group(1)) * 60 + int(m.group(2))) for m in _TIME_TOKEN.finditer(line)]
+        if len(toks) < 2:
             continue
-        m = _ROWDASH.search(line)
-        if m:
-            h1, m1, h2, m2 = m.groups()
-            out.append({"text": normname_simple(line), "start": int(h1) * 60 + int(m1), "end": int(h2) * 60 + int(m2)})
+        rest = line
+        for a, b, _ in reversed(toks):
+            rest = rest[:a] + " " + rest[b:]
+        rest = normname_simple(rest)
+        vals = [t[2] for t in toks[:4]]
+        found = None
+        if len(vals) >= 3:
+            best = None                                      # prefer the reading with the shortest duration
+            for k in range(len(vals)):
+                for i in range(len(vals)):
+                    for j in range(len(vals)):
+                        if len({i, j, k}) < 3:
+                            continue
+                        st, en, du = vals[i], vals[j], vals[k]
+                        if st < 1440 and en < 1440 and du > 0 and (en - st) % 1440 == du % 1440 and (en != st or du == 1440):
+                            if best is None or du < best[2]:
+                                best = (st, en, du)
+            if best:
+                found = (0, 0, 0, best[0], best[1])
+        if found:
+            out.append({"text": rest, "start": found[3], "end": found[4]})
+        elif any(w in rest for w in _SESSION_WORDS) and 5 <= vals[1] - vals[0] <= 360:
+            out.append({"text": rest, "start": vals[0], "end": vals[1]})
     return out
 
 
@@ -634,6 +650,8 @@ def add_end_times(sessions, ranges):
 
 
 def pdf_text(data: bytes) -> str:
+    import logging
+    logging.getLogger("pypdf").setLevel(logging.ERROR)      # silences 'Ignoring wrong pointing object' noise
     from pypdf import PdfReader       # imported here so a missing library only disables end times
     return "\n".join((p.extract_text() or "") for p in PdfReader(io.BytesIO(data)).pages)
 
