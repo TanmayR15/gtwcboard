@@ -127,29 +127,11 @@
   .cell { min-width: 74px; text-align: center; background: var(--bg); border: 3px solid var(--panel-edge); padding: 10px 8px 8px; box-shadow: 3px 3px 0 var(--shadow); }
   .cell b { display: block; font-family: 'Press Start 2P', monospace; font-size: 20px; color: var(--overall); font-weight: normal; }
   .cell span { display: block; font-size: 14px; color: var(--ink-muted); margin-top: 6px; letter-spacing: 1px; }
-  .live { font-family: 'Press Start 2P', monospace; font-size: 12px; color: var(--green); margin: 14px 0; animation: blink 1s steps(2) infinite; }
   .hint { font-size: 17px; color: var(--ink-muted); margin-top: 6px; }
-  .hint b { color: var(--overall); font-weight: normal; animation: blink 1.1s steps(2) infinite; }
+  .hint b { color: var(--overall); font-weight: normal; }
   @keyframes blink { 50% { opacity: 0.25; } }
 
-  .progress { display: flex; gap: 4px; margin: 4px 0 8px; }
-  .seg-bar { flex: 1; height: 22px; border: 3px solid var(--panel-edge); background: var(--bg); }
-  .seg-bar.done { background: var(--overall); border-color: var(--overall); }
-  .seg-bar.now { border-color: var(--overall); animation: blink 1s steps(2) infinite; }
-  .plabel { display: flex; justify-content: space-between; font-size: 17px; color: var(--ink-muted); }
 
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 18px; }
-  .card { background: var(--panel); border: 3px solid var(--panel-edge); padding: 12px; box-shadow: 4px 4px 0 var(--shadow); }
-  .card .kicker { color: var(--ink-muted); }
-  .card .big { font-size: 24px; color: #F2F2F2; margin-top: 8px; }
-  .card .small { font-size: 17px; color: var(--ink-muted); }
-  .card.lead { border-left: 6px solid var(--gold); }
-  .card.cup { border-left: 6px solid var(--orange); }
-  .card.gap { border-left: 6px solid var(--green); }
-  .lrow { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "lab sub" "nm nm"; align-items: baseline; margin-top: 10px; font-size: 21px; color: #F2F2F2; }
-  .lrow .lab { grid-area: lab; font-size: 14px; letter-spacing: 1px; }
-  .lrow .nm { grid-area: nm; overflow-wrap: anywhere; }
-  .lrow .lsub { grid-area: sub; font-size: 16px; color: var(--ink-muted); white-space: nowrap; }
   .cuptag { font-family: 'Press Start 2P', monospace; font-size: 9px; letter-spacing: 0.5px; margin-left: 10px; white-space: nowrap; text-shadow: none; vertical-align: middle; }
 
   /* schedule page */
@@ -201,7 +183,7 @@
   .track .done-line { position: absolute; left: 0; top: 0; bottom: 0; background: var(--overall); }
   .node { position: absolute; top: -8px; width: 24px; height: 24px; margin-left: -12px; background: var(--bg); border: 3px solid var(--panel-edge); cursor: pointer; padding: 0; }
   .node.done { background: var(--overall); border-color: var(--overall); }
-  .node.now { border-color: var(--overall); animation: blink 1s steps(2) infinite; }
+  .node.now { border-color: var(--overall); }
   .node.sprint { box-shadow: 0 5px 0 var(--orange); } .node.endurance { box-shadow: 0 5px 0 var(--blue); }
   .nodelab { position: absolute; top: 24px; margin-left: -14px; width: 28px; text-align: center; font-size: 14px; color: var(--ink-muted); }
   .trackcar { position: absolute; top: -34px; margin-left: -22px; width: 44px; transition: left .4s steps(6); }
@@ -222,16 +204,16 @@
   .light.go { background: #4CDE6E; box-shadow: 0 0 14px #4CDE6E, inset 0 0 0 3px #A5F5B7; }
   .a-count { font-family: 'Press Start 2P', monospace; font-size: 24px; color: var(--overall); text-shadow: 3px 3px 0 var(--shadow); letter-spacing: 1px; }
   .a-count small { font-size: 10px; color: var(--ink-muted); margin: 0 10px 0 4px; letter-spacing: 0; }
-  .a-start { font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--green); margin-top: 18px; animation: blink 1s steps(2) infinite; }
-  .stages { display: grid; grid-template-columns: repeat(auto-fit, minmax(138px, 1fr)); gap: 10px; }
-  .stage { text-align: left; background: var(--bg); border: 3px solid var(--panel-edge); padding: 10px; cursor: pointer; color: var(--ink-dim);
+  .a-start { font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--green); margin-top: 18px; }
+  .rtiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(138px, 1fr)); gap: 10px; }
+  .rtile { text-align: left; background: var(--bg); border: 3px solid var(--panel-edge); padding: 10px; cursor: pointer; color: var(--ink-dim);
     font-family: 'VT323', monospace; font-size: 19px; position: relative; border-top-width: 6px; }
-  .stage.sprint { border-top-color: var(--orange); } .stage.endurance { border-top-color: var(--blue); }
-  .stage b { display: block; font-family: 'Press Start 2P', monospace; font-weight: normal; font-size: 8px; color: var(--ink-muted); margin-bottom: 6px; }
-  .stage.done { background: #1D1A12; color: var(--ink-muted); }
-  .stage.done::after { content: "\2713"; position: absolute; right: 8px; top: 8px; color: var(--overall); font-size: 20px; }
-  .stage.now { border-color: var(--green); color: #F2F2F2; animation: blink 1.2s steps(2) infinite; }
-  .stage:hover { background: var(--panel-edge); }
+  .rtile.sprint { border-top-color: var(--orange); } .rtile.endurance { border-top-color: var(--blue); }
+  .rtile b { display: block; font-family: 'Press Start 2P', monospace; font-weight: normal; font-size: 8px; color: var(--ink-muted); margin-bottom: 6px; }
+  .rtile.done { background: #1D1A12; color: var(--ink-muted); }
+  .rtile.done::after { content: "\2713"; position: absolute; right: 8px; top: 8px; color: var(--overall); font-size: 20px; }
+  .rtile.now { border-color: var(--green); color: #F2F2F2; animation: blink 1.2s steps(2) infinite; }
+  .rtile:hover { background: var(--panel-edge); }
   .hs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
   .hs-row { display: flex; align-items: baseline; gap: 8px; font-size: 21px; padding: 3px 0; color: #F2F2F2; }
   .hs-row .r { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--ink-muted); min-width: 34px; }
@@ -673,131 +655,6 @@ function pixelCar() {
   return wrap.firstChild;
 }
 
-/* ---------- home page ---------- */
-function renderHome1() {
-  const wrap = el("div");
-  const now = nowMs();
-  const rounds = scheduleRounds();
-  const nxt = nextRound(now);
-
-  // Next race: big countdown. Clicking opens the schedule at that round.
-  const hero = el("div", { class: "box hero", role: "button", tabindex: "0",
-    onclick: () => openSchedule(nxt ? nxt.round : null) });
-  hero.appendChild(el("div", { class: "flag" }));
-  if (!rounds.length) {
-    hero.appendChild(el("div", { class: "kicker", text: "NEXT RACE" }));
-    hero.appendChild(el("div", { class: "hero-name", text: "SCHEDULE NOT LOADED YET" }));
-    hero.appendChild(el("div", { class: "hero-sub", text: "It appears after the next scheduled update." }));
-  } else if (!nxt) {
-    hero.appendChild(el("div", { class: "kicker", text: "SEASON COMPLETE" }));
-    hero.appendChild(el("div", { class: "hero-name", text: "SEE YOU NEXT SEASON" }));
-    hero.appendChild(el("div", { class: "hint" }, [el("b", { text: "▶" }), " OPEN THE FULL CALENDAR"]));
-  } else {
-    const status = roundStatus(nxt, now);
-    hero.appendChild(el("div", { class: "hero-top" }, [
-      el("div", { class: "kicker", text: `NEXT RACE · ROUND ${nxt.round} OF ${rounds.length}` }),
-      pixelCar(),
-    ]));
-    hero.appendChild(el("div", { class: "hero-name" }, [nxt.name.toUpperCase(), cupTag(nxt)]));
-    hero.appendChild(el("div", { class: "hero-sub", text: `${nxt.country || ""} · ${rangeLabel(nxt)}` }));
-    const target = countdownTarget(nxt, now);
-    if (status === "live") hero.appendChild(el("div", { class: "live", text: "● RACE WEEKEND IS LIVE" }));
-    if (target) {
-      const cells = {};
-      const row = el("div", { class: "count" });
-      [["d", "DAYS"], ["h", "HRS"], ["m", "MIN"], ["s", "SEC"]].forEach(([k, lab]) => {
-        const b = el("b", { text: "00" });
-        cells[k] = b;
-        row.appendChild(el("div", { class: "cell" }, [b, el("span", { text: lab })]));
-      });
-      hero.appendChild(row);
-      hero.appendChild(el("div", { class: "hint", text: `COUNTING DOWN TO: ${target.label} · ${istDayLabel(target.ms)} ${istTime(target.ms)} IST` }));
-      const tick = () => {
-        const c = splitCountdown(target.ms - nowMs());
-        cells.d.textContent = pad2(c.d); cells.h.textContent = pad2(c.h); cells.m.textContent = pad2(c.m); cells.s.textContent = pad2(c.s);
-      };
-      tick();
-      state.timer = setInterval(tick, 1000);
-    }
-    hero.appendChild(el("div", { class: "hint" }, [el("b", { text: "▶" }), " CLICK FOR THE FULL SCHEDULE (IST)"]));
-  }
-  wrap.appendChild(hero);
-
-  // Season progress: one pixel block per round.
-  if (rounds.length) {
-    const doneCount = rounds.filter((r) => roundStatus(r, now) === "done").length;
-    const box = el("div", { class: "box" });
-    box.appendChild(el("span", { class: "box-title pixel", text: "SEASON PROGRESS" }));
-    const bar = el("div", { class: "progress" });
-    rounds.forEach((r, i) => {
-      const st = roundStatus(r, now);
-      bar.appendChild(el("div", { class: "seg-bar" + (st === "done" ? " done" : (st === "live" || (nxt && r.round === nxt.round) ? " now" : "")), title: `Round ${r.round}: ${r.name}` }));
-    });
-    box.appendChild(bar);
-    box.appendChild(el("div", { class: "plabel" }, [
-      el("span", { text: `${doneCount} OF ${rounds.length} ROUNDS DONE` }),
-      el("span", { text: `${rounds.length - doneCount} TO GO` }),
-    ]));
-    wrap.appendChild(box);
-  }
-
-  // Quick facts taken from data you already have.
-  const cards = el("div", { class: "cards" });
-  const tables = (state.standings || {}).tables || {};
-  const top = (cup, cls, ent) => ((((tables[cup] || {})[cls] || {})[ent]) || [])[0];
-  const teamOf = (name) => state.teamByDriver[normName(name)] || "";
-
-  // 1. Who leads each class.
-  const classRows = [["GOLD", "gold", "var(--gold)"], ["SILVER", "silver", "var(--silver)"], ["BRONZE", "bronze", "var(--bronze)"]]
-    .map(([lab, key, col]) => { const r = top("overall", key, "drivers"); return r ? { lab, col, r } : null; }).filter(Boolean);
-  if (classRows.length) {
-    const c = el("div", { class: "card lead" }, [el("div", { class: "kicker", text: "CLASS LEADERS \u00b7 DRIVERS" })]);
-    classRows.forEach(({ lab, col, r }) => c.appendChild(el("div", { class: "lrow" }, [
-      el("span", { class: "lab", style: `color:${col}`, text: lab }),
-      el("span", { class: "nm", text: r.name }),
-      el("span", { class: "lsub", text: fmtPoints(r.total) + " PTS" }),
-    ])));
-    cards.appendChild(c);
-  }
-
-  // 2. Who leads each cup.
-  const cupRows = [["SPRINT", "sprint", "var(--orange)"], ["ENDURANCE", "endurance", "var(--blue)"]]
-    .map(([lab, key, col]) => { const r = top(key, "overall", "drivers"); return r ? { lab, col, r } : null; }).filter(Boolean);
-  if (cupRows.length) {
-    const c = el("div", { class: "card cup" }, [el("div", { class: "kicker", text: "CUP LEADERS \u00b7 DRIVERS" })]);
-    cupRows.forEach(({ lab, col, r }) => c.appendChild(el("div", { class: "lrow" }, [
-      el("span", { class: "lab", style: `color:${col}`, text: lab }),
-      el("span", { class: "nm", text: r.name }),
-      el("span", { class: "lsub", text: fmtPoints(r.total) + " PTS" }),
-    ])));
-    cards.appendChild(c);
-  }
-
-  // 3. How close the overall title fight is.
-  const gapRow = (ent, lab) => {
-    const rows = ((((tables.overall || {}).overall || {})[ent]) || []);
-    if (rows.length < 2) return null;
-    const diff = rows[0].total - rows[1].total;
-    return { lab, name: rows[0].name, diff, second: rows[1].name };
-  };
-  const gaps = [gapRow("drivers", "DRIVERS"), gapRow("teams", "TEAMS")].filter(Boolean);
-  if (gaps.length) {
-    const c = el("div", { class: "card gap" }, [el("div", { class: "kicker", text: "TITLE FIGHT \u00b7 OVERALL" })]);
-    gaps.forEach((g) => {
-      c.appendChild(el("div", { class: "lrow" }, [
-        el("span", { class: "lab", style: "color:var(--green)", text: g.lab }),
-        el("span", { class: "nm", text: g.name }),
-      ]));
-      c.appendChild(el("div", { class: "small", text: `leads ${g.second} by ${fmtPoints(g.diff)} PTS` }));
-    });
-    cards.appendChild(c);
-  }
-  if (cards.children.length) wrap.appendChild(cards);
-
-  return wrap;
-}
-
-
 /* ---------- shared bits for the alternative home styles ---------- */
 function shortRound(r) { return (r.name || "").replace(/^CrowdStrike 24 Hours of /i, "24H ").replace(/^Circuit /i, ""); }
 function homeFacts() {
@@ -814,7 +671,7 @@ function noScheduleBox(wrap) {
 }
 
 /* ---------- home style 2: PADDOCK TOWER ---------- */
-function renderHome2() {
+function renderHomePaddock() {
   const wrap = el("div");
   const f = homeFacts();
   const grid = el("div", { class: "h2grid" });
@@ -900,16 +757,16 @@ function renderHome2() {
 }
 
 /* ---------- home style 3: ARCADE TITLE SCREEN ---------- */
-function renderHome3() {
+function renderHomeArcade() {
   const wrap = el("div");
   const f = homeFacts();
 
   const hero = el("div", { class: "box arcade", role: "button", tabindex: "0", onclick: () => openSchedule(f.nxt ? f.nxt.round : null) });
   if (!f.nxt) {
-    hero.appendChild(el("div", { class: "a-kick", text: f.rounds.length ? "GAME OVER · SEASON COMPLETE" : "LOADING STAGE..." }));
+    hero.appendChild(el("div", { class: "a-kick", text: f.rounds.length ? "GAME OVER · SEASON COMPLETE" : "LOADING ROUND..." }));
     hero.appendChild(el("div", { class: "a-name", text: f.rounds.length ? "SEE YOU NEXT SEASON" : "SCHEDULE NOT LOADED YET" }));
   } else {
-    hero.appendChild(el("div", { class: "a-kick", text: `STAGE ${f.nxt.round} OF ${f.rounds.length}` }));
+    hero.appendChild(el("div", { class: "a-kick", text: `ROUND ${f.nxt.round} OF ${f.rounds.length}` }));
     hero.appendChild(el("div", { class: "a-name" }, [f.nxt.name.toUpperCase(), cupTag(f.nxt)]));
     hero.appendChild(el("div", { class: "a-sub", text: `${f.nxt.country || ""} · ${rangeLabel(f.nxt)}` }));
     const lights = el("div", { class: "lights" });
@@ -935,14 +792,14 @@ function renderHome3() {
   }
   wrap.appendChild(hero);
 
-  // Stage select: one tile per round.
+  // Round select: one tile per round.
   if (f.rounds.length) {
-    const box = el("div", { class: "box" }, [el("span", { class: "box-title pixel", text: `STAGE SELECT · ${f.doneCount} CLEARED` })]);
-    const grid = el("div", { class: "stages" });
+    const box = el("div", { class: "box" }, [el("span", { class: "box-title pixel", text: `ROUND SELECT · ${f.doneCount} DONE` })]);
+    const grid = el("div", { class: "rtiles" });
     f.rounds.forEach((r) => {
       const st = roundStatus(r, f.now);
-      grid.appendChild(el("button", { class: `stage ${roundCup(r)} ${st === "done" ? "done" : (f.nxt && f.nxt.round === r.round ? "now" : "")}`,
-        onclick: () => openSchedule(r.round) }, [el("b", { text: `STAGE ${r.round}` }), shortRound(r)]));
+      grid.appendChild(el("button", { class: `rtile ${roundCup(r)} ${st === "done" ? "done" : (f.nxt && f.nxt.round === r.round ? "now" : "")}`,
+        onclick: () => openSchedule(r.round) }, [el("b", { text: `ROUND ${r.round}` }), shortRound(r)]));
     });
     box.appendChild(grid);
     box.appendChild(el("div", { class: "note", text: "ORANGE TOP EDGE = SPRINT CUP · BLUE TOP EDGE = ENDURANCE CUP · TICK = FINISHED" }));
@@ -966,10 +823,10 @@ function renderHome3() {
   return wrap;
 }
 
-function renderHome() { return [renderHome1, renderHome2, renderHome3][(state.homeStyle || 1) - 1](); }
+function renderHome() { return [renderHomeArcade, renderHomePaddock][(state.homeStyle || 1) - 1](); }
 function setHomeStyle(n) {
   state.homeStyle = n;
-  try { localStorage.setItem("gtwcHome", String(n)); } catch (e) { /* storage may be blocked */ }
+  try { localStorage.setItem("gtwcHome2", String(n)); } catch (e) { /* storage may be blocked */ }
   render();
 }
 
@@ -1042,9 +899,9 @@ function openSchedule(roundNo) {
 
 (function initHomeStyle() {
   let n = 0;
-  try { n = parseInt(localStorage.getItem("gtwcHome"), 10); } catch (e) { n = 0; }
+  try { n = parseInt(localStorage.getItem("gtwcHome2"), 10); } catch (e) { n = 0; }
   const q = parseInt(new URLSearchParams(location.search).get("home"), 10);
-  state.homeStyle = [1, 2, 3].includes(q) ? q : ([1, 2, 3].includes(n) ? n : 1);
+  state.homeStyle = [1, 2].includes(q) ? q : ([1, 2].includes(n) ? n : 1);
 })();
 
 function render() {
@@ -1073,7 +930,7 @@ function render() {
   }
 
   if (onHome && !state.error) {
-    app.appendChild(el("div", { class: "styles" }, [el("span", { text: "HOME STYLE" })].concat([1, 2, 3].map((n) =>
+    app.appendChild(el("div", { class: "styles" }, [el("span", { text: "HOME STYLE" })].concat([1, 2].map((n) =>
       el("button", { class: "btn main" + (state.homeStyle === n ? " active" : ""), text: String(n), title: "Home style " + n, onclick: () => setHomeStyle(n) })))));
   }
 
