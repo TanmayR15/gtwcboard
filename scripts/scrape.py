@@ -649,6 +649,19 @@ def add_end_times(sessions, ranges):
     return added
 
 
+def keep_old_end_times(new_sessions, old_sessions):
+    """The PDF is often replaced by a later version that only covers the last day.
+    Sessions that already had an end time keep it (and the start the PDF gave them)."""
+    old = {(o.get("name"), o.get("day")): o for o in old_sessions if o.get("end_utc")}
+    kept = 0
+    for sess in new_sessions:
+        o = old.get((sess.get("name"), sess.get("day")))
+        if o and not sess.get("end_utc"):
+            sess["utc"], sess["end_utc"] = o["utc"], o["end_utc"]
+            kept += 1
+    return kept
+
+
 def pdf_text(data: bytes) -> str:
     import logging
     logging.getLogger("pypdf").setLevel(logging.ERROR)      # silences 'Ignoring wrong pointing object' noise
@@ -698,6 +711,9 @@ def scrape_schedule(old):
                             msg = f", end times skipped ({type(e).__name__})"
                     else:
                         msg = ", no timetable PDF link"
+                    kept = keep_old_end_times(sessions, rec["sessions"])
+                    if kept:
+                        msg += f", {kept} end times kept from before"
                     rec["sessions"] = sorted(sessions, key=lambda s: s["utc"])
                     ok += 1
                     print(f"schedule {name}: {len(sessions)} sessions{msg}", flush=True)
