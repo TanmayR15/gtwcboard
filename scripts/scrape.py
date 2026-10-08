@@ -9,6 +9,7 @@ Safety rules:
 - Files are only rewritten when the content actually changed.
 """
 import argparse
+import io
 import json
 import os
 import re
@@ -17,7 +18,7 @@ import time
 import unicodedata
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from urllib.parse import quote, unquote
+from urllib.parse import quote, unquote, urljoin, urlsplit, urlunsplit
 
 import requests
 from bs4 import BeautifulSoup
@@ -77,7 +78,7 @@ def _retry_after_seconds(resp, attempt):
         return 30 * attempt
 
 
-def fetch(url: str, retries: int = 3):
+def fetch(url: str, retries: int = 3, binary: bool = False):
     """GET politely. Returns HTML text, or None for this page.
 
     - waits DELAY seconds after every successful request
@@ -92,7 +93,7 @@ def fetch(url: str, retries: int = 3):
             if r.status_code == 200:
                 _consecutive_fails = 0
                 time.sleep(DELAY)
-                return r.text
+                return r.content if binary else r.text
             print(f"  ! {r.status_code} for {url} (attempt {attempt})", flush=True)
             if r.status_code in (401, 403):
                 break
@@ -493,6 +494,8 @@ def parse_event_schedule(html: str, year: int, start=None, end=None):
             d -= timedelta(days=1)          # local time is just after midnight, GMT is the day before
         rec = {"name": name, "kind": _kind(name), "day": day,
                "utc": d.strftime("%Y-%m-%d") + "T%02d:%02d:00Z" % (int(g[0]), int(g[1]))}
+        if loc is not None:
+            rec["local"] = "%02d:%02d" % (int(loc[0]), int(loc[1]))
         if g[2] is not None:
             e2 = d
             if _mins(g[2], g[3]) < _mins(g[0], g[1]):
@@ -540,6 +543,60 @@ def parse_event_schedule(html: str, year: int, start=None, end=None):
     return sessions
 
 
+# The event page lists start times only; the "Event Timetable PDF" it links to has the time ranges.
+SCHEDULE_VERSION = 2          # bump to make the next run re-read every event once
+
+
+def find_timetable_pdf(html: str):
+    soup = BeautifulSoup(html, "lxml")
+    for a in soup.find_all("a", href=True):
+        href = a["href"]
+        if ".pdf" in href.lower() and ("timetable" in a.get_text(" ").lower() or "timetable" in href.lower()):
+            u = urlsplit(urljoin(BASE + "/", href))
+            return urlunsplit((u.scheme, u.netloc, quote(u.path, safe="/%"), u.query, ""))
+    return None
+
+
+def parse_timetable_ranges(text: str):
+    """Rows like 'Free Practice 1  09:00 - 10:00' -> [(normalised line, start 'HH:MM', end 'HH:MM')]."""
+    out = []
+    for line in text.splitlines():
+        for m in re.finditer(r"(\d{1,2})[:.](\d{2})\s*[-–—]\s*(\d{1,2})[:.](\d{2})", line):
+            out.append((normname_simple(line), "%02d:%02d" % (int(m.group(1)), int(m.group(2))),
+                        "%02d:%02d" % (int(m.group(3)), int(m.group(4)))))
+    return out
+
+
+def normname_simple(s):
+    return re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
+
+
+def add_end_times(sessions, ranges):
+    """Give each session an end_utc when exactly one PDF row clearly belongs to it."""
+    added = 0
+    for sess in sessions:
+        if sess.get("end_utc") or not sess.get("local"):
+            continue
+        cands = [r for r in ranges if r[1] == sess["local"]]
+        named = [r for r in cands if normname_simple(sess["name"]) in r[0]]
+        pick = named[0] if named else (cands[0] if len(cands) == 1 else None)
+        if not pick:
+            continue
+        sh, sm = map(int, pick[1].split(":"))
+        eh, em = map(int, pick[2].split(":"))
+        dur = ((eh * 60 + em) - (sh * 60 + sm)) % 1440
+        if 0 < dur <= 26 * 60:
+            end = datetime.strptime(sess["utc"], "%Y-%m-%dT%H:%M:%SZ") + timedelta(minutes=dur)
+            sess["end_utc"] = end.strftime("%Y-%m-%dT%H:%M:%SZ")
+            added += 1
+    return added
+
+
+def pdf_text(data: bytes) -> str:
+    from pypdf import PdfReader       # imported here so a missing library only disables end times
+    return "\n".join((p.extract_text() or "") for p in PdfReader(io.BytesIO(data)).pages)
+
+
 def scrape_schedule(old):
     """Build data/schedule.json. Dates come from the built-in calendar; times from each event page.
 
@@ -559,7 +616,8 @@ def scrape_schedule(old):
             rec["tried"] = True
         s_d, e_d = datetime.strptime(start, "%Y-%m-%d").date(), datetime.strptime(end, "%Y-%m-%d").date()
         active = (e_d + timedelta(days=2) >= today) and (s_d - timedelta(days=21) <= today)
-        if active or (not rec["sessions"] and not rec.get("tried")):
+        redo = old.get("v") != SCHEDULE_VERSION
+        if active or redo or (not rec["sessions"] and not rec.get("tried")):
             rec["tried"] = True     # a past round whose page gave nothing is not requested again
             html = fetch(f"{BASE}/event/{eid}/{quote(slug)}")
             if html is None:
@@ -567,15 +625,30 @@ def scrape_schedule(old):
             else:
                 sessions = parse_event_schedule(html, SEASON, start, end)
                 if sessions:
+                    msg = ""
+                    pdf_url = find_timetable_pdf(html)
+                    if pdf_url:
+                        try:
+                            data = fetch(pdf_url, binary=True)
+                            n = add_end_times(sessions, parse_timetable_ranges(pdf_text(data))) if data else 0
+                            msg = f", {n} end times"
+                        except Blocked:
+                            raise
+                        except Exception as e:
+                            msg = f", end times skipped ({type(e).__name__})"
+                    else:
+                        msg = ", no timetable PDF link"
                     rec["sessions"] = sorted(sessions, key=lambda s: s["utc"])
                     ok += 1
-                    print(f"schedule {name}: {len(sessions)} sessions", flush=True)
+                    print(f"schedule {name}: {len(sessions)} sessions{msg}", flush=True)
                 else:
                     fail += 1
                     print(f"schedule {name}: no sessions could be read (kept old data)", flush=True)
         out.append(rec)
     new = dict(old)
     new["rounds"] = out
+    if fail == 0:
+        new["v"] = SCHEDULE_VERSION      # everything was re-read, so do not repeat next run
     return new, ok, fail
 
 
