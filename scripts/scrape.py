@@ -544,7 +544,7 @@ def parse_event_schedule(html: str, year: int, start=None, end=None):
 
 
 # The event page lists start times only; the "Event Timetable PDF" it links to has the time ranges.
-SCHEDULE_VERSION = 2          # bump to make the next run re-read every event once
+SCHEDULE_VERSION = 3          # bump to make the next run re-read every event once
 
 
 def find_timetable_pdf(html: str):
@@ -557,38 +557,79 @@ def find_timetable_pdf(html: str):
     return None
 
 
-def parse_timetable_ranges(text: str):
-    """Rows like 'Free Practice 1  09:00 - 10:00' -> [(normalised line, start 'HH:MM', end 'HH:MM')]."""
-    out = []
-    for line in text.splitlines():
-        for m in re.finditer(r"(\d{1,2})[:.](\d{2})\s*[-–—]\s*(\d{1,2})[:.](\d{2})", line):
-            out.append((normname_simple(line), "%02d:%02d" % (int(m.group(1)), int(m.group(2))),
-                        "%02d:%02d" % (int(m.group(3)), int(m.group(4)))))
-    return out
+_TT = r"(\d{1,2}):(\d{2})(?::\d{2})?"
+_ROW3 = re.compile(r"^\s*" + _TT + r"\s+" + _TT + r"\s+" + _TT + r"\s+(.*)$")      # Start End Duration ... Session
+_ROWDASH = re.compile(_TT + r"\s*[-–—]\s*" + _TT)
 
 
 def normname_simple(s):
     return re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
 
 
+def parse_timetable_ranges(text: str):
+    """Rows of the official timetable PDF -> [{'text', 'start', 'end'}] with minutes after midnight (local time).
+
+    The PDF has columns 'Start End Duration Category Session', e.g.
+    '16:00 19:00 03:00 GT World Challenge powered by AWS Race (rolling start, three hours)'.
+    A row only counts when Duration really equals End minus Start. 'HH:MM - HH:MM' rows are accepted too.
+    """
+    out = []
+    for line in text.splitlines():
+        m = _ROW3.match(line)
+        if m:
+            h1, m1, h2, m2, h3, m3, rest = m.groups()
+            st, en, du = int(h1) * 60 + int(m1), int(h2) * 60 + int(m2), int(h3) * 60 + int(m3)
+            if du > 0 and (en - st) % 1440 == du % 1440:
+                out.append({"text": normname_simple(rest), "start": st, "end": en})
+            continue
+        m = _ROWDASH.search(line)
+        if m:
+            h1, m1, h2, m2 = m.groups()
+            out.append({"text": normname_simple(line), "start": int(h1) * 60 + int(m1), "end": int(h2) * 60 + int(m2)})
+    return out
+
+
+_FILLER = {"main", "session", "the", "of"}
+
+
 def add_end_times(sessions, ranges):
-    """Give each session an end_utc when exactly one PDF row clearly belongs to it."""
+    """Add end_utc (and correct the start) from the PDF when one row clearly belongs to a session.
+
+    A row belongs to a session when it contains every word of the session name (so 'Main Race' finds the
+    'Race (rolling start...)' row) and starts within an hour of the start shown on the event page.
+    Rows of other championships (GT4, support races) are ignored.
+    """
     added = 0
     for sess in sessions:
         if sess.get("end_utc") or not sess.get("local"):
             continue
-        cands = [r for r in ranges if r[1] == sess["local"]]
-        named = [r for r in cands if normname_simple(sess["name"]) in r[0]]
-        pick = named[0] if named else (cands[0] if len(cands) == 1 else None)
-        if not pick:
+        words = [w for w in normname_simple(sess["name"]).split() if w not in _FILLER]
+        if not words:
             continue
-        sh, sm = map(int, pick[1].split(":"))
-        eh, em = map(int, pick[2].split(":"))
-        dur = ((eh * 60 + em) - (sh * 60 + sm)) % 1440
-        if 0 < dur <= 26 * 60:
-            end = datetime.strptime(sess["utc"], "%Y-%m-%dT%H:%M:%SZ") + timedelta(minutes=dur)
-            sess["end_utc"] = end.strftime("%Y-%m-%dT%H:%M:%SZ")
-            added += 1
+        lh, lm = map(int, sess["local"].split(":"))
+        local = lh * 60 + lm
+        best = None
+        for r in ranges:
+            toks = r["text"].split()
+            if not all(w in toks for w in words):
+                continue
+            if "gt world challenge" not in r["text"] and any(k in r["text"] for k in ("gt4", "gt2", "porsche", "ferrari challenge", "support")):
+                continue
+            shift = ((r["start"] - local + 720) % 1440) - 720            # signed minutes, -720..719
+            if abs(shift) > 60:
+                continue
+            if best is None or abs(shift) < abs(best[0]):
+                best = (shift, r)
+        if not best:
+            continue
+        shift, r = best
+        dur = (r["end"] - r["start"]) % 1440
+        if not 0 < dur <= 26 * 60:
+            continue
+        start = datetime.strptime(sess["utc"], "%Y-%m-%dT%H:%M:%SZ") + timedelta(minutes=shift)
+        sess["utc"] = start.strftime("%Y-%m-%dT%H:%M:%SZ")
+        sess["end_utc"] = (start + timedelta(minutes=dur)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        added += 1
     return added
 
 
@@ -630,8 +671,9 @@ def scrape_schedule(old):
                     if pdf_url:
                         try:
                             data = fetch(pdf_url, binary=True)
-                            n = add_end_times(sessions, parse_timetable_ranges(pdf_text(data))) if data else 0
-                            msg = f", {n} end times"
+                            rows = parse_timetable_ranges(pdf_text(data)) if data else []
+                            n = add_end_times(sessions, rows)
+                            msg = f", {n} end times (PDF rows read: {len(rows)})"
                         except Blocked:
                             raise
                         except Exception as e:

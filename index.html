@@ -173,6 +173,72 @@
   .skind { font-size: 15px; letter-spacing: 1px; }
   .k-race { color: var(--overall); } .k-qualifying { color: var(--blue); } .k-practice { color: var(--ink-muted); } .k-other { color: var(--ink-muted); }
   .srow.race .sname { color: #F2F2F2; }
+
+  /* home style switcher */
+  .styles { display: flex; align-items: center; gap: 8px; margin: -6px 0 16px; font-size: 15px; color: var(--ink-muted); letter-spacing: 1px; flex-wrap: wrap; }
+  .styles .btn { padding: 7px 10px; }
+
+  /* ===== home style 2: PADDOCK TOWER ===== */
+  .h2grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; margin-bottom: 18px; align-items: start; }
+  .h2grid .box { margin-bottom: 0; }
+  .tower-row { position: relative; display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 10px; padding: 8px 10px; margin-bottom: 6px;
+    background: var(--bg); border: 2px solid var(--panel-edge); overflow: hidden; }
+  .tower-row .fill { position: absolute; left: 0; top: 0; bottom: 0; background: linear-gradient(90deg, #5A3A10, #2A1D0A); z-index: 0; }
+  .tower-row > * { position: relative; z-index: 1; }
+  .tower-pos { font-family: 'Press Start 2P', monospace; font-size: 10px; text-align: center; padding: 7px 0; background: var(--panel-edge); color: #F2F2F2; }
+  .tower-row.p1 .tower-pos { background: var(--gold); color: #000; }
+  .tower-row.p2 .tower-pos { background: var(--silver); color: #000; }
+  .tower-row.p3 .tower-pos { background: var(--bronze); color: #000; }
+  .tower-name { font-size: 21px; color: #F2F2F2; line-height: 1.1; }
+  .tower-name small { display: block; font-size: 15px; color: var(--ink-muted); }
+  .tower-pts { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--overall); }
+  .minicount { display: flex; gap: 8px; margin: 12px 0; }
+  .minicount .cell { min-width: 62px; }
+  .minicount .cell b { font-size: 16px; }
+  .nextlist { margin-top: 10px; }
+  .nextlist .srow { font-size: 19px; }
+  .track { position: relative; margin: 34px 12px 8px; height: 8px; background: var(--panel-edge); }
+  .track .done-line { position: absolute; left: 0; top: 0; bottom: 0; background: var(--overall); }
+  .node { position: absolute; top: -8px; width: 24px; height: 24px; margin-left: -12px; background: var(--bg); border: 3px solid var(--panel-edge); cursor: pointer; padding: 0; }
+  .node.done { background: var(--overall); border-color: var(--overall); }
+  .node.now { border-color: var(--overall); animation: blink 1s steps(2) infinite; }
+  .node.sprint { box-shadow: 0 5px 0 var(--orange); } .node.endurance { box-shadow: 0 5px 0 var(--blue); }
+  .nodelab { position: absolute; top: 24px; margin-left: -14px; width: 28px; text-align: center; font-size: 14px; color: var(--ink-muted); }
+  .trackcar { position: absolute; top: -34px; margin-left: -22px; width: 44px; transition: left .4s steps(6); }
+  .legend { font-size: 15px; color: var(--ink-muted); margin-top: 34px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .legend i { display: inline-block; width: 12px; height: 4px; margin-right: 6px; vertical-align: middle; }
+
+  /* ===== home style 3: ARCADE TITLE SCREEN ===== */
+  .arcade { text-align: center; padding: 22px 12px 18px; position: relative; overflow: hidden; cursor: pointer; border-color: var(--green); }
+  .arcade::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.22) 0 2px, transparent 2px 4px); }
+  .arcade:hover { background: #26282C; }
+  .a-kick { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--green); letter-spacing: 2px; }
+  .a-name { font-family: 'Press Start 2P', monospace; font-size: 22px; line-height: 1.5; color: #F2F2F2; margin: 14px 0 4px; text-shadow: 4px 4px 0 var(--shadow); }
+  .a-sub { font-size: 21px; color: var(--ink-dim); }
+  .lights { display: flex; justify-content: center; gap: 14px; margin: 20px 0 14px; }
+  .light { width: 34px; height: 34px; border: 3px solid #000; background: #3A1010; box-shadow: inset 0 0 0 3px #240A0A; }
+  .light.on { background: #FF2D2D; box-shadow: 0 0 14px #FF2D2D, inset 0 0 0 3px #FF7070; }
+  .light.go { background: #4CDE6E; box-shadow: 0 0 14px #4CDE6E, inset 0 0 0 3px #A5F5B7; }
+  .a-count { font-family: 'Press Start 2P', monospace; font-size: 24px; color: var(--overall); text-shadow: 3px 3px 0 var(--shadow); letter-spacing: 1px; }
+  .a-count small { font-size: 10px; color: var(--ink-muted); margin: 0 10px 0 4px; letter-spacing: 0; }
+  .a-start { font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--green); margin-top: 18px; animation: blink 1s steps(2) infinite; }
+  .stages { display: grid; grid-template-columns: repeat(auto-fit, minmax(138px, 1fr)); gap: 10px; }
+  .stage { text-align: left; background: var(--bg); border: 3px solid var(--panel-edge); padding: 10px; cursor: pointer; color: var(--ink-dim);
+    font-family: 'VT323', monospace; font-size: 19px; position: relative; border-top-width: 6px; }
+  .stage.sprint { border-top-color: var(--orange); } .stage.endurance { border-top-color: var(--blue); }
+  .stage b { display: block; font-family: 'Press Start 2P', monospace; font-weight: normal; font-size: 8px; color: var(--ink-muted); margin-bottom: 6px; }
+  .stage.done { background: #1D1A12; color: var(--ink-muted); }
+  .stage.done::after { content: "\2713"; position: absolute; right: 8px; top: 8px; color: var(--overall); font-size: 20px; }
+  .stage.now { border-color: var(--green); color: #F2F2F2; animation: blink 1.2s steps(2) infinite; }
+  .stage:hover { background: var(--panel-edge); }
+  .hs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+  .hs-row { display: flex; align-items: baseline; gap: 8px; font-size: 21px; padding: 3px 0; color: #F2F2F2; }
+  .hs-row .r { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--ink-muted); min-width: 34px; }
+  .hs-row:nth-child(2) .r { color: var(--gold); } .hs-row:nth-child(3) .r { color: var(--silver); } .hs-row:nth-child(4) .r { color: var(--bronze); }
+  .hs-row .dots { flex: 1; border-bottom: 3px dotted var(--panel-edge); transform: translateY(-4px); min-width: 12px; }
+  .hs-row .v { color: var(--overall); }
+  .hs-title { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--green); margin-bottom: 8px; letter-spacing: 1px; }
 </style>
 </head>
 <body>
@@ -213,7 +279,7 @@ const state = {
   roundId: null, sessionId: null, resultClass: "ALL",
   stdQuery: "", resQuery: "",
   standings: null, results: null, error: null,
-  teamByDriver: {}, schedule: null, schedOpen: new Set(), timer: null,
+  teamByDriver: {}, homeStyle: 1, schedule: null, schedOpen: new Set(), timer: null,
 };
 
 /* ---------- helpers for names, sessions, classes ---------- */
@@ -608,7 +674,7 @@ function pixelCar() {
 }
 
 /* ---------- home page ---------- */
-function renderHome() {
+function renderHome1() {
   const wrap = el("div");
   const now = nowMs();
   const rounds = scheduleRounds();
@@ -731,6 +797,182 @@ function renderHome() {
   return wrap;
 }
 
+
+/* ---------- shared bits for the alternative home styles ---------- */
+function shortRound(r) { return (r.name || "").replace(/^CrowdStrike 24 Hours of /i, "24H ").replace(/^Circuit /i, ""); }
+function homeFacts() {
+  const now = nowMs();
+  const rounds = scheduleRounds();
+  const nxt = nextRound(now);
+  const tables = (state.standings || {}).tables || {};
+  const all = (((tables.overall || {}).overall || {}));
+  return { now, rounds, nxt, doneCount: rounds.filter((r) => roundStatus(r, now) === "done").length,
+    target: nxt ? countdownTarget(nxt, now) : null, drivers: (all.drivers || []).slice(0, 6), teams: (all.teams || []).slice(0, 5) };
+}
+function noScheduleBox(wrap) {
+  wrap.appendChild(el("div", { class: "box" }, [el("div", { class: "empty", text: "Schedule not loaded yet. It appears after the next scheduled update." })]));
+}
+
+/* ---------- home style 2: PADDOCK TOWER ---------- */
+function renderHome2() {
+  const wrap = el("div");
+  const f = homeFacts();
+  const grid = el("div", { class: "h2grid" });
+
+  // Championship tower: top drivers with a points bar behind each row.
+  const tower = el("div", { class: "box" }, [el("span", { class: "box-title pixel", text: "CHAMPIONSHIP TOWER" })]);
+  if (!f.drivers.length) tower.appendChild(el("div", { class: "empty", text: "No standings yet." }));
+  const lead = f.drivers.length ? f.drivers[0].total || 1 : 1;
+  f.drivers.forEach((d, i) => {
+    const team = state.teamByDriver[normName(d.name)] || "";
+    tower.appendChild(el("div", { class: "tower-row p" + (i + 1) }, [
+      el("div", { class: "fill", style: `width:${Math.max(6, Math.round((d.total / lead) * 100))}%` }),
+      el("div", { class: "tower-pos", text: String(i + 1) }),
+      el("div", { class: "tower-name" }, [d.name.toUpperCase(), team ? el("small", { text: team }) : null]),
+      el("div", { class: "tower-pts", text: fmtPoints(d.total) }),
+    ]));
+  });
+  if (f.teams.length) {
+    tower.appendChild(el("div", { class: "note", text: "TEAMS: " + f.teams.slice(0, 3).map((t, i) => `${i + 1}. ${t.name} ${fmtPoints(t.total)}`).join("  ·  ") }));
+  }
+  grid.appendChild(tower);
+
+  // Next race: name, mini countdown, next sessions.
+  const next = el("div", { class: "box hero", role: "button", tabindex: "0", onclick: () => openSchedule(f.nxt ? f.nxt.round : null) });
+  next.appendChild(el("div", { class: "flag" }));
+  if (!f.nxt) {
+    next.appendChild(el("div", { class: "kicker", text: f.rounds.length ? "SEASON COMPLETE" : "NEXT RACE" }));
+    next.appendChild(el("div", { class: "hero-name", text: f.rounds.length ? "SEE YOU NEXT SEASON" : "SCHEDULE NOT LOADED" }));
+  } else {
+    next.appendChild(el("div", { class: "hero-top" }, [el("div", { class: "kicker", text: `NEXT RACE · ROUND ${f.nxt.round}` }), pixelCar()]));
+    next.appendChild(el("div", { class: "hero-name" }, [f.nxt.name.toUpperCase(), cupTag(f.nxt)]));
+    next.appendChild(el("div", { class: "hero-sub", text: `${f.nxt.country || ""} · ${rangeLabel(f.nxt)}` }));
+    if (f.target) {
+      const cells = {};
+      const row = el("div", { class: "count minicount" });
+      [["d", "D"], ["h", "H"], ["m", "M"], ["s", "S"]].forEach(([k, lab]) => {
+        const b = el("b", { text: "00" }); cells[k] = b;
+        row.appendChild(el("div", { class: "cell" }, [b, el("span", { text: lab })]));
+      });
+      next.appendChild(row);
+      const tick = () => { const c = splitCountdown(f.target.ms - nowMs()); cells.d.textContent = pad2(c.d); cells.h.textContent = pad2(c.h); cells.m.textContent = pad2(c.m); cells.s.textContent = pad2(c.s); };
+      tick(); state.timer = setInterval(tick, 1000);
+    }
+    const up = (f.nxt.sessions || []).filter((x) => sessionMs(x) > f.now).sort((a, b) => sessionMs(a) - sessionMs(b)).slice(0, 4);
+    if (up.length) {
+      next.appendChild(el("div", { class: "dayhead", text: "UP NEXT (IST)" }));
+      const list = el("div", { class: "nextlist" });
+      up.forEach((x) => list.appendChild(el("div", { class: "srow" + (x.kind === "race" ? " race" : "") }, [
+        el("span", { class: "stime", text: `${istDayLabel(sessionMs(x)).slice(0, 3)} ${istTime(sessionMs(x))}` }),
+        el("span", { class: "sname", text: x.name }),
+      ])));
+      next.appendChild(list);
+    }
+    next.appendChild(el("div", { class: "hint" }, [el("b", { text: "▶" }), " FULL SCHEDULE"]));
+  }
+  grid.appendChild(next);
+  wrap.appendChild(grid);
+
+  // Season track: a pixel car sits on the next round.
+  if (!f.rounds.length) { noScheduleBox(wrap); return wrap; }
+  const box = el("div", { class: "box" }, [el("span", { class: "box-title pixel", text: `SEASON TRACK · ${f.doneCount} OF ${f.rounds.length} DONE` })]);
+  const track = el("div", { class: "track" });
+  const step = 100 / (f.rounds.length - 1 || 1);
+  const carAt = Math.min(f.doneCount, f.rounds.length - 1) * step;
+  track.appendChild(el("div", { class: "done-line", style: `width:${Math.max(0, (f.doneCount - 0.5) * step)}%` }));
+  f.rounds.forEach((r, i) => {
+    const st = roundStatus(r, f.now);
+    const node = el("button", { class: `node ${st === "done" ? "done" : (f.nxt && f.nxt.round === r.round ? "now" : "")} ${roundCup(r)}`,
+      style: `left:${i * step}%`, title: `Round ${r.round}: ${r.name}`, "aria-label": `Round ${r.round}: ${r.name}`, onclick: () => openSchedule(r.round) });
+    track.appendChild(node);
+    track.appendChild(el("div", { class: "nodelab", style: `left:${i * step}%`, text: String(r.round) }));
+  });
+  const car = pixelCar(); car.setAttribute("class", "car trackcar"); car.setAttribute("style", `left:${carAt}%`);
+  track.appendChild(car);
+  box.appendChild(track);
+  box.appendChild(el("div", { class: "legend" }, [
+    el("span", {}, [el("i", { style: "background:var(--orange)" }), "SPRINT CUP"]),
+    el("span", {}, [el("i", { style: "background:var(--blue)" }), "ENDURANCE CUP"]),
+    el("span", { text: "CLICK A ROUND FOR ITS SCHEDULE" }),
+  ]));
+  wrap.appendChild(box);
+  return wrap;
+}
+
+/* ---------- home style 3: ARCADE TITLE SCREEN ---------- */
+function renderHome3() {
+  const wrap = el("div");
+  const f = homeFacts();
+
+  const hero = el("div", { class: "box arcade", role: "button", tabindex: "0", onclick: () => openSchedule(f.nxt ? f.nxt.round : null) });
+  if (!f.nxt) {
+    hero.appendChild(el("div", { class: "a-kick", text: f.rounds.length ? "GAME OVER · SEASON COMPLETE" : "LOADING STAGE..." }));
+    hero.appendChild(el("div", { class: "a-name", text: f.rounds.length ? "SEE YOU NEXT SEASON" : "SCHEDULE NOT LOADED YET" }));
+  } else {
+    hero.appendChild(el("div", { class: "a-kick", text: `STAGE ${f.nxt.round} OF ${f.rounds.length}` }));
+    hero.appendChild(el("div", { class: "a-name" }, [f.nxt.name.toUpperCase(), cupTag(f.nxt)]));
+    hero.appendChild(el("div", { class: "a-sub", text: `${f.nxt.country || ""} · ${rangeLabel(f.nxt)}` }));
+    const lights = el("div", { class: "lights" });
+    const bulbs = [0, 1, 2, 3, 4].map(() => el("div", { class: "light" }));
+    bulbs.forEach((b) => lights.appendChild(b));
+    hero.appendChild(lights);
+    if (f.target) {
+      const count = el("div", { class: "a-count" });
+      hero.appendChild(count);
+      hero.appendChild(el("div", { class: "hint", text: `${f.target.label} · ${istDayLabel(f.target.ms)} ${istTime(f.target.ms)} IST` }));
+      const tick = () => {
+        const left = f.target.ms - nowMs();
+        const c = splitCountdown(left);
+        count.innerHTML = "";
+        [[c.d, "D"], [c.h, "H"], [c.m, "M"], [c.s, "S"]].forEach(([v, u]) => { count.appendChild(document.createTextNode(pad2(v))); count.appendChild(el("small", { text: u })); });
+        // Start lights: one more red light every second, all green once the session begins.
+        const on = left <= 0 ? 5 : (Math.floor(Date.now() / 1000) % 6);
+        bulbs.forEach((b, i) => { b.className = "light" + (left <= 0 ? " go" : (i < on ? " on" : "")); });
+      };
+      tick(); state.timer = setInterval(tick, 1000);
+    }
+    hero.appendChild(el("div", { class: "a-start", text: "▶ PRESS START FOR THE SCHEDULE" }));
+  }
+  wrap.appendChild(hero);
+
+  // Stage select: one tile per round.
+  if (f.rounds.length) {
+    const box = el("div", { class: "box" }, [el("span", { class: "box-title pixel", text: `STAGE SELECT · ${f.doneCount} CLEARED` })]);
+    const grid = el("div", { class: "stages" });
+    f.rounds.forEach((r) => {
+      const st = roundStatus(r, f.now);
+      grid.appendChild(el("button", { class: `stage ${roundCup(r)} ${st === "done" ? "done" : (f.nxt && f.nxt.round === r.round ? "now" : "")}`,
+        onclick: () => openSchedule(r.round) }, [el("b", { text: `STAGE ${r.round}` }), shortRound(r)]));
+    });
+    box.appendChild(grid);
+    box.appendChild(el("div", { class: "note", text: "ORANGE TOP EDGE = SPRINT CUP · BLUE TOP EDGE = ENDURANCE CUP · TICK = FINISHED" }));
+    wrap.appendChild(box);
+  } else noScheduleBox(wrap);
+
+  // High scores: top drivers and teams.
+  const hs = el("div", { class: "box" }, [el("span", { class: "box-title pixel", text: "HIGH SCORES" })]);
+  const cols = el("div", { class: "hs" });
+  const board = (title, rows) => {
+    const c = el("div", {}, [el("div", { class: "hs-title", text: title })]);
+    rows.forEach((x, i) => c.appendChild(el("div", { class: "hs-row" }, [
+      el("span", { class: "r", text: ["1ST", "2ND", "3RD", "4TH", "5TH", "6TH"][i] }),
+      el("span", { text: x.name.toUpperCase() }), el("span", { class: "dots" }), el("span", { class: "v", text: fmtPoints(x.total) }),
+    ])));
+    return c;
+  };
+  if (f.drivers.length) cols.appendChild(board("DRIVERS", f.drivers.slice(0, 5)));
+  if (f.teams.length) cols.appendChild(board("TEAMS", f.teams.slice(0, 5)));
+  if (cols.children.length) { hs.appendChild(cols); wrap.appendChild(hs); }
+  return wrap;
+}
+
+function renderHome() { return [renderHome1, renderHome2, renderHome3][(state.homeStyle || 1) - 1](); }
+function setHomeStyle(n) {
+  state.homeStyle = n;
+  try { localStorage.setItem("gtwcHome", String(n)); } catch (e) { /* storage may be blocked */ }
+  render();
+}
+
 /* ---------- schedule page ---------- */
 function renderSchedule() {
   const wrap = el("div");
@@ -798,6 +1040,13 @@ function openSchedule(roundNo) {
   if (roundNo != null) { const node = document.getElementById("round-" + roundNo); if (node) node.scrollIntoView(); }
 }
 
+(function initHomeStyle() {
+  let n = 0;
+  try { n = parseInt(localStorage.getItem("gtwcHome"), 10); } catch (e) { n = 0; }
+  const q = parseInt(new URLSearchParams(location.search).get("home"), 10);
+  state.homeStyle = [1, 2, 3].includes(q) ? q : ([1, 2, 3].includes(n) ? n : 1);
+})();
+
 function render() {
   if (state.timer) { clearInterval(state.timer); state.timer = null; }
   const app = document.getElementById("app");
@@ -821,6 +1070,11 @@ function render() {
       el("button", { class: "btn main" + (state.page === "results" ? " active" : ""), text: "RESULTS", onclick: () => go("results") }),
       el("button", { class: "btn main" + (state.page === "schedule" ? " active" : ""), text: "SCHEDULE", onclick: () => go("schedule") }),
     ]));
+  }
+
+  if (onHome && !state.error) {
+    app.appendChild(el("div", { class: "styles" }, [el("span", { text: "HOME STYLE" })].concat([1, 2, 3].map((n) =>
+      el("button", { class: "btn main" + (state.homeStyle === n ? " active" : ""), text: String(n), title: "Home style " + n, onclick: () => setHomeStyle(n) })))));
   }
 
   if (state.error) {
