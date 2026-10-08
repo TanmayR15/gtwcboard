@@ -144,7 +144,13 @@
   .card .big { font-size: 24px; color: #F2F2F2; margin-top: 8px; }
   .card .small { font-size: 17px; color: var(--ink-muted); }
   .card.lead { border-left: 6px solid var(--gold); }
-  .card.win { border-left: 6px solid var(--blue); }
+  .card.cup { border-left: 6px solid var(--orange); }
+  .card.gap { border-left: 6px solid var(--green); }
+  .lrow { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "lab sub" "nm nm"; align-items: baseline; margin-top: 10px; font-size: 21px; color: #F2F2F2; }
+  .lrow .lab { grid-area: lab; font-size: 14px; letter-spacing: 1px; }
+  .lrow .nm { grid-area: nm; overflow-wrap: anywhere; }
+  .lrow .lsub { grid-area: sub; font-size: 16px; color: var(--ink-muted); white-space: nowrap; }
+  .cuptag { font-family: 'Press Start 2P', monospace; font-size: 9px; letter-spacing: 0.5px; margin-left: 10px; white-space: nowrap; text-shadow: none; vertical-align: middle; }
 
   /* schedule page */
   .round { background: var(--panel); border: 3px solid var(--panel-edge); margin-bottom: 12px; box-shadow: 4px 4px 0 var(--shadow); }
@@ -551,6 +557,19 @@ function roundStatus(r, now) {
   if (now >= roundStartMs(r)) return "live";
   return "upcoming";
 }
+// Sprint rounds have two races (Race 1 and Race 2); Endurance rounds have a single Main Race.
+function roundCup(r) {
+  const races = (r.sessions || []).filter((x) => x.kind === "race").length;
+  if (races >= 2) return "sprint";
+  if (races === 1) return "endurance";
+  return "";
+}
+function cupTag(r) {
+  const c = roundCup(r);
+  if (!c) return null;
+  const cup = CUPS.find((x) => x.key === c);
+  return el("span", { class: "cuptag", style: `color:${cup.accent}`, text: "\u00b7 " + cup.label });
+}
 function scheduleRounds() { return ((state.schedule || {}).rounds || []).slice().sort((a, b) => a.round - b.round); }
 function nextRound(now) { return scheduleRounds().find((r) => roundStatus(r, now) !== "done") || null; }
 // What the big countdown counts down to: the next race session, else the next session, else the first day.
@@ -613,7 +632,7 @@ function renderHome() {
       el("div", { class: "kicker", text: `NEXT RACE · ROUND ${nxt.round} OF ${rounds.length}` }),
       pixelCar(),
     ]));
-    hero.appendChild(el("div", { class: "hero-name", text: nxt.name.toUpperCase() }));
+    hero.appendChild(el("div", { class: "hero-name" }, [nxt.name.toUpperCase(), cupTag(nxt)]));
     hero.appendChild(el("div", { class: "hero-sub", text: `${nxt.country || ""} · ${rangeLabel(nxt)}` }));
     const target = countdownTarget(nxt, now);
     if (status === "live") hero.appendChild(el("div", { class: "live", text: "● RACE WEEKEND IS LIVE" }));
@@ -658,29 +677,54 @@ function renderHome() {
 
   // Quick facts taken from data you already have.
   const cards = el("div", { class: "cards" });
-  const top = (state.standings.tables || {}).overall;
-  const dTop = top && top.overall && (top.overall.drivers || [])[0];
-  const tTop = top && top.overall && (top.overall.teams || [])[0];
-  if (dTop) cards.appendChild(el("div", { class: "card lead" }, [
-    el("div", { class: "kicker", text: "DRIVERS LEADER" }),
-    el("div", { class: "big", text: dTop.name }),
-    el("div", { class: "small", text: `${state.teamByDriver[normName(dTop.name)] || ""}${state.teamByDriver[normName(dTop.name)] ? " · " : ""}${fmtPoints(dTop.total)} PTS` }),
-  ]));
-  if (tTop) cards.appendChild(el("div", { class: "card lead" }, [
-    el("div", { class: "kicker", text: "TEAMS LEADER" }),
-    el("div", { class: "big", text: tTop.name }),
-    el("div", { class: "small", text: `${fmtPoints(tTop.total)} PTS` }),
-  ]));
-  const lastRound = ((state.results || {}).rounds || []).slice(-1)[0];
-  if (lastRound) {
-    const sid = defaultSessionId(lastRound);
-    const sess = (lastRound.sessions || []).find((x) => x.id === sid);
-    const win = sess && (sess.rows || [])[0];
-    if (win) cards.appendChild(el("div", { class: "card win" }, [
-      el("div", { class: "kicker", text: `LAST RACE · ${lastRound.name} · ${sess.name}`.toUpperCase() }),
-      el("div", { class: "big", text: (win.drivers || "").split(/,\s*/)[0] + ((win.drivers || "").includes(",") ? " +" : "") }),
-      el("div", { class: "small", text: `#${win.car || ""} ${win.team || ""}` }),
-    ]));
+  const tables = (state.standings || {}).tables || {};
+  const top = (cup, cls, ent) => ((((tables[cup] || {})[cls] || {})[ent]) || [])[0];
+  const teamOf = (name) => state.teamByDriver[normName(name)] || "";
+
+  // 1. Who leads each class.
+  const classRows = [["GOLD", "gold", "var(--gold)"], ["SILVER", "silver", "var(--silver)"], ["BRONZE", "bronze", "var(--bronze)"]]
+    .map(([lab, key, col]) => { const r = top("overall", key, "drivers"); return r ? { lab, col, r } : null; }).filter(Boolean);
+  if (classRows.length) {
+    const c = el("div", { class: "card lead" }, [el("div", { class: "kicker", text: "CLASS LEADERS \u00b7 DRIVERS" })]);
+    classRows.forEach(({ lab, col, r }) => c.appendChild(el("div", { class: "lrow" }, [
+      el("span", { class: "lab", style: `color:${col}`, text: lab }),
+      el("span", { class: "nm", text: r.name }),
+      el("span", { class: "lsub", text: fmtPoints(r.total) + " PTS" }),
+    ])));
+    cards.appendChild(c);
+  }
+
+  // 2. Who leads each cup.
+  const cupRows = [["SPRINT", "sprint", "var(--orange)"], ["ENDURANCE", "endurance", "var(--blue)"]]
+    .map(([lab, key, col]) => { const r = top(key, "overall", "drivers"); return r ? { lab, col, r } : null; }).filter(Boolean);
+  if (cupRows.length) {
+    const c = el("div", { class: "card cup" }, [el("div", { class: "kicker", text: "CUP LEADERS \u00b7 DRIVERS" })]);
+    cupRows.forEach(({ lab, col, r }) => c.appendChild(el("div", { class: "lrow" }, [
+      el("span", { class: "lab", style: `color:${col}`, text: lab }),
+      el("span", { class: "nm", text: r.name }),
+      el("span", { class: "lsub", text: fmtPoints(r.total) + " PTS" }),
+    ])));
+    cards.appendChild(c);
+  }
+
+  // 3. How close the overall title fight is.
+  const gapRow = (ent, lab) => {
+    const rows = ((((tables.overall || {}).overall || {})[ent]) || []);
+    if (rows.length < 2) return null;
+    const diff = rows[0].total - rows[1].total;
+    return { lab, name: rows[0].name, diff, second: rows[1].name };
+  };
+  const gaps = [gapRow("drivers", "DRIVERS"), gapRow("teams", "TEAMS")].filter(Boolean);
+  if (gaps.length) {
+    const c = el("div", { class: "card gap" }, [el("div", { class: "kicker", text: "TITLE FIGHT \u00b7 OVERALL" })]);
+    gaps.forEach((g) => {
+      c.appendChild(el("div", { class: "lrow" }, [
+        el("span", { class: "lab", style: "color:var(--green)", text: g.lab }),
+        el("span", { class: "nm", text: g.name }),
+      ]));
+      c.appendChild(el("div", { class: "small", text: `leads ${g.second} by ${fmtPoints(g.diff)} PTS` }));
+    });
+    cards.appendChild(c);
   }
   if (cards.children.length) wrap.appendChild(cards);
 
@@ -716,7 +760,7 @@ function renderSchedule() {
     } }, [
       el("div", {}, [
         el("span", { class: "rn", text: `ROUND ${r.round}` + (isNext ? " · NEXT" : "") }),
-        el("div", { class: "rt", text: r.name }),
+        el("div", { class: "rt" }, [r.name, cupTag(r)]),
         el("div", { class: "rd", text: `${r.country || ""} · ${rangeLabel(r)}` }),
       ]),
       el("div", {}, [badge, el("span", { class: "rd", text: open ? "  ▲" : "  ▼" })]),
