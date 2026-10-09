@@ -137,6 +137,13 @@
   .pg-note { padding: 0 14px 14px; font-size: 19px; color: var(--ink-muted); margin-top: auto; }
   .pg-rules { margin: 0; padding-left: 20px; font-size: 21px; color: var(--ink-dim); }
   .pg-rules li { margin: 4px 0; }
+  /* points progression chart */
+  .pp-wrap { overflow-x: auto; }
+  .pp-svg { width: 100%; min-width: 560px; height: auto; display: block; }
+  .pp-svg text { font-family: 'VT323', monospace; font-size: 15px; fill: var(--ink-muted); }
+  .pp-svg text.lab { font-size: 16px; }
+  .pp-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; font-size: 19px; color: var(--ink-dim); }
+  .pp-legend i { display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: -1px; }
   h1.pixel.link { cursor: pointer; }
   h1.pixel.link:hover { color: var(--overall); }
 
@@ -368,6 +375,10 @@ async function loadData() {
     state.results = r;
     // The schedule is a bonus: the rest of the site still works without it.
     try {
+      const hs = await fetch("data/history.json", { cache: "no-cache" });
+      if (hs.ok) state.history = await hs.json();
+    } catch (e) { state.history = null; }
+    try {
       const sc = await fetch("data/schedule.json", { cache: "no-cache" });
       if (sc.ok) state.schedule = await sc.json();
     } catch (e) { state.schedule = null; }
@@ -473,6 +484,7 @@ function renderStandings() {
       box.appendChild(el("div", { class: "note", text: "TEAM = entry name from the driver's most recent race result. The official driver standings do not list teams." }));
     }
     holder.appendChild(box);
+    if (rows.length) holder.appendChild(renderProgress(rows, ent.key));
   };
 
   wrap.appendChild(el("div", { class: "controls" }, [
@@ -990,6 +1002,65 @@ function renderPoints() {
     ]),
   ]));
   return wrap;
+}
+
+// ---- points progression chart (standings page) ----
+const PP_COLORS = ["#FF9F1C", "#38B6FF", "#FF5A36", "#7ED957", "#C77DFF", "#F2C94C", "#FF7AB6", "#4DD0C8"];
+function escXml(t) { return String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+function renderProgress(rows, entKey) {
+  const box = el("div", { class: "box", style: "border-left:6px solid var(--overall)" });
+  box.appendChild(el("span", { class: "box-title pixel", text: "POINTS PROGRESSION" }));
+  const hist = state.history && state.history.snapshots ? state.history.snapshots : [];
+  const key = state.cup + "/" + state.cls;
+  const snaps = hist.filter((h) => h.tables && h.tables[key] && h.tables[key][entKey]);
+  const top = rows.slice(0, 8);
+  if (!snaps.length || !top.length) {
+    box.appendChild(el("div", { class: "empty", text: "No history for this table yet. It builds up after each round." }));
+    return box;
+  }
+  const series = top.map((r, i) => ({
+    name: r.name, color: PP_COLORS[i % PP_COLORS.length],
+    pts: snaps.map((h) => { const v = h.tables[key][entKey][normName(r.name)]; return v == null ? 0 : v; }),
+  }));
+  const W = 800, H = 330, L = 46, R = 200, T = 14, B = 30;
+  const maxV = Math.max(1, ...series.flatMap((s) => s.pts));
+  const step = maxV <= 40 ? 10 : maxV <= 100 ? 20 : maxV <= 250 ? 50 : 100;
+  const yMax = Math.ceil(maxV / step) * step;
+  const xAt = (i) => L + (snaps.length === 1 ? (W - L - R) / 2 : (i * (W - L - R)) / (snaps.length - 1));
+  const yAt = (v) => T + (H - T - B) * (1 - v / yMax);
+  let g = "";
+  for (let v = 0; v <= yMax; v += step) {
+    g += `<line x1="${L}" x2="${W - R}" y1="${yAt(v)}" y2="${yAt(v)}" stroke="#3B3E42" stroke-width="2"/>` +
+         `<text x="${L - 8}" y="${yAt(v) + 5}" text-anchor="end">${v}</text>`;
+  }
+  snaps.forEach((h, i) => { g += `<text x="${xAt(i)}" y="${H - 8}" text-anchor="middle">R${h.round}${h.estimated ? "*" : ""}</text>`; });
+  const ends = [];
+  series.forEach((s) => {
+    for (let i = 1; i < snaps.length; i++) {
+      g += `<line x1="${xAt(i - 1)}" y1="${yAt(s.pts[i - 1])}" x2="${xAt(i)}" y2="${yAt(s.pts[i])}" stroke="${s.color}" stroke-width="4"` +
+           `${snaps[i].estimated ? ' stroke-dasharray="8 6"' : ""} shape-rendering="crispEdges"/>`;
+    }
+    s.pts.forEach((v, i) => { g += `<rect x="${xAt(i) - 4}" y="${yAt(v) - 4}" width="8" height="8" fill="${s.color}"/>`; });
+    ends.push({ s, y: yAt(s.pts[s.pts.length - 1]) });
+  });
+  // end labels, nudged so they do not overlap
+  ends.sort((a, b) => a.y - b.y);
+  let prev = -99;
+  ends.forEach((e) => { e.ly = Math.max(e.y, prev + 15); prev = e.ly; });
+  ends.forEach((e) => {
+    const short = entKey === "drivers" ? e.s.name.split(" ").slice(-1)[0] : e.s.name;
+    g += `<text class="lab" x="${W - R + 12}" y="${e.ly + 5}" style="fill:${e.s.color}">${escXml(short.length > 13 ? short.slice(0, 12) + "." : short)} ${fmtPoints(e.s.pts[e.s.pts.length - 1])}</text>`;
+  });
+  const wrap = el("div", { class: "pp-wrap" });
+  wrap.innerHTML = `<svg class="pp-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Points progression chart">${g}</svg>`;
+  box.appendChild(wrap);
+  box.appendChild(el("div", { class: "pp-legend" }, series.map((s) => el("span", {}, [el("i", { style: "background:" + s.color }), s.name]))));
+  const est = snaps.some((h) => h.estimated);
+  box.appendChild(el("div", { class: "note", text: est
+    ? "Top 8 of this table. * and dashed lines: estimated from race results (poles and class rules not included). Rounds without an asterisk are the official standings."
+    : "Top 8 of this table, using the official standings after each round." }));
+  return box;
 }
 
 function go(page) { state.page = page; render(); window.scrollTo(0, 0); }

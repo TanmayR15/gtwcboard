@@ -23,6 +23,9 @@ from urllib.parse import quote, unquote, urljoin, urlsplit, urlunsplit
 import requests
 from bs4 import BeautifulSoup
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from history import update_history  # noqa: E402
+
 BASE = "https://www.gt-world-challenge-europe.com"
 SEASON = int(os.environ.get("GTWC_SEASON", "2026"))
 DELAY = float(os.environ.get("GTWC_DELAY", "1.5"))   # seconds between requests
@@ -775,10 +778,23 @@ def main():
         print("ERROR: no standings table could be parsed. The site layout may have changed.")
         sys.exit(1)
 
+    # Points history for the progression chart (never allowed to break the run).
+    hist_path = DATA_DIR / "history.json"
+    hist_old = read_json(hist_path, {"snapshots": []})
+    try:
+        hist_new = update_history(hist_old, stand_new, res_new)
+        est = [x["round"] for x in hist_new["snapshots"] if x.get("estimated")]
+        off = [x["round"] for x in hist_new["snapshots"] if not x.get("estimated")]
+        print(f"history: official rounds {off}, estimated rounds {est}")
+    except Exception as e:
+        hist_new = hist_old
+        print(f"history skipped: {type(e).__name__}: {e}", flush=True)
+
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     changed = False
     for path, new, old in ((stand_path, stand_new, stand_old), (res_path, res_new, res_old),
-                           (sched_path, sched_new, sched_old)):
+                           (sched_path, sched_new, sched_old),
+                           (hist_path, hist_new, hist_old)):
         new["season"] = SEASON
         if strip_updated(new) != strip_updated(old):
             new["updated"] = stamp
