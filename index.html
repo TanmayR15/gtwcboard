@@ -291,7 +291,7 @@ const ENTITIES = [
 ];
 
 const state = {
-  page: "home",               // "home" | "standings" | "results" | "schedule" | "points"
+  page: "home",               // "home" | "standings" | "results" | "schedule" | "points" | "progress"
   cup: "overall", cls: "overall", entity: "drivers",
   roundId: null, sessionId: null, resultClass: "ALL",
   stdQuery: "", resQuery: "",
@@ -484,7 +484,6 @@ function renderStandings() {
       box.appendChild(el("div", { class: "note", text: "TEAM = entry name from the driver's most recent race result. The official driver standings do not list teams." }));
     }
     holder.appendChild(box);
-    if (rows.length) holder.appendChild(renderProgress(rows, ent.key));
   };
 
   wrap.appendChild(el("div", { class: "controls" }, [
@@ -495,6 +494,55 @@ function renderStandings() {
   ]));
   paint();
   wrap.appendChild(holder);
+  return wrap;
+}
+
+function renderProgression() {
+  const wrap = el("div");
+  const cup = CUPS.find((c) => c.key === state.cup);
+  const cls = CLASSES.find((c) => c.key === state.cls);
+  const ent = ENTITIES.find((e) => e.key === state.entity);
+  const rows = (((state.standings.tables || {})[state.cup] || {})[state.cls] || {})[state.entity] || [];
+  wrap.appendChild(el("div", { class: "controls" }, [
+    selectField("CHAMPIONSHIP", CUPS, state.cup, cup.edge || cup.accent, (k) => { state.cup = k; render(); }),
+    selectField("CLASS", CLASSES, state.cls, cls.edge || cls.accent, (k) => { state.cls = k; render(); }),
+    toggleField("SHOW", ENTITIES, state.entity, (k) => { state.entity = k; render(); }),
+  ]));
+  if (!rows.length) {
+    wrap.appendChild(el("div", { class: "box" }, [el("div", { class: "empty", text: "No data yet for this table. It fills in after the next scheduled update." })]));
+    return wrap;
+  }
+  wrap.appendChild(renderProgress(rows, ent.key));
+
+  // table: points after each round
+  const hist = state.history && state.history.snapshots ? state.history.snapshots : [];
+  const key = state.cup + "/" + state.cls;
+  const snaps = hist.filter((h) => h.tables && h.tables[key] && h.tables[key][ent.key]);
+  const box = el("div", { class: "box", style: `border-left:6px solid ${cls.accent}` });
+  box.appendChild(el("span", { class: "box-title pixel", text: `POINTS AFTER EACH ROUND / ${cup.label} / ${cls.label} / ${ent.label}` }));
+  if (!snaps.length) {
+    box.appendChild(el("div", { class: "empty", text: "No history for this table yet. It builds up after each round." }));
+    wrap.appendChild(box);
+    return wrap;
+  }
+  const head = el("tr", {}, [el("th", { text: "POS" }), el("th", { text: ent.key === "drivers" ? "DRIVER" : "TEAM" })]
+    .concat(snaps.map((h) => el("th", { class: "num", text: "R" + h.round + (h.estimated ? "*" : ""), title: h.name || "" }))));
+  const body = el("tbody");
+  rows.forEach((r) => {
+    const k = normName(r.name);
+    body.appendChild(el("tr", { class: r.pos <= 3 ? "p" + r.pos : "" }, [
+      el("td", { class: "pos", text: String(r.pos) }),
+      el("td", { class: "name", text: r.name }),
+    ].concat(snaps.map((h) => {
+      const v = h.tables[key][ent.key][k];
+      return el("td", { class: "num", text: v == null ? "-" : fmtPoints(v) });
+    }))));
+  });
+  box.appendChild(el("div", { class: "tablewrap" }, [el("table", {}, [el("thead", {}, [head]), body])]));
+  box.appendChild(el("div", { class: "note", text: snaps.some((h) => h.estimated)
+    ? "Total points after each round. * = estimated from race results (poles and class rules not included); other rounds are the official standings."
+    : "Total points after each round, from the official standings." }));
+  wrap.appendChild(box);
   return wrap;
 }
 
@@ -1107,6 +1155,7 @@ function render() {
       el("button", { class: "btn main" + (state.page === "standings" ? " active" : ""), text: "STANDINGS", onclick: () => go("standings") }),
       el("button", { class: "btn main" + (state.page === "results" ? " active" : ""), text: "RESULTS", onclick: () => go("results") }),
       el("button", { class: "btn main" + (state.page === "schedule" ? " active" : ""), text: "SCHEDULE", onclick: () => go("schedule") }),
+      el("button", { class: "btn main" + (state.page === "progress" ? " active" : ""), text: "PROGRESSION", onclick: () => go("progress") }),
       el("button", { class: "btn main" + (state.page === "points" ? " active" : ""), text: "?", title: "Points guide", "aria-label": "Points guide", onclick: () => go("points") }),
     ]));
   }
@@ -1126,7 +1175,7 @@ function render() {
     app.appendChild(el("div", { class: "empty", text: "Loading..." }));
     return;
   }
-  const view = { home: renderHome, standings: renderStandings, results: renderResults, schedule: renderSchedule, points: renderPoints }[state.page];
+  const view = { home: renderHome, standings: renderStandings, results: renderResults, schedule: renderSchedule, points: renderPoints, progress: renderProgression }[state.page];
   app.appendChild(view());
 }
 
