@@ -106,7 +106,7 @@
   /* header, back button, clickable title */
   .header { align-items: center; }
   .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
-  .backbtn { font-family: 'Press Start 2P', monospace; font-size: 18px; line-height: 1; padding: 0; width: 40px; height: 40px; flex: none;
+  .backbtn { font-family: 'Press Start 2P', monospace; display: flex; align-items: center; justify-content: center; padding: 0; width: 40px; height: 40px; flex: none;
     border: 3px solid var(--ink); background: var(--bg); color: var(--ink); cursor: pointer; box-shadow: 4px 4px 0 var(--shadow); }
   .backbtn:hover { border-color: var(--overall); color: var(--overall); }
   .backbtn:active { transform: translate(4px, 4px); box-shadow: none; }
@@ -1021,7 +1021,11 @@ function render() {
   app.appendChild(el("div", { class: "header" }, [
     el("div", { class: "brand" }, [
       el("img", { class: "logo", src: LOGO_URI, alt: "GTWC Pit Board logo", onclick: () => go("home") }),
-      onHome ? null : el("button", { class: "backbtn", text: "←", title: "Back to home", "aria-label": "Back to home", onclick: () => go("home") }),
+      onHome ? null : (() => {
+        const b = el("button", { class: "backbtn", title: "Back to home", "aria-label": "Back to home", onclick: () => go("home") });
+        b.innerHTML = '<svg viewBox="0 0 9 9" width="18" height="18" shape-rendering="crispEdges" fill="currentColor"><rect x="3" y="1" width="1" height="1"/><rect x="2" y="2" width="1" height="1"/><rect x="1" y="3" width="1" height="3"/><rect x="2" y="6" width="1" height="1"/><rect x="3" y="7" width="1" height="1"/><rect x="2" y="4" width="6" height="1"/></svg>';
+        return b;
+      })(),
       el("div", {}, [title, el("div", { class: "subtitle", text: "STANDINGS · RESULTS · SCHEDULE · 2026 SEASON" })]),
     ]),
     el("div", { class: "updated", text: updated ? "UPDATED: " + updated : "" }),
