@@ -111,6 +111,32 @@
   .backbtn:hover { border-color: var(--overall); color: var(--overall); }
   .backbtn:active { transform: translate(4px, 4px); box-shadow: none; }
   .logo { width: 40px; height: 40px; image-rendering: pixelated; cursor: pointer; flex: none; }
+
+  /* points guide ("?" page) */
+  .pg-intro { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; }
+  .pg-intro p { margin: 0; font-size: 22px; color: var(--ink-dim); flex: 1 1 320px; }
+  .pg-legend { display: flex; gap: 14px; flex-wrap: wrap; font-family: 'Press Start 2P', monospace; font-size: 8px; color: var(--ink-muted); }
+  .pg-legend i { display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: -2px; }
+  .pg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 18px; margin-bottom: 18px; }
+  .pg-card { background: var(--panel); border: 3px solid var(--panel-edge); box-shadow: 5px 5px 0 var(--shadow); display: flex; flex-direction: column; }
+  .pg-head { padding: 12px 14px; border-bottom: 3px solid var(--c); background: var(--ct); }
+  .pg-head h3 { margin: 0 0 6px; font-family: 'Press Start 2P', monospace; font-size: 11px; line-height: 1.5; color: var(--c); }
+  .pg-head div { font-size: 20px; color: var(--ink-dim); }
+  .pg-chips { display: flex; gap: 8px; flex-wrap: wrap; padding: 10px 14px 0; }
+  .pg-chip { font-family: 'Press Start 2P', monospace; font-size: 8px; padding: 6px 8px; border: 2px solid var(--c); color: var(--c); }
+  .pg-chip b { color: var(--ink); font-weight: normal; }
+  .pg-rows { padding: 10px 14px 14px; }
+  .pg-row { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: center; padding: 3px 0; }
+  .pg-row.multi { grid-template-columns: 34px 1fr 1fr 1fr; }
+  .pg-pos { font-family: 'Press Start 2P', monospace; font-size: 9px; text-align: center; padding: 6px 0; background: var(--panel-edge); color: #F2F2F2; }
+  .pg-row.p1 .pg-pos { background: var(--gold); color: #000; } .pg-row.p2 .pg-pos { background: var(--silver); color: #000; } .pg-row.p3 .pg-pos { background: var(--bronze); color: #000; }
+  .pg-bar { position: relative; height: 26px; background: var(--bg); border: 2px solid var(--panel-edge); }
+  .pg-bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--c); opacity: .85; }
+  .pg-bar span { position: relative; display: block; padding: 0 8px; line-height: 22px; font-size: 20px; color: #fff; text-shadow: 2px 2px 0 #000; }
+  .pg-colh { display: grid; grid-template-columns: 34px 1fr 1fr 1fr; gap: 10px; font-family: 'Press Start 2P', monospace; font-size: 7px; color: var(--ink-muted); padding-bottom: 4px; }
+  .pg-note { padding: 0 14px 14px; font-size: 19px; color: var(--ink-muted); margin-top: auto; }
+  .pg-rules { margin: 0; padding-left: 20px; font-size: 21px; color: var(--ink-dim); }
+  .pg-rules li { margin: 4px 0; }
   h1.pixel.link { cursor: pointer; }
   h1.pixel.link:hover { color: var(--overall); }
 
@@ -258,7 +284,7 @@ const ENTITIES = [
 ];
 
 const state = {
-  page: "home",               // "home" | "standings" | "results" | "schedule"
+  page: "home",               // "home" | "standings" | "results" | "schedule" | "points"
   cup: "overall", cls: "overall", entity: "drivers",
   roundId: null, sessionId: null, resultClass: "ALL",
   stdQuery: "", resQuery: "",
@@ -891,6 +917,81 @@ function renderSchedule() {
 }
 
 /* ---------- navigation + page frame ---------- */
+// ---- points guide ("?" page) ----
+const TEN = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const POINT_TABLES = [
+  { id: "sprint", title: "SPRINT CUP", sub: "1-hour races · two per round · points count for every race", c: "var(--orange)", ct: "var(--orange-tint)",
+    pts: [16.5, 12, 9.5, 7.5, 6, 4, 3, 2, 1, 0.5], pole: "1 point per pole", max: 2 * (16.5 + 1), maxNote: "both races + 2 poles",
+    note: "Used at the Sprint rounds." },
+  { id: "e3", title: "ENDURANCE · 3 HOURS", sub: "One race per round · 3-hour distance", c: "var(--blue)", ct: "var(--blue-tint)",
+    pts: [25, 18, 15, 12, 10, 8, 6, 4, 2, 1], pole: "1 point for pole", max: 26, maxNote: "win + pole",
+    note: "Monza, Nürburgring and Portimão." },
+  { id: "e6", title: "ENDURANCE · 6 HOURS", sub: "One race per round · 6-hour distance", c: "var(--blue)", ct: "var(--blue-tint)",
+    pts: [33, 24, 19, 15, 12, 9, 6, 4, 2, 1], pole: "1 point for pole", max: 34, maxNote: "win + pole",
+    note: "Paul Ricard." },
+  { id: "spa", title: "24 HOURS OF SPA", sub: "Points at 6 hours, 12 hours and the finish", c: "var(--overall)", ct: "#33230A",
+    cols: ["6 HRS", "12 HRS", "FINISH"], multi: [[12, 9, 7, 6, 5, 4, 3, 2, 1, 0], [12, 9, 7, 6, 5, 4, 3, 2, 1, 0], [25, 18, 15, 12, 10, 8, 6, 4, 2, 1]],
+    pole: "Super Pole: 3 · 2 · 1 points", max: 12 + 12 + 25 + 3, maxNote: "all three + Super Pole",
+    note: "The biggest points haul of the season." },
+];
+
+function fmtPts(v) { return Number.isInteger(v) ? String(v) : v.toFixed(1); }
+
+function pointsCard(t) {
+  const rows = [];
+  if (t.multi) {
+    rows.push(el("div", { class: "pg-colh" }, [el("span", {})].concat(t.cols.map((c) => el("span", { text: c })))));
+    TEN.forEach((p, i) => {
+      rows.push(el("div", { class: "pg-row multi p" + p }, [el("div", { class: "pg-pos", text: String(p) })].concat(
+        t.multi.map((col) => el("div", { class: "pg-bar" }, [
+          el("i", { style: "width:" + Math.round((col[i] / 25) * 100) + "%" }),
+          el("span", { text: fmtPts(col[i]) }),
+        ])))));
+    });
+  } else {
+    const top = t.pts[0];
+    TEN.forEach((p, i) => {
+      rows.push(el("div", { class: "pg-row p" + p }, [
+        el("div", { class: "pg-pos", text: String(p) }),
+        el("div", { class: "pg-bar" }, [el("i", { style: "width:" + Math.round((t.pts[i] / top) * 100) + "%" }), el("span", { text: fmtPts(t.pts[i]) })]),
+      ]));
+    });
+  }
+  return el("div", { class: "pg-card", style: "--c:" + t.c + ";--ct:" + t.ct }, [
+    el("div", { class: "pg-head" }, [el("h3", { text: t.title }), el("div", { text: t.sub })]),
+    el("div", { class: "pg-chips" }, [
+      el("span", { class: "pg-chip" }, ["POLE ", el("b", { text: t.pole })]),
+      el("span", { class: "pg-chip" }, ["MAX ", el("b", { text: fmtPts(t.max) + " (" + t.maxNote + ")" })]),
+    ]),
+    el("div", { class: "pg-rows" }, rows),
+    el("div", { class: "pg-note", text: t.note }),
+  ]);
+}
+
+function renderPoints() {
+  const wrap = el("div", {});
+  wrap.appendChild(el("div", { class: "box" }, [
+    el("div", { class: "pg-intro" }, [
+      el("p", { text: "How the championship points are awarded. Only the top 10 in each race score, and the Sprint and Endurance points are added together for the Overall title." }),
+      el("div", { class: "pg-legend" }, [
+        el("span", {}, [el("i", { style: "background:var(--orange)" }), "SPRINT"]),
+        el("span", {}, [el("i", { style: "background:var(--blue)" }), "ENDURANCE"]),
+        el("span", {}, [el("i", { style: "background:var(--overall)" }), "24H SPA"]),
+      ]),
+    ]),
+  ]));
+  wrap.appendChild(el("div", { class: "pg-grid" }, POINT_TABLES.map(pointsCard)));
+  wrap.appendChild(el("div", { class: "box" }, [
+    el("ul", { class: "pg-rules" }, [
+      el("li", { text: "A car must complete at least 75% of the winner's race distance to be classified and score." }),
+      el("li", { text: "In Endurance races each driver must drive at least 25 minutes to earn points." }),
+      el("li", { text: "Gold, Silver and Bronze are separate class championships based on driver categories. The tables above are the overall scale; class scoring follows the official regulations." }),
+      el("li", { text: "Source: published 2026 season scoring tables. Check the official regulations for the final word." }),
+    ]),
+  ]));
+  return wrap;
+}
+
 function go(page) { state.page = page; render(); window.scrollTo(0, 0); }
 function openSchedule(roundNo) {
   if (roundNo != null) state.schedOpen.add(roundNo);
@@ -931,6 +1032,7 @@ function render() {
       el("button", { class: "btn main" + (state.page === "standings" ? " active" : ""), text: "STANDINGS", onclick: () => go("standings") }),
       el("button", { class: "btn main" + (state.page === "results" ? " active" : ""), text: "RESULTS", onclick: () => go("results") }),
       el("button", { class: "btn main" + (state.page === "schedule" ? " active" : ""), text: "SCHEDULE", onclick: () => go("schedule") }),
+      el("button", { class: "btn main" + (state.page === "points" ? " active" : ""), text: "?", title: "Points guide", "aria-label": "Points guide", onclick: () => go("points") }),
     ]));
   }
 
@@ -949,7 +1051,7 @@ function render() {
     app.appendChild(el("div", { class: "empty", text: "Loading..." }));
     return;
   }
-  const view = { home: renderHome, standings: renderStandings, results: renderResults, schedule: renderSchedule }[state.page];
+  const view = { home: renderHome, standings: renderStandings, results: renderResults, schedule: renderSchedule, points: renderPoints }[state.page];
   app.appendChild(view());
 }
 
