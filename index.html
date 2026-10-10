@@ -295,12 +295,20 @@ const ENTITIES = [
 
 // Series the site can show. GTWC keeps its files in data/; the others use their own folder.
 const SERIES = [
-  { id: "gtwc", label: "GTWC EUROPE", dir: "data" },
-  { id: "f1",   label: "FORMULA 1",   dir: "data/f1" },
-  { id: "wec",  label: "WEC",         dir: "data/wec" },
-  { id: "igtc", label: "IGTC",        dir: "data/igtc" },
+  { id: "gtwc", label: "GTWC EUROPE", dir: "data", cups: ["overall", "sprint", "endurance"], classes: ["overall", "gold", "silver", "bronze"],
+    tags: { sprint: "SPRINT CUP", endurance: "ENDURANCE CUP" } },
+  { id: "f1",   label: "FORMULA 1",   dir: "data/f1", cups: ["overall"], classes: ["overall"],
+    tags: { sprint: "SPRINT WEEKEND", endurance: "GRAND PRIX" } },
+  { id: "wec",  label: "WEC",         dir: "data/wec", cups: ["overall"], classes: ["overall"], tags: { sprint: "SPRINT", endurance: "RACE" } },
+  { id: "igtc", label: "IGTC",        dir: "data/igtc", cups: ["overall"], classes: ["overall"], tags: { sprint: "SPRINT", endurance: "RACE" } },
 ];
 function seriesInfo(id) { return SERIES.find((x) => x.id === id) || SERIES[0]; }
+function curSeries() { return seriesInfo(state.series); }
+// Only the championships and classes the current series has.
+function cupList() { return CUPS.filter((c) => curSeries().cups.includes(c.key)); }
+function classList() { return CLASSES.filter((c) => curSeries().classes.includes(c.key)); }
+function tagLabel(key) { return curSeries().tags[key] || key.toUpperCase(); }
+function isGtwc() { return state.series === "gtwc"; }
 function initialSeries() {
   try {
     const q = new URLSearchParams(location.search).get("series");
@@ -521,16 +529,16 @@ function renderStandings() {
     if (state.stdQuery.trim() && rows.length) {
       box.appendChild(el("div", { class: "note", text: `Showing ${shown.length} of ${rows.length}. Positions are the official ones.` }));
     }
-    box.appendChild(el("div", { class: "note", text: "Overall is the Pro-inclusive table. The official site does not publish a separate Pro table." }));
-    if (ent.key === "drivers") {
+    if (isGtwc()) box.appendChild(el("div", { class: "note", text: "Overall is the Pro-inclusive table. The official site does not publish a separate Pro table." }));
+    if (ent.key === "drivers" && isGtwc()) {
       box.appendChild(el("div", { class: "note", text: "TEAM = entry name from the driver's most recent race result. The official driver standings do not list teams." }));
     }
     holder.appendChild(box);
   };
 
   wrap.appendChild(el("div", { class: "controls" }, [
-    selectField("CHAMPIONSHIP", CUPS, state.cup, cup.edge || cup.accent, (k) => { state.cup = k; render(); }),
-    selectField("CLASS", CLASSES, state.cls, cls.edge || cls.accent, (k) => { state.cls = k; render(); }),
+    cupList().length > 1 ? selectField("CHAMPIONSHIP", cupList(), state.cup, cup.edge || cup.accent, (k) => { state.cup = k; render(); }) : null,
+    classList().length > 1 ? selectField("CLASS", classList(), state.cls, cls.edge || cls.accent, (k) => { state.cls = k; render(); }) : null,
     toggleField("SHOW", ENTITIES, state.entity, (k) => { state.entity = k; render(); }),
     searchField(state.stdQuery, ent.key === "drivers" ? "SEARCH DRIVER OR TEAM" : "SEARCH TEAM", (q) => { state.stdQuery = q; paint(); }),
   ]));
@@ -546,8 +554,8 @@ function renderProgression() {
   const ent = ENTITIES.find((e) => e.key === state.entity);
   const rows = (((state.standings.tables || {})[state.cup] || {})[state.cls] || {})[state.entity] || [];
   wrap.appendChild(el("div", { class: "controls" }, [
-    selectField("CHAMPIONSHIP", CUPS, state.cup, cup.edge || cup.accent, (k) => { state.cup = k; render(); }),
-    selectField("CLASS", CLASSES, state.cls, cls.edge || cls.accent, (k) => { state.cls = k; render(); }),
+    cupList().length > 1 ? selectField("CHAMPIONSHIP", cupList(), state.cup, cup.edge || cup.accent, (k) => { state.cup = k; render(); }) : null,
+    classList().length > 1 ? selectField("CLASS", classList(), state.cls, cls.edge || cls.accent, (k) => { state.cls = k; render(); }) : null,
     toggleField("SHOW", ENTITIES, state.entity, (k) => { state.entity = k; render(); }),
   ]));
   if (!rows.length) {
@@ -737,6 +745,10 @@ function roundStatus(r, now) {
 }
 // Sprint rounds have two races (Race 1 and Race 2); Endurance rounds have a single Main Race.
 function roundCup(r) {
+  if (state.series === "f1") {                           // a Sprint session makes it a sprint weekend
+    if (!(r.sessions || []).length) return "";
+    return (r.sessions || []).some((x) => /^sprint$/i.test(x.name || "")) ? "sprint" : "endurance";
+  }
   const races = (r.sessions || []).filter((x) => x.kind === "race").length;
   if (races >= 2) return "sprint";
   if (races === 1) return "endurance";
@@ -746,7 +758,7 @@ function cupTag(r) {
   const c = roundCup(r);
   if (!c) return null;
   const cup = CUPS.find((x) => x.key === c);
-  return el("span", { class: "cuptag", style: `color:${cup.accent}`, text: "\u00b7 " + cup.label });
+  return el("span", { class: "cuptag", style: `color:${cup.accent}`, text: "\u00b7 " + tagLabel(c) });
 }
 function scheduleRounds() { return ((state.schedule || {}).rounds || []).slice().sort((a, b) => a.round - b.round); }
 function nextRound(now) { return scheduleRounds().find((r) => roundStatus(r, now) !== "done") || null; }
@@ -878,8 +890,8 @@ function renderHomePaddock() {
   track.appendChild(car);
   box.appendChild(track);
   box.appendChild(el("div", { class: "legend" }, [
-    el("span", {}, [el("i", { style: "background:var(--orange)" }), "SPRINT CUP"]),
-    el("span", {}, [el("i", { style: "background:var(--blue)" }), "ENDURANCE CUP"]),
+    el("span", {}, [el("i", { style: "background:var(--orange)" }), tagLabel("sprint")]),
+    el("span", {}, [el("i", { style: "background:var(--blue)" }), tagLabel("endurance")]),
     el("span", { text: "CLICK A ROUND FOR ITS SCHEDULE" }),
   ]));
   wrap.appendChild(box);
@@ -932,7 +944,7 @@ function renderHomeArcade() {
         onclick: () => openSchedule(r.round) }, [el("b", { text: `ROUND ${r.round}` }), shortRound(r)]));
     });
     box.appendChild(grid);
-    box.appendChild(el("div", { class: "note", text: "ORANGE TOP EDGE = SPRINT CUP · BLUE TOP EDGE = ENDURANCE CUP · TICK = FINISHED" }));
+    box.appendChild(el("div", { class: "note", text: `ORANGE TOP EDGE = ${tagLabel("sprint")} · BLUE TOP EDGE = ${tagLabel("endurance")} · TICK = FINISHED` }));
     wrap.appendChild(box);
   } else noScheduleBox(wrap);
 
@@ -1037,6 +1049,22 @@ const POINT_TABLES = [
     note: "The biggest points haul of the season." },
 ];
 
+const F1_TABLES = [
+  { id: "gp", title: "GRAND PRIX", sub: "The Sunday race · top 10 score", c: "var(--blue)", ct: "var(--blue-tint)",
+    pts: [25, 18, 15, 12, 10, 8, 6, 4, 2, 1], max: 25, maxNote: "a win", note: "Every round." },
+  { id: "sprint", title: "SPRINT", sub: "The short Saturday race · top 8 score", c: "var(--orange)", ct: "var(--orange-tint)",
+    pts: [8, 7, 6, 5, 4, 3, 2, 1], max: 8, maxNote: "a win", note: "Sprint weekends only." },
+];
+const POINT_GUIDES = {
+  gtwc: { tables: POINT_TABLES },
+  f1: { tables: F1_TABLES,
+    intro: "How the championship points are awarded. Each driver scores for the drivers' title, and a constructor adds up the points of both its cars.",
+    legend: [["var(--blue)", "GRAND PRIX"], ["var(--orange)", "SPRINT"]],
+    rules: ["Sprint points are only awarded on sprint weekends, on top of the Grand Prix points.",
+      "There is no point for pole position or for the fastest lap.",
+      "The drivers' champion is the driver with the most points; constructors are ranked on the combined points of their cars.",
+      "Source: published Formula 1 scoring rules. Check the official regulations for the final word."] },
+};
 function fmtPts(v) { return Number.isInteger(v) ? String(v) : v.toFixed(1); }
 
 function pointsCard(t) {
@@ -1052,7 +1080,7 @@ function pointsCard(t) {
     });
   } else {
     const top = t.pts[0];
-    TEN.forEach((p, i) => {
+    TEN.slice(0, t.pts.length).forEach((p, i) => {
       rows.push(el("div", { class: "pg-row p" + p }, [
         el("div", { class: "pg-pos", text: String(p) }),
         el("div", { class: "pg-bar" }, [el("i", { style: "width:" + Math.round((t.pts[i] / top) * 100) + "%" }), el("span", { text: fmtPts(t.pts[i]) })]),
@@ -1062,7 +1090,7 @@ function pointsCard(t) {
   return el("div", { class: "pg-card", style: "--c:" + t.c + ";--ct:" + t.ct }, [
     el("div", { class: "pg-head" }, [el("h3", { text: t.title }), el("div", { text: t.sub })]),
     el("div", { class: "pg-chips" }, [
-      el("span", { class: "pg-chip" }, ["POLE ", el("b", { text: t.pole })]),
+      t.pole ? el("span", { class: "pg-chip" }, ["POLE ", el("b", { text: t.pole })]) : null,
       el("span", { class: "pg-chip" }, ["MAX ", el("b", { text: fmtPts(t.max) + " (" + t.maxNote + ")" })]),
     ]),
     el("div", { class: "pg-rows" }, rows),
@@ -1072,6 +1100,16 @@ function pointsCard(t) {
 
 function renderPoints() {
   const wrap = el("div", {});
+  const guide = POINT_GUIDES[state.series];
+  if (guide && guide.rules) {                              // a non-GTWC series with its own guide
+    wrap.appendChild(el("div", { class: "box" }, [el("div", { class: "pg-intro" }, [
+      el("p", { text: guide.intro }),
+      el("div", { class: "pg-legend" }, guide.legend.map(([c, t]) => el("span", {}, [el("i", { style: "background:" + c }), t]))),
+    ])]));
+    wrap.appendChild(el("div", { class: "pg-grid" }, guide.tables.map(pointsCard)));
+    wrap.appendChild(el("div", { class: "box" }, [el("ul", { class: "pg-rules" }, guide.rules.map((x) => el("li", { text: x })))]));
+    return wrap;
+  }
   wrap.appendChild(el("div", { class: "box" }, [
     el("div", { class: "pg-intro" }, [
       el("p", { text: "How the championship points are awarded. Only the top 10 in each race score, and the Sprint and Endurance points are added together for the Overall title." }),

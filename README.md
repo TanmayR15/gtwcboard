@@ -18,6 +18,7 @@ Standings, race results, schedule in IST, points guide and points progression. A
 
 ## 🕹️ What it does
 
+- **Series dropdown**: switch between GTWC Europe, Formula 1, WEC and IGTC. The choice is remembered on every page. Formula 1 is live; WEC and IGTC are coming.
 - **Home**: a landing page with a live countdown to the next session, the season progress, the championship leaders and a round selector. Two looks to pick from: the arcade style and the paddock tower.
 - **Standings**: Overall, Sprint Cup and Endurance Cup, split by class (Overall, Gold, Silver, Bronze), for drivers or teams, with search.
 - **Results**: every race classification, round by round, including the Spa 24 Hours checkpoints.
@@ -65,6 +66,8 @@ Standings, race results, schedule in IST, points guide and points progression. A
 | `data/history.json` | Points after each round, for the progression chart |
 | `scripts/scrape.py` | The scraper |
 | `scripts/history.py` | Builds the points history |
+| `scripts/f1.py` | Formula 1 updater (uses a free data API), writes `data/f1/` |
+| `data/f1/` | Formula 1 standings, results, schedule and history |
 | `scripts/show_pdf.py` | Helper to inspect an official timetable PDF |
 | `logo.svg` | Site logo and tab icon |
 | `.github/workflows/update.yml` | The scheduled update job |
