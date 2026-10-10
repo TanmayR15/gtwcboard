@@ -1,0 +1,70 @@
+{
+ "season": 2026,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "6 Hours of Imola",
+   "country": "Italy",
+   "start": "",
+   "end": "",
+   "sessions": []
+  },
+  {
+   "round": 2,
+   "name": "TotalEnergies 6 Hours of Spa-Francorchamps",
+   "country": "Belgium",
+   "start": "",
+   "end": "",
+   "sessions": []
+  },
+  {
+   "round": 3,
+   "name": "24 Hours of Le Mans",
+   "country": "France",
+   "start": "",
+   "end": "",
+   "sessions": []
+  },
+  {
+   "round": 4,
+   "name": "Rolex 6 Hours of São Paulo",
+   "country": "Brazil",
+   "start": "",
+   "end": "",
+   "sessions": []
+  },
+  {
+   "round": 5,
+   "name": "Lone Star Le Mans",
+   "country": "France",
+   "start": "",
+   "end": "",
+   "sessions": []
+  },
+  {
+   "round": 6,
+   "name": "6 Hours of Fuji",
+   "country": "Japan",
+   "start": "",
+   "end": "",
+   "sessions": []
+  },
+  {
+   "round": 7,
+   "name": "6 Hours of Barcelona",
+   "country": "Spain",
+   "start": "",
+   "end": "",
+   "sessions": []
+  },
+  {
+   "round": 8,
+   "name": "6 Hours of Monza",
+   "country": "Italy",
+   "start": "",
+   "end": "",
+   "sessions": []
+  }
+ ],
+ "updated": "2026-10-10 18:54 UTC"
+}

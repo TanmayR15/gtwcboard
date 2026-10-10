@@ -1,0 +1,462 @@
+{
+ "season": 2026,
+ "tables": {
+  "overall": {
+   "hypercar": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "#8 HARTLEY / HIRAKAWA / BUEMI",
+      "team": "TOYOTA",
+      "total": 89
+     },
+     {
+      "pos": 2,
+      "name": "#7 KOBAYASHI / CONWAY / DE VRIES",
+      "team": "TOYOTA",
+      "total": 79
+     },
+     {
+      "pos": 3,
+      "name": "#20 RAST / FRIJNS",
+      "team": "BMW",
+      "total": 75
+     },
+     {
+      "pos": 4,
+      "name": "#15 MAGNUSSEN / MARCIELLO",
+      "team": "BMW",
+      "total": 69
+     },
+     {
+      "pos": 5,
+      "name": "#20 VAN DER LINDE",
+      "team": "BMW",
+      "total": 65
+     },
+     {
+      "pos": 6,
+      "name": "#15 VANTHOOR",
+      "team": "BMW",
+      "total": 63
+     },
+     {
+      "pos": 7,
+      "name": "#51 GUIDI / GIOVINAZZI / CALADO",
+      "team": "FERRARI",
+      "total": 59
+     },
+     {
+      "pos": 8,
+      "name": "#35 MILESI / HABSBURG",
+      "team": "ALPINE",
+      "total": 56
+     },
+     {
+      "pos": 9,
+      "name": "#50 FUOCO / MOLINA / NIELSEN",
+      "team": "FERRARI",
+      "total": 54
+     },
+     {
+      "pos": 10,
+      "name": "#12 NATO / STEVENS",
+      "team": "CADILLAC",
+      "total": 50
+     },
+     {
+      "pos": 11,
+      "name": "#38 BAMBER / BOURDAIS",
+      "team": "CADILLAC",
+      "total": 44
+     },
+     {
+      "pos": 12,
+      "name": "#35 DA COSTA",
+      "team": "ALPINE",
+      "total": 44
+     },
+     {
+      "pos": 13,
+      "name": "#007 TINCKNELL / GAMBLE",
+      "team": "ASTON MARTIN",
+      "total": 42
+     },
+     {
+      "pos": 14,
+      "name": "#38 AITKEN",
+      "team": "CADILLAC",
+      "total": 40
+     },
+     {
+      "pos": 15,
+      "name": "#36 GOUNON / MARTINS",
+      "team": "ALPINE",
+      "total": 32
+     },
+     {
+      "pos": 16,
+      "name": "#83 HANSON / KUBICA / YE",
+      "team": "FERRARI",
+      "total": 31
+     },
+     {
+      "pos": 17,
+      "name": "#12 DELÉTRAZ",
+      "team": "CADILLAC",
+      "total": 26
+     },
+     {
+      "pos": 18,
+      "name": "#36 MAKOWIECKI",
+      "team": "ALPINE",
+      "total": 14
+     },
+     {
+      "pos": 19,
+      "name": "#94 DUVAL / JAKOBSEN / POURCHAIRE",
+      "team": "PEUGEOT",
+      "total": 12
+     },
+     {
+      "pos": 20,
+      "name": "#17 LOTTERER / DERANI / JAUBERT",
+      "team": "GENESIS",
+      "total": 10
+     },
+     {
+      "pos": 21,
+      "name": "#007 GUNN",
+      "team": "ASTON MARTIN",
+      "total": 8
+     },
+     {
+      "pos": 22,
+      "name": "#93 CASSIDY / DI RESTA / VANDOORNE",
+      "team": "PEUGEOT",
+      "total": 6
+     },
+     {
+      "pos": 23,
+      "name": "#009 RIBERAS / SØRENSEN",
+      "team": "ASTON MARTIN",
+      "total": 4
+     },
+     {
+      "pos": 24,
+      "name": "#101 TAYLOR",
+      "team": "CADILLAC",
+      "total": 2
+     },
+     {
+      "pos": 25,
+      "name": "#19 JUNCADELLA / JAMINET / CHATIN",
+      "team": "GENESIS",
+      "total": 0
+     },
+     {
+      "pos": 26,
+      "name": "#009 DE ANGELIS",
+      "team": "ASTON MARTIN",
+      "total": 0
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "TOYOTA",
+      "total": 169
+     },
+     {
+      "pos": 2,
+      "name": "BMW",
+      "total": 146
+     },
+     {
+      "pos": 3,
+      "name": "FERRARI",
+      "total": 115
+     },
+     {
+      "pos": 4,
+      "name": "ALPINE",
+      "total": 96
+     },
+     {
+      "pos": 5,
+      "name": "CADILLAC",
+      "total": 96
+     },
+     {
+      "pos": 6,
+      "name": "ASTON MARTIN",
+      "total": 54
+     },
+     {
+      "pos": 7,
+      "name": "PEUGEOT",
+      "total": 24
+     },
+     {
+      "pos": 8,
+      "name": "GENESIS",
+      "total": 12
+     }
+    ]
+   },
+   "lmgt3": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "#33 EDGAR",
+      "team": "CORVETTE",
+      "total": 86
+     },
+     {
+      "pos": 2,
+      "name": "#33 CATSBURG",
+      "team": "CORVETTE",
+      "total": 82
+     },
+     {
+      "pos": 3,
+      "name": "#33 KEATING",
+      "team": "CORVETTE",
+      "total": 64
+     },
+     {
+      "pos": 4,
+      "name": "#27 JAMES / DRUDI / ROBICHON",
+      "team": "ASTON MARTIN",
+      "total": 62
+     },
+     {
+      "pos": 5,
+      "name": "#34 EASTWOOD / DEMPSEY / YOLUÇ",
+      "team": "CORVETTE",
+      "total": 58
+     },
+     {
+      "pos": 6,
+      "name": "#91 GÜVEN / COTTINGHAM / BOGUSLAVSKIY",
+      "team": "PORSCHE",
+      "total": 54
+     },
+     {
+      "pos": 7,
+      "name": "#21 ROVERA / HÉRIAU / MANN",
+      "team": "FERRARI",
+      "total": 54
+     },
+     {
+      "pos": 8,
+      "name": "#69 MCINTOSH / HARPER / THOMPSON",
+      "team": "BMW",
+      "total": 51
+     },
+     {
+      "pos": 9,
+      "name": "#92 PERA / LIETZ / SHAHIN",
+      "team": "PORSCHE",
+      "total": 49
+     },
+     {
+      "pos": 10,
+      "name": "#23 NEWELL / ADAM",
+      "team": "ASTON MARTIN",
+      "total": 49
+     },
+     {
+      "pos": 11,
+      "name": "#32 FARFUS / LEUNG / GELAEL",
+      "team": "BMW",
+      "total": 47
+     },
+     {
+      "pos": 12,
+      "name": "#23 BARRICHELLO",
+      "team": "ASTON MARTIN",
+      "total": 46
+     },
+     {
+      "pos": 13,
+      "name": "#78 DAVID / VAN ROMPUY",
+      "team": "LEXUS",
+      "total": 39
+     },
+     {
+      "pos": 14,
+      "name": "#10 AU / KIRCHHÖFER / FLEMING",
+      "team": "McLAREN",
+      "total": 38
+     },
+     {
+      "pos": 15,
+      "name": "#87 SCHMID / LÓPEZ / UMBRĂRESCU",
+      "team": "LEXUS",
+      "total": 38
+     },
+     {
+      "pos": 16,
+      "name": "#78 HAWKSWORTH",
+      "team": "LEXUS",
+      "total": 36
+     },
+     {
+      "pos": 17,
+      "name": "#33 MCDONALD",
+      "team": "CORVETTE",
+      "total": 22
+     },
+     {
+      "pos": 18,
+      "name": "#58 WEST / GOETHE / GEHRSITZ",
+      "team": "McLAREN",
+      "total": 22
+     },
+     {
+      "pos": 19,
+      "name": "#61 BERRY / MARTIN / ANDRADE",
+      "team": "MERCEDES",
+      "total": 17
+     },
+     {
+      "pos": 20,
+      "name": "#88 LEVORATO / SARGEANT / GATTUSO",
+      "team": "FORD",
+      "total": 16
+     },
+     {
+      "pos": 21,
+      "name": "#54 RIGON / CASTELLACCI / FLOHR",
+      "team": "FERRARI",
+      "total": 13
+     },
+     {
+      "pos": 22,
+      "name": "#77 TUCK / POWELL / PRIAULX",
+      "team": "FORD",
+      "total": 13
+     },
+     {
+      "pos": 23,
+      "name": "#79 ZELGER / HODENIUS / CRESSONI",
+      "team": "MERCEDES",
+      "total": 6
+     },
+     {
+      "pos": 24,
+      "name": "#33 VARRONE",
+      "team": "CORVETTE",
+      "total": 4
+     },
+     {
+      "pos": 25,
+      "name": "#78 MASSON",
+      "team": "LEXUS",
+      "total": 3
+     },
+     {
+      "pos": 26,
+      "name": "#23 PAUWELS",
+      "team": "ASTON MARTIN",
+      "total": 3
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "#33 TF SPORT",
+      "total": 86
+     },
+     {
+      "pos": 2,
+      "name": "#27 HEART OF RACING TEAM",
+      "total": 62
+     },
+     {
+      "pos": 3,
+      "name": "#34 RACING TEAM TURKEY BY TF",
+      "total": 58
+     },
+     {
+      "pos": 4,
+      "name": "#91 MANTHEY DK ENGINEERING",
+      "total": 54
+     },
+     {
+      "pos": 5,
+      "name": "#21 VISTA AF CORSE",
+      "total": 54
+     },
+     {
+      "pos": 6,
+      "name": "#69 TEAM WRT",
+      "total": 51
+     },
+     {
+      "pos": 7,
+      "name": "#92 THE BEND MANTHEY",
+      "total": 49
+     },
+     {
+      "pos": 8,
+      "name": "#23 HEART OF RACING TEAM",
+      "total": 49
+     },
+     {
+      "pos": 9,
+      "name": "#32 TEAM WRT",
+      "total": 47
+     },
+     {
+      "pos": 10,
+      "name": "#78 AKKODIS ASP TEAM",
+      "total": 39
+     },
+     {
+      "pos": 11,
+      "name": "#10 GARAGE 59",
+      "total": 38
+     },
+     {
+      "pos": 12,
+      "name": "#87 AKKODIS ASP TEAM",
+      "total": 38
+     },
+     {
+      "pos": 13,
+      "name": "#58 GARAGE 59",
+      "total": 22
+     },
+     {
+      "pos": 14,
+      "name": "#61 IRON LYNX",
+      "total": 17
+     },
+     {
+      "pos": 15,
+      "name": "#88 PROTON COMPETITION",
+      "total": 16
+     },
+     {
+      "pos": 16,
+      "name": "#54 VISTA AF CORSE",
+      "total": 13
+     },
+     {
+      "pos": 17,
+      "name": "#77 PROTON COMPETITION",
+      "total": 13
+     },
+     {
+      "pos": 18,
+      "name": "#79 IRON LYNX",
+      "total": 6
+     }
+    ]
+   }
+  }
+ },
+ "updated": "2026-10-10 18:54 UTC"
+}
