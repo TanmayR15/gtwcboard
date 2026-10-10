@@ -5,66 +5,529 @@
    "round": 1,
    "name": "6 Hours of Imola",
    "country": "Italy",
-   "start": "",
-   "end": "",
-   "sessions": []
+   "start": "2026-04-17",
+   "end": "2026-04-19",
+   "sessions": [
+    {
+     "name": "Free Practice 1",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-04-17T08:15:00Z",
+     "end_utc": "2026-04-17T09:45:00Z"
+    },
+    {
+     "name": "Free Practice 2",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-04-17T13:15:00Z",
+     "end_utc": "2026-04-17T14:45:00Z"
+    },
+    {
+     "name": "Free Practice 3",
+     "kind": "practice",
+     "day": "SAT",
+     "utc": "2026-04-18T08:30:00Z",
+     "end_utc": "2026-04-18T09:30:00Z"
+    },
+    {
+     "name": "Qualifying - LMGT3",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-04-18T12:30:00Z",
+     "end_utc": "2026-04-18T12:45:00Z"
+    },
+    {
+     "name": "Hyperpole - LMGT3",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-04-18T12:50:00Z",
+     "end_utc": "2026-04-18T13:02:00Z"
+    },
+    {
+     "name": "Qualifying - Hypercar",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-04-18T13:10:00Z",
+     "end_utc": "2026-04-18T13:25:00Z"
+    },
+    {
+     "name": "Hyperpole - Hypercar",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-04-18T13:30:00Z",
+     "end_utc": "2026-04-18T13:42:00Z"
+    },
+    {
+     "name": "Race",
+     "kind": "race",
+     "day": "SUN",
+     "utc": "2026-04-19T11:00:00Z",
+     "end_utc": "2026-04-19T17:00:00Z"
+    }
+   ]
   },
   {
    "round": 2,
    "name": "TotalEnergies 6 Hours of Spa-Francorchamps",
    "country": "Belgium",
-   "start": "",
-   "end": "",
-   "sessions": []
+   "start": "2026-05-07",
+   "end": "2026-05-09",
+   "sessions": [
+    {
+     "name": "Free Practice 1",
+     "kind": "practice",
+     "day": "THU",
+     "utc": "2026-05-07T09:00:00Z",
+     "end_utc": "2026-05-07T10:30:00Z"
+    },
+    {
+     "name": "Free Practice 2",
+     "kind": "practice",
+     "day": "THU",
+     "utc": "2026-05-07T13:40:00Z",
+     "end_utc": "2026-05-07T15:10:00Z"
+    },
+    {
+     "name": "Free Practice 3",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-05-08T08:10:00Z",
+     "end_utc": "2026-05-08T09:10:00Z"
+    },
+    {
+     "name": "Qualifying - LMGT3",
+     "kind": "qualifying",
+     "day": "FRI",
+     "utc": "2026-05-08T12:30:00Z",
+     "end_utc": "2026-05-08T12:45:00Z"
+    },
+    {
+     "name": "Hyperpole - LMGT3",
+     "kind": "qualifying",
+     "day": "FRI",
+     "utc": "2026-05-08T12:55:00Z",
+     "end_utc": "2026-05-08T13:07:00Z"
+    },
+    {
+     "name": "Qualifying - Hypercar",
+     "kind": "qualifying",
+     "day": "FRI",
+     "utc": "2026-05-08T13:20:00Z",
+     "end_utc": "2026-05-08T13:35:00Z"
+    },
+    {
+     "name": "Hyperpole - Hypercar",
+     "kind": "qualifying",
+     "day": "FRI",
+     "utc": "2026-05-08T13:45:00Z",
+     "end_utc": "2026-05-08T13:57:00Z"
+    },
+    {
+     "name": "Race",
+     "kind": "race",
+     "day": "SAT",
+     "utc": "2026-05-09T12:00:00Z",
+     "end_utc": "2026-05-09T18:00:00Z"
+    }
+   ]
   },
   {
    "round": 3,
    "name": "24 Hours of Le Mans",
    "country": "France",
-   "start": "",
-   "end": "",
-   "sessions": []
+   "start": "2026-06-10",
+   "end": "2026-06-13",
+   "sessions": [
+    {
+     "name": "Free Practice 1",
+     "kind": "practice",
+     "day": "WED",
+     "utc": "2026-06-10T12:00:00Z",
+     "end_utc": "2026-06-10T13:30:00Z"
+    },
+    {
+     "name": "Qualifying - Lmp2 & LMGT3",
+     "kind": "qualifying",
+     "day": "WED",
+     "utc": "2026-06-10T16:45:00Z",
+     "end_utc": "2026-06-10T17:00:00Z"
+    },
+    {
+     "name": "Qualifying - Hypercar",
+     "kind": "qualifying",
+     "day": "WED",
+     "utc": "2026-06-10T17:30:00Z",
+     "end_utc": "2026-06-10T17:45:00Z"
+    },
+    {
+     "name": "Free Practice 2",
+     "kind": "practice",
+     "day": "WED",
+     "utc": "2026-06-10T20:00:00Z",
+     "end_utc": "2026-06-10T21:30:00Z"
+    },
+    {
+     "name": "Free Practice 3",
+     "kind": "practice",
+     "day": "THU",
+     "utc": "2026-06-11T12:45:00Z",
+     "end_utc": "2026-06-11T13:45:00Z"
+    },
+    {
+     "name": "Hyperpole 1 - Lmp2 & LMGT3",
+     "kind": "qualifying",
+     "day": "THU",
+     "utc": "2026-06-11T18:00:00Z",
+     "end_utc": "2026-06-11T18:12:00Z"
+    },
+    {
+     "name": "Hyperpole 2 - Lmp2 & LMGT3",
+     "kind": "qualifying",
+     "day": "THU",
+     "utc": "2026-06-11T18:35:00Z",
+     "end_utc": "2026-06-11T18:47:00Z"
+    },
+    {
+     "name": "Hyperpole 1 - Hypercar",
+     "kind": "qualifying",
+     "day": "THU",
+     "utc": "2026-06-11T19:05:00Z",
+     "end_utc": "2026-06-11T19:17:00Z"
+    },
+    {
+     "name": "Hyperpole 2 - Hypercar",
+     "kind": "qualifying",
+     "day": "THU",
+     "utc": "2026-06-11T19:40:00Z",
+     "end_utc": "2026-06-11T19:52:00Z"
+    },
+    {
+     "name": "Free Practice 4",
+     "kind": "practice",
+     "day": "THU",
+     "utc": "2026-06-11T21:00:00Z",
+     "end_utc": "2026-06-11T22:30:00Z"
+    },
+    {
+     "name": "Warm-Up",
+     "kind": "practice",
+     "day": "SAT",
+     "utc": "2026-06-13T10:00:00Z",
+     "end_utc": "2026-06-13T11:30:00Z"
+    },
+    {
+     "name": "Race",
+     "kind": "race",
+     "day": "SAT",
+     "utc": "2026-06-13T14:00:00Z",
+     "end_utc": "2026-06-14T14:00:00Z"
+    }
+   ]
   },
   {
    "round": 4,
    "name": "Rolex 6 Hours of São Paulo",
    "country": "Brazil",
-   "start": "",
-   "end": "",
-   "sessions": []
+   "start": "2026-07-10",
+   "end": "2026-07-12",
+   "sessions": [
+    {
+     "name": "Free Practice 1",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-07-10T14:00:00Z",
+     "end_utc": "2026-07-10T15:30:00Z"
+    },
+    {
+     "name": "Free Practice 2",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-07-10T18:50:00Z",
+     "end_utc": "2026-07-10T20:20:00Z"
+    },
+    {
+     "name": "Free Practice 3",
+     "kind": "practice",
+     "day": "SAT",
+     "utc": "2026-07-11T13:10:00Z",
+     "end_utc": "2026-07-11T14:10:00Z"
+    },
+    {
+     "name": "Qualifying - LMGT3",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-07-11T17:30:00Z",
+     "end_utc": "2026-07-11T17:45:00Z"
+    },
+    {
+     "name": "Hyperpole - LMGT3",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-07-11T17:50:00Z",
+     "end_utc": "2026-07-11T18:02:00Z"
+    },
+    {
+     "name": "Qualifying - Hypercar",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-07-11T18:10:00Z",
+     "end_utc": "2026-07-11T18:25:00Z"
+    },
+    {
+     "name": "Hyperpole - Hypercar",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-07-11T18:30:00Z",
+     "end_utc": "2026-07-11T18:42:00Z"
+    },
+    {
+     "name": "Race",
+     "kind": "race",
+     "day": "SUN",
+     "utc": "2026-07-12T14:30:00Z",
+     "end_utc": "2026-07-12T20:30:00Z"
+    }
+   ]
   },
   {
    "round": 5,
    "name": "Lone Star Le Mans",
    "country": "France",
-   "start": "",
-   "end": "",
-   "sessions": []
+   "start": "2026-09-04",
+   "end": "2026-09-06",
+   "sessions": [
+    {
+     "name": "Free Practice 1",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-09-04T09:30:00Z",
+     "end_utc": "2026-09-04T11:00:00Z"
+    },
+    {
+     "name": "Free Practice 2",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-09-04T14:00:00Z",
+     "end_utc": "2026-09-04T15:30:00Z"
+    },
+    {
+     "name": "Free Practice 3",
+     "kind": "practice",
+     "day": "SAT",
+     "utc": "2026-09-05T09:00:00Z",
+     "end_utc": "2026-09-05T10:00:00Z"
+    },
+    {
+     "name": "Qualifying - LMGT3",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-09-05T13:00:00Z",
+     "end_utc": "2026-09-05T13:15:00Z"
+    },
+    {
+     "name": "Hyperpole - LMGT3",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-09-05T13:20:00Z",
+     "end_utc": "2026-09-05T13:32:00Z"
+    },
+    {
+     "name": "Qualifying - Hypercar",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-09-05T13:40:00Z",
+     "end_utc": "2026-09-05T13:55:00Z"
+    },
+    {
+     "name": "Hyperpole - Hypercar",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-09-05T14:00:00Z",
+     "end_utc": "2026-09-05T14:12:00Z"
+    },
+    {
+     "name": "Race",
+     "kind": "race",
+     "day": "SUN",
+     "utc": "2026-09-06T11:00:00Z",
+     "end_utc": "2026-09-06T17:00:00Z"
+    }
+   ]
   },
   {
    "round": 6,
    "name": "6 Hours of Fuji",
    "country": "Japan",
-   "start": "",
-   "end": "",
-   "sessions": []
+   "start": "2026-09-25",
+   "end": "2026-09-27",
+   "sessions": [
+    {
+     "name": "Free Practice 1",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-09-25T01:15:00Z",
+     "end_utc": "2026-09-25T02:45:00Z"
+    },
+    {
+     "name": "Free Practice 2",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-09-25T05:30:00Z",
+     "end_utc": "2026-09-25T07:00:00Z"
+    },
+    {
+     "name": "Free Practice 3",
+     "kind": "practice",
+     "day": "SAT",
+     "utc": "2026-09-26T00:30:00Z",
+     "end_utc": "2026-09-26T01:30:00Z"
+    },
+    {
+     "name": "Race",
+     "kind": "race",
+     "day": "SUN",
+     "utc": "2026-09-27T02:00:00Z",
+     "end_utc": "2026-09-27T08:00:00Z"
+    }
+   ]
   },
   {
    "round": 7,
    "name": "6 Hours of Barcelona",
    "country": "Spain",
-   "start": "",
-   "end": "",
-   "sessions": []
+   "start": "2026-10-16",
+   "end": "2026-10-18",
+   "sessions": [
+    {
+     "name": "Free Practice 1",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-10-16T09:30:00Z",
+     "end_utc": "2026-10-16T11:00:00Z"
+    },
+    {
+     "name": "Free Practice 2",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-10-16T14:30:00Z",
+     "end_utc": "2026-10-16T16:00:00Z"
+    },
+    {
+     "name": "Free Practice 3 - LMGT3",
+     "kind": "practice",
+     "day": "SAT",
+     "utc": "2026-10-17T06:50:00Z",
+     "end_utc": "2026-10-17T07:50:00Z"
+    },
+    {
+     "name": "Qualifying - LMGT3",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-10-17T09:50:00Z",
+     "end_utc": "2026-10-17T10:05:00Z"
+    },
+    {
+     "name": "Hyperpole - LMGT3",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-10-17T10:10:00Z",
+     "end_utc": "2026-10-17T10:22:00Z"
+    },
+    {
+     "name": "Free Practice 3 - Hypercar",
+     "kind": "practice",
+     "day": "SAT",
+     "utc": "2026-10-17T10:40:00Z",
+     "end_utc": "2026-10-17T11:40:00Z"
+    },
+    {
+     "name": "Qualifying - Hypercar",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-10-17T13:40:00Z",
+     "end_utc": "2026-10-17T13:55:00Z"
+    },
+    {
+     "name": "Hyperpole - Hypercar",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-10-17T14:00:00Z",
+     "end_utc": "2026-10-17T14:12:00Z"
+    },
+    {
+     "name": "Race",
+     "kind": "race",
+     "day": "SUN",
+     "utc": "2026-10-18T10:00:00Z",
+     "end_utc": "2026-10-18T16:00:00Z"
+    }
+   ]
   },
   {
    "round": 8,
    "name": "6 Hours of Monza",
    "country": "Italy",
-   "start": "",
-   "end": "",
-   "sessions": []
+   "start": "2026-11-06",
+   "end": "2026-11-08",
+   "sessions": [
+    {
+     "name": "Free Practice 1",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-11-06T09:30:00Z",
+     "end_utc": "2026-11-06T11:00:00Z"
+    },
+    {
+     "name": "Free Practice 2",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-11-06T13:30:00Z",
+     "end_utc": "2026-11-06T15:00:00Z"
+    },
+    {
+     "name": "Free Practice 3",
+     "kind": "practice",
+     "day": "SAT",
+     "utc": "2026-11-07T09:30:00Z",
+     "end_utc": "2026-11-07T10:30:00Z"
+    },
+    {
+     "name": "Qualifying - LMGT3",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-11-07T13:20:00Z",
+     "end_utc": "2026-11-07T13:35:00Z"
+    },
+    {
+     "name": "Hyperpole - LMGT3",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-11-07T13:40:00Z",
+     "end_utc": "2026-11-07T13:52:00Z"
+    },
+    {
+     "name": "Qualifying - Hypercar",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-11-07T14:00:00Z",
+     "end_utc": "2026-11-07T14:15:00Z"
+    },
+    {
+     "name": "Hyperpole - Hypercar",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-11-07T14:20:00Z",
+     "end_utc": "2026-11-07T14:32:00Z"
+    },
+    {
+     "name": "Race",
+     "kind": "race",
+     "day": "SUN",
+     "utc": "2026-11-08T10:00:00Z",
+     "end_utc": "2026-11-08T16:00:00Z"
+    }
+   ]
   }
  ],
- "updated": "2026-10-10 18:54 UTC"
+ "updated": "2026-10-10 19:07 UTC"
 }
