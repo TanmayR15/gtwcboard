@@ -33,6 +33,11 @@ jobs:
         continue-on-error: true
         run: python scripts/f1.py
 
+      # World Endurance Championship reads the official fiawec.com pages.
+      - name: Update WEC data
+        continue-on-error: true
+        run: python scripts/wec.py
+
       - name: Commit changes
         run: |
           if [ -n "$(git status --porcelain data)" ]; then
