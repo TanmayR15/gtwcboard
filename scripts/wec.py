@@ -550,6 +550,37 @@ def parse_results(html, crews, default_cls=None):
     return rows
 
 
+def live_component_rows(page, crews, class_label="LMGT3"):
+    """The results page is a Symfony Live Component: the category <select> asks the server for a re-render.
+    Ask the same way: GET <component url>?props=<props>&updated={"categoryId": <LMGT3 id>}."""
+    soup = BeautifulSoup(page, "lxml")
+    root = soup.find(attrs={"data-live-props-value": True})
+    sel = next((x for x in soup.find_all("select") if x.get("data-model") and
+                any(text_of(o).lower() == class_label.lower() for o in x.find_all("option"))), None)
+    if root is None or sel is None:
+        print(f"  ! live component not found (root={root is not None}, select={sel is not None})", flush=True)
+        return []
+    url = urljoin(BASE, root.get("data-live-url-value") or "")
+    props, model = root.get("data-live-props-value") or "{}", sel.get("data-model")
+    value = next(o.get("value") for o in sel.find_all("option") if text_of(o).lower() == class_label.lower())
+    attempts = [("GET", {"props": props, "updated": json.dumps({model: value})})]
+    for method, params in attempts:
+        try:
+            r = requests.get(url, params=params, headers={**HEADERS, "Accept": "application/vnd.live-component+html"},
+                             timeout=(10, 25))
+            time.sleep(DELAY)
+        except requests.RequestException as e:
+            print(f"  ! live component {type(e).__name__}", flush=True)
+            continue
+        rows = [x for x in parse_results(r.text, crews, class_label) if x["cls"] == class_label] if r.status_code == 200 else []
+        print(f"  live component {method} -> {r.status_code}, {len(rows)} {class_label} rows", flush=True)
+        if rows:
+            return rows
+        if r.status_code != 200:
+            print("    reply:", re.sub(r"\s+", " ", r.text)[:160], flush=True)
+    return []
+
+
 def extra_class_rows(page, crews):
     """The results page may show only Hypercar; look for a link or tab that leads to the LMGT3 table."""
     soup = BeautifulSoup(page, "lxml")
@@ -612,7 +643,7 @@ def scrape_results(old, rounds, schedule, latest_done, crews):
         page = fetch(link)
         rows = parse_results(page, crews) if page else []
         if page and not any(r["cls"] == "LMGT3" for r in rows):
-            rows += extra_class_rows(page, crews)
+            rows += live_component_rows(page, crews) or extra_class_rows(page, crews)
         if page and not rows:
             tabs = BeautifulSoup(page, "lxml").find_all("table")
             print(f"  ! results page has {len(tabs)} tables; headers: {[table_headers(t)[:6] for t in tabs[:2]]}", flush=True)
