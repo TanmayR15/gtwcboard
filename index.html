@@ -569,29 +569,38 @@ function renderProgression() {
   const key = state.cup + "/" + state.cls;
   const snaps = hist.filter((h) => h.tables && h.tables[key] && h.tables[key][ent.key]);
   const box = el("div", { class: "box", style: `border-left:6px solid ${cls.accent}` });
-  box.appendChild(el("span", { class: "box-title pixel", text: `POINTS AFTER EACH ROUND / ${cup.label} / ${cls.label} / ${ent.label}` }));
+  box.appendChild(el("span", { class: "box-title pixel", text: `POINTS EARNED IN EACH ROUND / ${cup.label} / ${cls.label} / ${ent.label}` }));
   if (!snaps.length) {
     box.appendChild(el("div", { class: "empty", text: "No history for this table yet. It builds up after each round." }));
     wrap.appendChild(box);
     return wrap;
   }
   const head = el("tr", {}, [el("th", { text: "POS" }), el("th", { text: ent.key === "drivers" ? "DRIVER" : "TEAM" })]
-    .concat(snaps.map((h) => el("th", { class: "num", text: "R" + h.round + (h.estimated ? "*" : ""), title: h.name || "" }))));
+    .concat(snaps.map((h) => el("th", { class: "num", text: "R" + h.round + (h.estimated ? "*" : ""), title: h.name || "" })))
+    .concat([el("th", { class: "num", text: "TOTAL" })]));
   const body = el("tbody");
   rows.forEach((r) => {
     const k = normName(r.name);
     body.appendChild(el("tr", { class: r.pos <= 3 ? "p" + r.pos : "" }, [
       el("td", { class: "pos", text: String(r.pos) }),
       el("td", { class: "name", text: r.name }),
-    ].concat(snaps.map((h) => {
-      const v = h.tables[key][ent.key][k];
-      return el("td", { class: "num", text: v == null ? "-" : fmtPoints(v) });
-    }))));
+    ].concat((() => {
+      let prevTotal = 0, last = null;
+      const cells = snaps.map((h) => {
+        const v = h.tables[key][ent.key][k];
+        if (v == null) return el("td", { class: "num", text: "-" });
+        const earned = Math.round((v - prevTotal) * 100) / 100;
+        prevTotal = v; last = v;
+        return el("td", { class: "num", text: fmtPoints(earned) });
+      });
+      cells.push(el("td", { class: "num", text: last == null ? "-" : fmtPoints(last) }));
+      return cells;
+    })())));
   });
   box.appendChild(el("div", { class: "tablewrap" }, [el("table", {}, [el("thead", {}, [head]), body])]));
   box.appendChild(el("div", { class: "note", text: snaps.some((h) => h.estimated)
-    ? "Total points after each round. * = estimated from race results (poles and class rules not included); other rounds are the official standings."
-    : "Total points after each round, from the official standings." }));
+    ? "Points earned in each round (the change in the championship total). * = estimated from race results (poles and class rules not included); other rounds are the official standings."
+    : "Points earned in each round, worked out from the official standings. TOTAL is the current championship total." }));
   wrap.appendChild(box);
   return wrap;
 }
@@ -672,7 +681,7 @@ function renderResults() {
     } else {
       const head = el("tr", {}, [
         el("th", { text: "POS" }), el("th", { text: "#" }), el("th", { text: "DRIVERS" }),
-        el("th", { text: "TEAM" }), el("th", { text: "CAR" }), el("th", { class: "num", text: "BEST LAP" }), el("th", { class: "num", text: "LAPS" }),
+        el("th", { text: "TEAM" }), el("th", { text: isGtwc() ? "CAR" : "" }), el("th", { class: "num", text: isGtwc() ? "BEST LAP" : "TIME / GAP" }), el("th", { class: "num", text: "LAPS" }),
       ]);
       const body = el("tbody");
       shown.forEach((r, i) => {
@@ -691,7 +700,9 @@ function renderResults() {
       if (state.resQuery.trim() || active !== "ALL") {
         box.appendChild(el("div", { class: "note", text: `Showing ${shown.length} of ${rows.length}. Positions are the official overall ones.` }));
       }
-      box.appendChild(el("div", { class: "note", text: "BEST LAP is each car's fastest lap. The official table does not list total race times or gaps." }));
+      box.appendChild(el("div", { class: "note", text: isGtwc()
+        ? "BEST LAP is each car's fastest lap. The official table does not list total race times or gaps."
+        : "TIME / GAP is the winner's race time, then each driver's gap behind the winner. Drivers who did not finish show their status." }));
     }
     holder.appendChild(box);
   };
