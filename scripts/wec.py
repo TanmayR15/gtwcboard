@@ -643,8 +643,9 @@ def scrape_results(old, rounds, schedule, latest_done, crews):
     for n, (slug, _url) in enumerate(rounds, start=1):
         if n > latest_done:
             continue
-        if n in have and n not in refresh and have[n].get("sessions"):
-            continue
+        stored = [r for sess in have.get(n, {}).get("sessions", []) for r in sess.get("rows", [])]
+        if n in have and n not in refresh and any(r.get("cls") == "LMGT3" for r in stored):
+            continue                                   # a finished round that already has both classes
         html = race_page(slug)
         link = result_link(html) if html else None
         if not link:
