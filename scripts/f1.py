@@ -85,6 +85,14 @@ def strip_updated(d):
     return {k: v for k, v in d.items() if k != "updated"}
 
 
+def to_int(v, default=0):
+    """int() that survives '-', '', None and other non-numbers (e.g. positionText '-')."""
+    try:
+        return int(str(v).strip())
+    except (TypeError, ValueError):
+        return default
+
+
 def num(v):
     f = float(v)
     return int(f) if f == int(f) else f
@@ -171,10 +179,10 @@ def rows_from(results):
     for x in results:
         t = (x.get("Time") or {}).get("time")
         rows.append({
-            "pos": int(x.get("position") or 0), "car": str(x.get("number", "")),
+            "pos": to_int(x.get("position")), "car": str(x.get("number", "")),
             "drivers": driver_name(x.get("Driver") or {}),
             "team": (x.get("Constructor") or {}).get("name", ""), "model": "",
-            "time": t or x.get("status", ""), "laps": int(x.get("laps") or 0), "cls": "",
+            "time": t or x.get("status", ""), "laps": to_int(x.get("laps")), "cls": "",
         })
     return rows
 
@@ -230,14 +238,14 @@ def driver_rows(lst):
     rows = []
     for x in lst.get("DriverStandings", []):
         cons = x.get("Constructors") or [{}]
-        rows.append({"pos": int(x.get("position") or x.get("positionText") or 0), "name": driver_name(x.get("Driver") or {}),
-                     "team": cons[-1].get("name", ""), "total": num(x.get("points", 0)), "wins": int(x.get("wins") or 0)})
+        rows.append({"pos": to_int(x.get("position"), to_int(x.get("positionText"))), "name": driver_name(x.get("Driver") or {}),
+                     "team": cons[-1].get("name", ""), "total": num(x.get("points", 0)), "wins": to_int(x.get("wins"))})
     return rows
 
 
 def team_rows(lst):
-    return [{"pos": int(x.get("position") or 0), "name": (x.get("Constructor") or {}).get("name", ""),
-             "total": num(x.get("points", 0)), "wins": int(x.get("wins") or 0)}
+    return [{"pos": to_int(x.get("position")), "name": (x.get("Constructor") or {}).get("name", ""),
+             "total": num(x.get("points", 0)), "wins": to_int(x.get("wins"))}
             for x in lst.get("ConstructorStandings", [])]
 
 
