@@ -1,0 +1,241 @@
+{
+ "season": 2026,
+ "tables": {
+  "overall": {
+   "overall": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Andrea Kimi Antonelli",
+      "team": "Mercedes",
+      "total": 320,
+      "wins": 8
+     },
+     {
+      "pos": 2,
+      "name": "George Russell",
+      "team": "Mercedes",
+      "total": 236,
+      "wins": 3
+     },
+     {
+      "pos": 3,
+      "name": "Lewis Hamilton",
+      "team": "Ferrari",
+      "total": 214,
+      "wins": 1
+     },
+     {
+      "pos": 4,
+      "name": "Charles Leclerc",
+      "team": "Ferrari",
+      "total": 191,
+      "wins": 1
+     },
+     {
+      "pos": 5,
+      "name": "Lando Norris",
+      "team": "McLaren",
+      "total": 188,
+      "wins": 2
+     },
+     {
+      "pos": 6,
+      "name": "Max Verstappen",
+      "team": "Red Bull",
+      "total": 188,
+      "wins": 1
+     },
+     {
+      "pos": 7,
+      "name": "Oscar Piastri",
+      "team": "McLaren",
+      "total": 128,
+      "wins": 0
+     },
+     {
+      "pos": 8,
+      "name": "Isack Hadjar",
+      "team": "Red Bull",
+      "total": 96,
+      "wins": 0
+     },
+     {
+      "pos": 9,
+      "name": "Liam Lawson",
+      "team": "Red Bull",
+      "total": 65,
+      "wins": 0
+     },
+     {
+      "pos": 10,
+      "name": "Pierre Gasly",
+      "team": "Alpine F1 Team",
+      "total": 41,
+      "wins": 0
+     },
+     {
+      "pos": 11,
+      "name": "Arvid Lindblad",
+      "team": "RB F1 Team",
+      "total": 38,
+      "wins": 0
+     },
+     {
+      "pos": 12,
+      "name": "Franco Colapinto",
+      "team": "Alpine F1 Team",
+      "total": 27,
+      "wins": 0
+     },
+     {
+      "pos": 13,
+      "name": "Oliver Bearman",
+      "team": "Haas F1 Team",
+      "total": 20,
+      "wins": 0
+     },
+     {
+      "pos": 14,
+      "name": "Gabriel Bortoleto",
+      "team": "Audi",
+      "total": 10,
+      "wins": 0
+     },
+     {
+      "pos": 15,
+      "name": "Nico Hülkenberg",
+      "team": "Audi",
+      "total": 7,
+      "wins": 0
+     },
+     {
+      "pos": 16,
+      "name": "Esteban Ocon",
+      "team": "Haas F1 Team",
+      "total": 7,
+      "wins": 0
+     },
+     {
+      "pos": 17,
+      "name": "Fernando Alonso",
+      "team": "Aston Martin",
+      "total": 7,
+      "wins": 0
+     },
+     {
+      "pos": 18,
+      "name": "Carlos Sainz",
+      "team": "Williams",
+      "total": 7,
+      "wins": 0
+     },
+     {
+      "pos": 19,
+      "name": "Alexander Albon",
+      "team": "Williams",
+      "total": 5,
+      "wins": 0
+     },
+     {
+      "pos": 20,
+      "name": "Yuki Tsunoda",
+      "team": "RB F1 Team",
+      "total": 1,
+      "wins": 0
+     },
+     {
+      "pos": 21,
+      "name": "Lance Stroll",
+      "team": "Aston Martin",
+      "total": 0,
+      "wins": 0
+     },
+     {
+      "pos": 22,
+      "name": "Valtteri Bottas",
+      "team": "Cadillac F1 Team",
+      "total": 0,
+      "wins": 0
+     },
+     {
+      "pos": 23,
+      "name": "Sergio Pérez",
+      "team": "Cadillac F1 Team",
+      "total": 0,
+      "wins": 0
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "Mercedes",
+      "total": 556,
+      "wins": 11
+     },
+     {
+      "pos": 2,
+      "name": "Ferrari",
+      "total": 405,
+      "wins": 2
+     },
+     {
+      "pos": 3,
+      "name": "McLaren",
+      "total": 316,
+      "wins": 2
+     },
+     {
+      "pos": 4,
+      "name": "Red Bull",
+      "total": 298,
+      "wins": 1
+     },
+     {
+      "pos": 5,
+      "name": "RB F1 Team",
+      "total": 90,
+      "wins": 0
+     },
+     {
+      "pos": 6,
+      "name": "Alpine F1 Team",
+      "total": 68,
+      "wins": 0
+     },
+     {
+      "pos": 7,
+      "name": "Haas F1 Team",
+      "total": 27,
+      "wins": 0
+     },
+     {
+      "pos": 8,
+      "name": "Audi",
+      "total": 17,
+      "wins": 0
+     },
+     {
+      "pos": 9,
+      "name": "Williams",
+      "total": 12,
+      "wins": 0
+     },
+     {
+      "pos": 10,
+      "name": "Aston Martin",
+      "total": 7,
+      "wins": 0
+     },
+     {
+      "pos": 11,
+      "name": "Cadillac F1 Team",
+      "total": 0,
+      "wins": 0
+     }
+    ]
+   }
+  }
+ },
+ "updated": "2026-10-10 12:41 UTC"
+}

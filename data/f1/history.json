@@ -1,0 +1,747 @@
+{
+ "season": 2026,
+ "snapshots": [
+  {
+   "round": 1,
+   "name": "Australian GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "george russell": 25,
+      "andrea kimi antonelli": 18,
+      "charles leclerc": 15,
+      "lewis hamilton": 12,
+      "lando norris": 10,
+      "max verstappen": 8,
+      "oliver bearman": 6,
+      "arvid lindblad": 4,
+      "gabriel bortoleto": 2,
+      "pierre gasly": 1,
+      "esteban ocon": 0,
+      "alexander albon": 0,
+      "liam lawson": 0,
+      "franco colapinto": 0,
+      "carlos sainz": 0,
+      "sergio perez": 0,
+      "isack hadjar": 0,
+      "oscar piastri": 0,
+      "nico hulkenberg": 0,
+      "fernando alonso": 0,
+      "valtteri bottas": 0,
+      "lance stroll": 0
+     },
+     "teams": {
+      "mercedes": 43,
+      "ferrari": 27,
+      "mclaren": 10,
+      "red bull": 8,
+      "haas f1 team": 6,
+      "rb f1 team": 4,
+      "audi": 2,
+      "alpine f1 team": 1,
+      "williams": 0,
+      "cadillac f1 team": 0,
+      "aston martin": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 2,
+   "name": "Chinese GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "george russell": 51,
+      "andrea kimi antonelli": 47,
+      "charles leclerc": 34,
+      "lewis hamilton": 33,
+      "oliver bearman": 17,
+      "lando norris": 15,
+      "pierre gasly": 9,
+      "max verstappen": 8,
+      "liam lawson": 8,
+      "arvid lindblad": 4,
+      "isack hadjar": 4,
+      "oscar piastri": 3,
+      "carlos sainz": 2,
+      "gabriel bortoleto": 2,
+      "franco colapinto": 1,
+      "esteban ocon": 0,
+      "nico hulkenberg": 0,
+      "alexander albon": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0,
+      "fernando alonso": 0,
+      "lance stroll": 0
+     },
+     "teams": {
+      "mercedes": 98,
+      "ferrari": 67,
+      "mclaren": 18,
+      "haas f1 team": 17,
+      "red bull": 12,
+      "rb f1 team": 12,
+      "alpine f1 team": 10,
+      "audi": 2,
+      "williams": 2,
+      "cadillac f1 team": 0,
+      "aston martin": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 3,
+   "name": "Japanese GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 72,
+      "george russell": 63,
+      "charles leclerc": 49,
+      "lewis hamilton": 41,
+      "lando norris": 25,
+      "oscar piastri": 21,
+      "oliver bearman": 17,
+      "pierre gasly": 15,
+      "max verstappen": 12,
+      "liam lawson": 10,
+      "arvid lindblad": 4,
+      "isack hadjar": 4,
+      "gabriel bortoleto": 2,
+      "carlos sainz": 2,
+      "esteban ocon": 1,
+      "franco colapinto": 1,
+      "nico hulkenberg": 0,
+      "alexander albon": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0,
+      "fernando alonso": 0,
+      "lance stroll": 0
+     },
+     "teams": {
+      "mercedes": 135,
+      "ferrari": 90,
+      "mclaren": 46,
+      "haas f1 team": 18,
+      "alpine f1 team": 16,
+      "red bull": 16,
+      "rb f1 team": 14,
+      "audi": 2,
+      "williams": 2,
+      "cadillac f1 team": 0,
+      "aston martin": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 4,
+   "name": "Miami GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 100,
+      "george russell": 80,
+      "charles leclerc": 59,
+      "lando norris": 51,
+      "lewis hamilton": 51,
+      "oscar piastri": 43,
+      "max verstappen": 26,
+      "oliver bearman": 17,
+      "pierre gasly": 16,
+      "liam lawson": 10,
+      "franco colapinto": 7,
+      "arvid lindblad": 4,
+      "isack hadjar": 4,
+      "carlos sainz": 4,
+      "gabriel bortoleto": 2,
+      "esteban ocon": 1,
+      "alexander albon": 1,
+      "nico hulkenberg": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0,
+      "fernando alonso": 0,
+      "lance stroll": 0
+     },
+     "teams": {
+      "mercedes": 180,
+      "ferrari": 110,
+      "mclaren": 94,
+      "red bull": 30,
+      "alpine f1 team": 23,
+      "haas f1 team": 18,
+      "rb f1 team": 14,
+      "williams": 5,
+      "audi": 2,
+      "cadillac f1 team": 0,
+      "aston martin": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 5,
+   "name": "Canadian GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 131,
+      "george russell": 88,
+      "charles leclerc": 75,
+      "lewis hamilton": 72,
+      "lando norris": 58,
+      "oscar piastri": 48,
+      "max verstappen": 43,
+      "pierre gasly": 20,
+      "oliver bearman": 18,
+      "liam lawson": 16,
+      "franco colapinto": 15,
+      "isack hadjar": 14,
+      "carlos sainz": 6,
+      "arvid lindblad": 5,
+      "gabriel bortoleto": 2,
+      "esteban ocon": 1,
+      "alexander albon": 1,
+      "nico hulkenberg": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0,
+      "lance stroll": 0,
+      "fernando alonso": 0
+     },
+     "teams": {
+      "mercedes": 219,
+      "ferrari": 147,
+      "mclaren": 106,
+      "red bull": 57,
+      "alpine f1 team": 35,
+      "rb f1 team": 21,
+      "haas f1 team": 19,
+      "williams": 7,
+      "audi": 2,
+      "cadillac f1 team": 0,
+      "aston martin": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 6,
+   "name": "Monaco GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 156,
+      "lewis hamilton": 90,
+      "george russell": 88,
+      "charles leclerc": 75,
+      "oscar piastri": 60,
+      "lando norris": 58,
+      "max verstappen": 43,
+      "isack hadjar": 29,
+      "liam lawson": 26,
+      "pierre gasly": 26,
+      "oliver bearman": 18,
+      "franco colapinto": 15,
+      "arvid lindblad": 13,
+      "carlos sainz": 6,
+      "alexander albon": 5,
+      "esteban ocon": 3,
+      "gabriel bortoleto": 2,
+      "fernando alonso": 1,
+      "nico hulkenberg": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0,
+      "lance stroll": 0
+     },
+     "teams": {
+      "mercedes": 244,
+      "ferrari": 165,
+      "mclaren": 118,
+      "red bull": 72,
+      "alpine f1 team": 41,
+      "rb f1 team": 39,
+      "haas f1 team": 21,
+      "williams": 11,
+      "audi": 2,
+      "aston martin": 1,
+      "cadillac f1 team": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 7,
+   "name": "Barcelona GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 156,
+      "lewis hamilton": 115,
+      "george russell": 106,
+      "charles leclerc": 75,
+      "lando norris": 73,
+      "oscar piastri": 70,
+      "max verstappen": 55,
+      "isack hadjar": 37,
+      "pierre gasly": 32,
+      "liam lawson": 30,
+      "oliver bearman": 18,
+      "franco colapinto": 16,
+      "arvid lindblad": 15,
+      "carlos sainz": 6,
+      "alexander albon": 5,
+      "esteban ocon": 3,
+      "gabriel bortoleto": 2,
+      "fernando alonso": 1,
+      "nico hulkenberg": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0,
+      "lance stroll": 0
+     },
+     "teams": {
+      "mercedes": 262,
+      "ferrari": 190,
+      "mclaren": 143,
+      "red bull": 92,
+      "alpine f1 team": 48,
+      "rb f1 team": 45,
+      "haas f1 team": 21,
+      "williams": 11,
+      "audi": 2,
+      "aston martin": 1,
+      "cadillac f1 team": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 8,
+   "name": "Austrian GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 171,
+      "george russell": 131,
+      "lewis hamilton": 125,
+      "oscar piastri": 82,
+      "lando norris": 79,
+      "charles leclerc": 79,
+      "max verstappen": 73,
+      "isack hadjar": 45,
+      "liam lawson": 32,
+      "pierre gasly": 32,
+      "oliver bearman": 18,
+      "franco colapinto": 16,
+      "arvid lindblad": 16,
+      "carlos sainz": 6,
+      "alexander albon": 5,
+      "esteban ocon": 3,
+      "gabriel bortoleto": 2,
+      "fernando alonso": 1,
+      "nico hulkenberg": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0,
+      "lance stroll": 0
+     },
+     "teams": {
+      "mercedes": 302,
+      "ferrari": 204,
+      "mclaren": 161,
+      "red bull": 118,
+      "rb f1 team": 48,
+      "alpine f1 team": 48,
+      "haas f1 team": 21,
+      "williams": 11,
+      "audi": 2,
+      "aston martin": 1,
+      "cadillac f1 team": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 9,
+   "name": "British GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 179,
+      "george russell": 154,
+      "lewis hamilton": 147,
+      "charles leclerc": 108,
+      "lando norris": 97,
+      "oscar piastri": 84,
+      "max verstappen": 76,
+      "isack hadjar": 55,
+      "liam lawson": 41,
+      "pierre gasly": 33,
+      "arvid lindblad": 22,
+      "oliver bearman": 18,
+      "franco colapinto": 18,
+      "gabriel bortoleto": 6,
+      "carlos sainz": 6,
+      "alexander albon": 5,
+      "esteban ocon": 3,
+      "fernando alonso": 1,
+      "nico hulkenberg": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0,
+      "lance stroll": 0
+     },
+     "teams": {
+      "mercedes": 333,
+      "ferrari": 255,
+      "mclaren": 181,
+      "red bull": 131,
+      "rb f1 team": 63,
+      "alpine f1 team": 51,
+      "haas f1 team": 21,
+      "williams": 11,
+      "audi": 6,
+      "aston martin": 1,
+      "cadillac f1 team": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 10,
+   "name": "Belgian GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 204,
+      "lewis hamilton": 159,
+      "george russell": 154,
+      "charles leclerc": 126,
+      "lando norris": 103,
+      "oscar piastri": 94,
+      "max verstappen": 91,
+      "isack hadjar": 63,
+      "liam lawson": 41,
+      "pierre gasly": 33,
+      "arvid lindblad": 24,
+      "franco colapinto": 19,
+      "oliver bearman": 18,
+      "gabriel bortoleto": 10,
+      "carlos sainz": 6,
+      "alexander albon": 5,
+      "esteban ocon": 3,
+      "fernando alonso": 1,
+      "nico hulkenberg": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0,
+      "lance stroll": 0
+     },
+     "teams": {
+      "mercedes": 358,
+      "ferrari": 285,
+      "mclaren": 197,
+      "red bull": 154,
+      "rb f1 team": 65,
+      "alpine f1 team": 52,
+      "haas f1 team": 21,
+      "williams": 11,
+      "audi": 10,
+      "aston martin": 1,
+      "cadillac f1 team": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 11,
+   "name": "Hungarian GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 219,
+      "lewis hamilton": 169,
+      "george russell": 160,
+      "charles leclerc": 138,
+      "lando norris": 128,
+      "max verstappen": 109,
+      "oscar piastri": 94,
+      "isack hadjar": 71,
+      "liam lawson": 45,
+      "pierre gasly": 33,
+      "arvid lindblad": 25,
+      "franco colapinto": 19,
+      "oliver bearman": 18,
+      "gabriel bortoleto": 10,
+      "carlos sainz": 6,
+      "alexander albon": 5,
+      "esteban ocon": 3,
+      "nico hulkenberg": 2,
+      "fernando alonso": 1,
+      "lance stroll": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0
+     },
+     "teams": {
+      "mercedes": 379,
+      "ferrari": 307,
+      "mclaren": 222,
+      "red bull": 180,
+      "rb f1 team": 70,
+      "alpine f1 team": 52,
+      "haas f1 team": 21,
+      "audi": 12,
+      "williams": 11,
+      "aston martin": 1,
+      "cadillac f1 team": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 12,
+   "name": "Dutch GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 242,
+      "george russell": 183,
+      "lewis hamilton": 183,
+      "lando norris": 159,
+      "charles leclerc": 155,
+      "max verstappen": 112,
+      "oscar piastri": 106,
+      "isack hadjar": 71,
+      "liam lawson": 51,
+      "pierre gasly": 35,
+      "arvid lindblad": 25,
+      "franco colapinto": 19,
+      "oliver bearman": 18,
+      "gabriel bortoleto": 10,
+      "nico hulkenberg": 6,
+      "carlos sainz": 6,
+      "alexander albon": 5,
+      "esteban ocon": 3,
+      "fernando alonso": 3,
+      "yuki tsunoda": 0,
+      "lance stroll": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0
+     },
+     "teams": {
+      "mercedes": 425,
+      "ferrari": 338,
+      "mclaren": 265,
+      "red bull": 189,
+      "rb f1 team": 70,
+      "alpine f1 team": 54,
+      "haas f1 team": 21,
+      "audi": 16,
+      "williams": 11,
+      "aston martin": 3,
+      "cadillac f1 team": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 13,
+   "name": "Italian GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 267,
+      "george russell": 201,
+      "lewis hamilton": 191,
+      "lando norris": 171,
+      "charles leclerc": 155,
+      "max verstappen": 127,
+      "oscar piastri": 116,
+      "isack hadjar": 71,
+      "liam lawson": 51,
+      "pierre gasly": 41,
+      "arvid lindblad": 29,
+      "franco colapinto": 21,
+      "oliver bearman": 18,
+      "gabriel bortoleto": 10,
+      "nico hulkenberg": 6,
+      "carlos sainz": 6,
+      "alexander albon": 5,
+      "esteban ocon": 3,
+      "fernando alonso": 3,
+      "yuki tsunoda": 1,
+      "lance stroll": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0
+     },
+     "teams": {
+      "mercedes": 468,
+      "ferrari": 346,
+      "mclaren": 287,
+      "red bull": 204,
+      "rb f1 team": 75,
+      "alpine f1 team": 62,
+      "haas f1 team": 21,
+      "audi": 16,
+      "williams": 11,
+      "aston martin": 3,
+      "cadillac f1 team": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 14,
+   "name": "Spanish GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 292,
+      "george russell": 211,
+      "lewis hamilton": 191,
+      "lando norris": 186,
+      "charles leclerc": 167,
+      "max verstappen": 145,
+      "oscar piastri": 120,
+      "isack hadjar": 71,
+      "liam lawson": 59,
+      "pierre gasly": 41,
+      "arvid lindblad": 31,
+      "franco colapinto": 27,
+      "oliver bearman": 18,
+      "gabriel bortoleto": 10,
+      "nico hulkenberg": 7,
+      "carlos sainz": 6,
+      "alexander albon": 5,
+      "esteban ocon": 3,
+      "fernando alonso": 3,
+      "yuki tsunoda": 1,
+      "lance stroll": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0
+     },
+     "teams": {
+      "mercedes": 503,
+      "ferrari": 358,
+      "mclaren": 306,
+      "red bull": 230,
+      "rb f1 team": 77,
+      "alpine f1 team": 68,
+      "haas f1 team": 21,
+      "audi": 17,
+      "williams": 11,
+      "aston martin": 3,
+      "cadillac f1 team": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 15,
+   "name": "Azerbaijan GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 302,
+      "george russell": 236,
+      "lewis hamilton": 199,
+      "lando norris": 186,
+      "charles leclerc": 179,
+      "max verstappen": 163,
+      "oscar piastri": 120,
+      "isack hadjar": 86,
+      "liam lawson": 59,
+      "pierre gasly": 41,
+      "arvid lindblad": 37,
+      "franco colapinto": 27,
+      "oliver bearman": 20,
+      "gabriel bortoleto": 10,
+      "nico hulkenberg": 7,
+      "esteban ocon": 7,
+      "carlos sainz": 7,
+      "alexander albon": 5,
+      "fernando alonso": 3,
+      "yuki tsunoda": 1,
+      "lance stroll": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0
+     },
+     "teams": {
+      "mercedes": 538,
+      "ferrari": 378,
+      "mclaren": 306,
+      "red bull": 263,
+      "rb f1 team": 83,
+      "alpine f1 team": 68,
+      "haas f1 team": 27,
+      "audi": 17,
+      "williams": 12,
+      "aston martin": 3,
+      "cadillac f1 team": 0
+     }
+    }
+   }
+  },
+  {
+   "round": 16,
+   "name": "Bahrain GP in Malaysia",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 320,
+      "george russell": 236,
+      "lewis hamilton": 214,
+      "charles leclerc": 191,
+      "lando norris": 188,
+      "max verstappen": 188,
+      "oscar piastri": 128,
+      "isack hadjar": 96,
+      "liam lawson": 65,
+      "pierre gasly": 41,
+      "arvid lindblad": 38,
+      "franco colapinto": 27,
+      "oliver bearman": 20,
+      "gabriel bortoleto": 10,
+      "nico hulkenberg": 7,
+      "esteban ocon": 7,
+      "fernando alonso": 7,
+      "carlos sainz": 7,
+      "alexander albon": 5,
+      "yuki tsunoda": 1,
+      "lance stroll": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0
+     },
+     "teams": {
+      "mercedes": 556,
+      "ferrari": 405,
+      "mclaren": 316,
+      "red bull": 298,
+      "rb f1 team": 90,
+      "alpine f1 team": 68,
+      "haas f1 team": 27,
+      "audi": 17,
+      "williams": 12,
+      "aston martin": 7,
+      "cadillac f1 team": 0
+     }
+    }
+   }
+  }
+ ],
+ "updated": "2026-10-10 12:41 UTC"
+}
