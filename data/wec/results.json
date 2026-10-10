@@ -180,6 +180,186 @@
        "time": "24 Laps",
        "laps": 189,
        "cls": "Hypercar"
+      },
+      {
+       "pos": 1,
+       "car": "69",
+       "drivers": "ANTHONY MCINTOSH, DANIEL HARPER, PARKER THOMPSON",
+       "team": "TEAM WRT",
+       "model": "",
+       "time": "6:01:51.257",
+       "laps": 194,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 2,
+       "car": "33",
+       "drivers": "JONNY EDGAR, NICKY CATSBURG, BEN KEATING, BLAKE MCDONALD, NICOLÁS VARRONE",
+       "team": "TF SPORT",
+       "model": "",
+       "time": "+0.265",
+       "laps": 194,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 3,
+       "car": "92",
+       "drivers": "RICCARDO PERA, RICHARD LIETZ, YASSER SHAHIN",
+       "team": "THE BEND MANTHEY",
+       "model": "",
+       "time": "1 Lap",
+       "laps": 193,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 4,
+       "car": "91",
+       "drivers": "AYHANCAN GÜVEN, JAMES COTTINGHAM, TIMUR BOGUSLAVSKIY",
+       "team": "MANTHEY DK ENGINEERING",
+       "model": "",
+       "time": "1 Lap",
+       "laps": 193,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 5,
+       "car": "32",
+       "drivers": "AUGUSTO FARFUS, DARREN LEUNG, SEAN GELAEL",
+       "team": "TEAM WRT",
+       "model": "",
+       "time": "1 Lap",
+       "laps": 193,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 6,
+       "car": "21",
+       "drivers": "ALESSIO ROVERA, FRANÇOIS HÉRIAU, SIMON MANN",
+       "team": "VISTA AF CORSE",
+       "model": "",
+       "time": "1 Lap",
+       "laps": 193,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 7,
+       "car": "58",
+       "drivers": "ALEXANDER WEST, BENJAMIN GOETHE, FINN GEHRSITZ",
+       "team": "GARAGE 59",
+       "model": "",
+       "time": "1 Lap",
+       "laps": 193,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 8,
+       "car": "88",
+       "drivers": "GIAMMARCO LEVORATO, LOGAN SARGEANT, STEFANO GATTUSO",
+       "team": "PROTON COMPETITION",
+       "model": "",
+       "time": "1 Lap",
+       "laps": 193,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 9,
+       "car": "23",
+       "drivers": "GRAY NEWELL, JONNY ADAM, EDUARDO BARRICHELLO, KOBE PAUWELS",
+       "team": "HEART OF RACING TEAM",
+       "model": "",
+       "time": "1 Lap",
+       "laps": 193,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 10,
+       "car": "77",
+       "drivers": "BEN TUCK, ERIC POWELL, SEBASTIAN PRIAULX",
+       "team": "PROTON COMPETITION",
+       "model": "",
+       "time": "1 Lap",
+       "laps": 193,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 11,
+       "car": "54",
+       "drivers": "DAVIDE RIGON, FRANCESCO CASTELLACCI, THOMAS FLOHR",
+       "team": "VISTA AF CORSE",
+       "model": "",
+       "time": "2 Laps",
+       "laps": 192,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 12,
+       "car": "79",
+       "drivers": "JOHANNES ZELGER, LIN HODENIUS, MATTEO CRESSONI",
+       "team": "IRON LYNX",
+       "model": "",
+       "time": "2 Laps",
+       "laps": 192,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 13,
+       "car": "10",
+       "drivers": "ANTARES AU, MARVIN KIRCHHÖFER, THOMAS FLEMING",
+       "team": "GARAGE 59",
+       "model": "",
+       "time": "15 Laps",
+       "laps": 179,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 14,
+       "car": "78",
+       "drivers": "HADRIEN DAVID, TOM VAN ROMPUY, JACK HAWKSWORTH, ESTEBAN MASSON",
+       "team": "AKKODIS ASP TEAM",
+       "model": "",
+       "time": "23 Laps",
+       "laps": 171,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 15,
+       "car": "61",
+       "drivers": "MARTIN BERRY, MAXIME MARTIN, RUI ANDRADE",
+       "team": "IRON LYNX",
+       "model": "",
+       "time": "28 Laps",
+       "laps": 166,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 16,
+       "car": "34",
+       "drivers": "CHARLIE EASTWOOD, PETER DEMPSEY, SALIH YOLUÇ",
+       "team": "RACING TEAM TURKEY BY TF",
+       "model": "",
+       "time": "32 Laps",
+       "laps": 162,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 17,
+       "car": "27",
+       "drivers": "IAN JAMES, MATTIA DRUDI, ZACHARIE ROBICHON",
+       "team": "HEART OF RACING TEAM",
+       "model": "",
+       "time": "48 Laps",
+       "laps": 146,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 18,
+       "car": "87",
+       "drivers": "CLEMENS SCHMID, JOSÉ MARÍA LÓPEZ, PETRU UMBRĂRESCU",
+       "team": "AKKODIS ASP TEAM",
+       "model": "",
+       "time": "162 Laps",
+       "laps": 32,
+       "cls": "LMGT3"
       }
      ]
     }
@@ -364,6 +544,186 @@
        "time": "66 Laps",
        "laps": 85,
        "cls": "Hypercar"
+      },
+      {
+       "pos": 1,
+       "car": "10",
+       "drivers": "ANTARES AU, MARVIN KIRCHHÖFER, THOMAS FLEMING",
+       "team": "GARAGE 59",
+       "model": "",
+       "time": "6:01:45.434",
+       "laps": 139,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 2,
+       "car": "27",
+       "drivers": "IAN JAMES, MATTIA DRUDI, ZACHARIE ROBICHON",
+       "team": "HEART OF RACING TEAM",
+       "model": "",
+       "time": "+2.148",
+       "laps": 139,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 3,
+       "car": "92",
+       "drivers": "RICCARDO PERA, RICHARD LIETZ, YASSER SHAHIN",
+       "team": "THE BEND MANTHEY",
+       "model": "",
+       "time": "+3.422",
+       "laps": 139,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 4,
+       "car": "21",
+       "drivers": "ALESSIO ROVERA, FRANÇOIS HÉRIAU, SIMON MANN",
+       "team": "VISTA AF CORSE",
+       "model": "",
+       "time": "+4.063",
+       "laps": 139,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 5,
+       "car": "58",
+       "drivers": "ALEXANDER WEST, BENJAMIN GOETHE, FINN GEHRSITZ",
+       "team": "GARAGE 59",
+       "model": "",
+       "time": "+10.401",
+       "laps": 139,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 6,
+       "car": "87",
+       "drivers": "CLEMENS SCHMID, JOSÉ MARÍA LÓPEZ, PETRU UMBRĂRESCU",
+       "team": "AKKODIS ASP TEAM",
+       "model": "",
+       "time": "+12.259",
+       "laps": 139,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 7,
+       "car": "91",
+       "drivers": "AYHANCAN GÜVEN, JAMES COTTINGHAM, TIMUR BOGUSLAVSKIY",
+       "team": "MANTHEY DK ENGINEERING",
+       "model": "",
+       "time": "+13.968",
+       "laps": 139,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 8,
+       "car": "33",
+       "drivers": "JONNY EDGAR, NICKY CATSBURG, BEN KEATING, BLAKE MCDONALD, NICOLÁS VARRONE",
+       "team": "TF SPORT",
+       "model": "",
+       "time": "+15.002",
+       "laps": 139,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 9,
+       "car": "34",
+       "drivers": "CHARLIE EASTWOOD, PETER DEMPSEY, SALIH YOLUÇ",
+       "team": "RACING TEAM TURKEY BY TF",
+       "model": "",
+       "time": "+16.140",
+       "laps": 139,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 10,
+       "car": "61",
+       "drivers": "MARTIN BERRY, MAXIME MARTIN, RUI ANDRADE",
+       "team": "IRON LYNX",
+       "model": "",
+       "time": "+16.335",
+       "laps": 139,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 11,
+       "car": "69",
+       "drivers": "ANTHONY MCINTOSH, DANIEL HARPER, PARKER THOMPSON",
+       "team": "TEAM WRT",
+       "model": "",
+       "time": "+27.168",
+       "laps": 139,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 12,
+       "car": "88",
+       "drivers": "GIAMMARCO LEVORATO, LOGAN SARGEANT, STEFANO GATTUSO",
+       "team": "PROTON COMPETITION",
+       "model": "",
+       "time": "+27.344",
+       "laps": 139,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 13,
+       "car": "23",
+       "drivers": "GRAY NEWELL, JONNY ADAM, EDUARDO BARRICHELLO, KOBE PAUWELS",
+       "team": "HEART OF RACING TEAM",
+       "model": "",
+       "time": "+28.508",
+       "laps": 139,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 14,
+       "car": "32",
+       "drivers": "AUGUSTO FARFUS, DARREN LEUNG, SEAN GELAEL",
+       "team": "TEAM WRT",
+       "model": "",
+       "time": "+1:05.946",
+       "laps": 139,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 15,
+       "car": "54",
+       "drivers": "DAVIDE RIGON, FRANCESCO CASTELLACCI, THOMAS FLOHR",
+       "team": "VISTA AF CORSE",
+       "model": "",
+       "time": "1 Lap",
+       "laps": 138,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 16,
+       "car": "77",
+       "drivers": "BEN TUCK, ERIC POWELL, SEBASTIAN PRIAULX",
+       "team": "PROTON COMPETITION",
+       "model": "",
+       "time": "12 Laps",
+       "laps": 127,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 17,
+       "car": "79",
+       "drivers": "JOHANNES ZELGER, LIN HODENIUS, MATTEO CRESSONI",
+       "team": "IRON LYNX",
+       "model": "",
+       "time": "44 Laps",
+       "laps": 95,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 18,
+       "car": "78",
+       "drivers": "HADRIEN DAVID, TOM VAN ROMPUY, JACK HAWKSWORTH, ESTEBAN MASSON",
+       "team": "AKKODIS ASP TEAM",
+       "model": "",
+       "time": "21 Laps",
+       "laps": 118,
+       "cls": "LMGT3"
       }
      ]
     }
@@ -558,6 +918,256 @@
        "time": "",
        "laps": 3,
        "cls": "Hypercar"
+      },
+      {
+       "pos": 1,
+       "car": "33",
+       "drivers": "JONNY EDGAR, NICKY CATSBURG, BEN KEATING, BLAKE MCDONALD, NICOLÁS VARRONE",
+       "team": "TF SPORT",
+       "model": "",
+       "time": "",
+       "laps": 4,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 2,
+       "car": "2",
+       "drivers": "",
+       "team": "TF SPORT",
+       "model": "",
+       "time": "+0.129",
+       "laps": 4,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 3,
+       "car": "61",
+       "drivers": "MARTIN BERRY, MAXIME MARTIN, RUI ANDRADE",
+       "team": "IRON LYNX",
+       "model": "",
+       "time": "+0.668",
+       "laps": 4,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 4,
+       "car": "57",
+       "drivers": "",
+       "team": "KESSEL RACING",
+       "model": "",
+       "time": "+0.912",
+       "laps": 4,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 5,
+       "car": "74",
+       "drivers": "",
+       "team": "KESSEL RACING",
+       "model": "",
+       "time": "+1.003",
+       "laps": 4,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 6,
+       "car": "92",
+       "drivers": "RICCARDO PERA, RICHARD LIETZ, YASSER SHAHIN",
+       "team": "THE BEND MANTHEY",
+       "model": "",
+       "time": "+1.664",
+       "laps": 4,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 7,
+       "car": "91",
+       "drivers": "AYHANCAN GÜVEN, JAMES COTTINGHAM, TIMUR BOGUSLAVSKIY",
+       "team": "MANTHEY DK ENGINEERING",
+       "model": "",
+       "time": "+1.801",
+       "laps": 4,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 8,
+       "car": "79",
+       "drivers": "JOHANNES ZELGER, LIN HODENIUS, MATTEO CRESSONI",
+       "team": "IRON LYNX",
+       "model": "",
+       "time": "+1.813",
+       "laps": 4,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 9,
+       "car": "58",
+       "drivers": "ALEXANDER WEST, BENJAMIN GOETHE, FINN GEHRSITZ",
+       "team": "GARAGE 59",
+       "model": "",
+       "time": "+2.312",
+       "laps": 3,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 10,
+       "car": "54",
+       "drivers": "DAVIDE RIGON, FRANCESCO CASTELLACCI, THOMAS FLOHR",
+       "team": "VISTA AF CORSE",
+       "model": "",
+       "time": "+2.465",
+       "laps": 4,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 11,
+       "car": "34",
+       "drivers": "CHARLIE EASTWOOD, PETER DEMPSEY, SALIH YOLUÇ",
+       "team": "RACING TEAM TURKEY BY TF",
+       "model": "",
+       "time": "+2.483",
+       "laps": 4,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 12,
+       "car": "32",
+       "drivers": "AUGUSTO FARFUS, DARREN LEUNG, SEAN GELAEL",
+       "team": "TEAM WRT",
+       "model": "",
+       "time": "+2.781",
+       "laps": 3,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 13,
+       "car": "69",
+       "drivers": "ANTHONY MCINTOSH, DANIEL HARPER, PARKER THOMPSON",
+       "team": "TEAM WRT",
+       "model": "",
+       "time": "+2.893",
+       "laps": 4,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 14,
+       "car": "77",
+       "drivers": "BEN TUCK, ERIC POWELL, SEBASTIAN PRIAULX",
+       "team": "PROTON COMPETITION",
+       "model": "",
+       "time": "+3.385",
+       "laps": 4,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 15,
+       "car": "88",
+       "drivers": "GIAMMARCO LEVORATO, LOGAN SARGEANT, STEFANO GATTUSO",
+       "team": "PROTON COMPETITION",
+       "model": "",
+       "time": "+4.130",
+       "laps": 4,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 16,
+       "car": "62",
+       "drivers": "",
+       "team": "TEAM QATAR BY IRON LYNX",
+       "model": "",
+       "time": "+5.909",
+       "laps": 3,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 17,
+       "car": "10",
+       "drivers": "ANTARES AU, MARVIN KIRCHHÖFER, THOMAS FLEMING",
+       "team": "GARAGE 59",
+       "model": "",
+       "time": "",
+       "laps": 3,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 18,
+       "car": "13",
+       "drivers": "",
+       "team": "13 AUTOSPORT",
+       "model": "",
+       "time": "",
+       "laps": 0,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 19,
+       "car": "21",
+       "drivers": "ALESSIO ROVERA, FRANÇOIS HÉRIAU, SIMON MANN",
+       "team": "VISTA AF CORSE",
+       "model": "",
+       "time": "",
+       "laps": 3,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 20,
+       "car": "23",
+       "drivers": "GRAY NEWELL, JONNY ADAM, EDUARDO BARRICHELLO, KOBE PAUWELS",
+       "team": "HEART OF RACING TEAM",
+       "model": "",
+       "time": "",
+       "laps": 3,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 21,
+       "car": "27",
+       "drivers": "IAN JAMES, MATTIA DRUDI, ZACHARIE ROBICHON",
+       "team": "HEART OF RACING TEAM",
+       "model": "",
+       "time": "",
+       "laps": 3,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 22,
+       "car": "59",
+       "drivers": "",
+       "team": "RACING SPIRIT OF LEMAN",
+       "model": "",
+       "time": "",
+       "laps": 3,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 23,
+       "car": "78",
+       "drivers": "HADRIEN DAVID, TOM VAN ROMPUY, JACK HAWKSWORTH, ESTEBAN MASSON",
+       "team": "AKKODIS ASP TEAM",
+       "model": "",
+       "time": "",
+       "laps": 3,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 24,
+       "car": "87",
+       "drivers": "CLEMENS SCHMID, JOSÉ MARÍA LÓPEZ, PETRU UMBRĂRESCU",
+       "team": "AKKODIS ASP TEAM",
+       "model": "",
+       "time": "",
+       "laps": 3,
+       "cls": "LMGT3"
+      },
+      {
+       "pos": 25,
+       "car": "150",
+       "drivers": "",
+       "team": "RICHARD MILLE AF CORSE",
+       "model": "",
+       "time": "",
+       "laps": 3,
+       "cls": "LMGT3"
       }
      ]
     }
@@ -1406,5 +2016,5 @@
    ]
   }
  ],
- "updated": "2026-10-10 19:27 UTC"
+ "updated": "2026-10-10 19:43 UTC"
 }
