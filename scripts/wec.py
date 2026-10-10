@@ -210,9 +210,14 @@ def parse_sessions(html, slug, round_name):
     out, seen, prev_end = [], set(), 0
     matches = list(DT_RE.finditer(text))
     if not matches:
+        by_day = parse_sessions_by_day([x for x in lines if x], slug, round_name)
+        if by_day:
+            return by_day
         print(f"  ! {slug}: no session times found in the page text", flush=True)
-        for x in [l for l in lines if re.search(r"\d{1,2}:\d{2}|%s" % "|".join(m.title() for m in MONTHS), l)][:6]:
-            print("    sample line:", x[:110], flush=True)
+        flat = [x for x in lines if x]
+        first = next((i for i, x in enumerate(flat) if DATE_LINE_RE.match(x)), None)
+        for x in (flat[first:first + 14] if first is not None else flat[:6]):
+            print("    sample line:", x[:90], flush=True)
     for m in matches:
         pieces = [p.strip(" -:·,") for p in text[prev_end:m.start()].split("|")]
         pieces = [p for p in pieces if p and p.lower() not in ("live", "replay")]
@@ -239,6 +244,53 @@ def parse_sessions(html, slug, round_name):
                     "utc": start.strftime("%Y-%m-%dT%H:%M:00Z"),
                     "end_utc": (start + timedelta(minutes=mins)).strftime("%Y-%m-%dT%H:%M:00Z")})
     out.sort(key=lambda s: s["utc"])
+    return out
+
+
+DATE_LINE_RE = re.compile(r"^(%s)\s+(\d{1,2})(?:st|nd|rd|th)?$" % "|".join(m.title() for m in MONTHS), re.I)
+TIME_LINE_RE = re.compile(r"^(\d{1,2}):(\d{2})\s*(AM|PM)?$", re.I)
+
+
+def parse_sessions_by_day(lines, slug, round_name):
+    """Layout with a day heading ('October 16') and then one name line and one time line per session."""
+    tz = ZoneInfo(lookup(TRACK_TZ, slug, "UTC"))
+    out, seen, day = [], set(), None
+
+    def sessionish(t):
+        return bool(t) and len(t) <= 60 and SESSION_WORDS.search(t) and not DATE_LINE_RE.match(t) and not TIME_LINE_RE.match(t)
+
+    for i, line in enumerate(lines):
+        d = DATE_LINE_RE.match(line)
+        if d:
+            day = (MONTHS.index(d.group(1).lower()) + 1, int(d.group(2)))
+            continue
+        t = TIME_LINE_RE.match(line)
+        if not t or day is None:
+            continue
+        before = lines[i - 1] if i > 0 else ""
+        after = lines[i + 1] if i + 1 < len(lines) else ""
+        name = before if sessionish(before) else (after if sessionish(after) else "")
+        if not name:
+            continue
+        nxt = lines[i + 1] if name == before and i + 1 < len(lines) else (lines[i + 2] if i + 2 < len(lines) else "")
+        if "cancel" in nxt.lower():
+            continue
+        hour = int(t.group(1))
+        if t.group(3):
+            hour = hour % 12 + (12 if t.group(3).upper() == "PM" else 0)
+        try:
+            local = datetime(SEASON, day[0], day[1], hour, int(t.group(2)), tzinfo=tz)
+        except ValueError:
+            continue
+        start = local.astimezone(timezone.utc)
+        if (name.lower(), start) in seen:
+            continue
+        seen.add((name.lower(), start))
+        kind, mins = session_kind_len(name, round_name)
+        out.append({"name": name.title().replace("Lmgt3", "LMGT3"), "kind": kind, "day": WEEKDAYS[local.weekday()],
+                    "utc": start.strftime("%Y-%m-%dT%H:%M:00Z"),
+                    "end_utc": (start + timedelta(minutes=mins)).strftime("%Y-%m-%dT%H:%M:00Z")})
+    out.sort(key=lambda x: x["utc"])
     return out
 
 
@@ -464,7 +516,7 @@ def result_link(html):
     return None
 
 
-def parse_results(html, crews):
+def parse_results(html, crews, default_cls=None):
     soup = BeautifulSoup(html, "lxml")
     rows = []
     for idx, tbl in enumerate(soup.find_all("table")):
@@ -472,7 +524,8 @@ def parse_results(html, crews):
         if not any(h.startswith("pos") for h in heads) or not any("laps" in h for h in heads):
             continue
         head_text = heading_before(tbl)
-        cls = "LMGT3" if "lmgt3" in head_text else ("Hypercar" if "hypercar" in head_text else ("Hypercar" if idx == 0 else "LMGT3"))
+        cls = ("LMGT3" if "lmgt3" in head_text else "Hypercar" if "hypercar" in head_text
+               else default_cls or ("Hypercar" if idx == 0 else "LMGT3"))
         col = lambda *keys: next((i for i, h in enumerate(heads) if any(h.startswith(k) for k in keys)), None)  # noqa: E731
         i_pos, i_car, i_team = col("pos"), col("n"), col("team")
         i_laps, i_total, i_gap, i_best = col("laps"), col("total"), col("gap"), col("best")
@@ -497,6 +550,50 @@ def parse_results(html, crews):
     return rows
 
 
+def extra_class_rows(page, crews):
+    """The results page may show only Hypercar; look for a link or tab that leads to the LMGT3 table."""
+    soup = BeautifulSoup(page, "lxml")
+    urls, notes = [], []
+    # the LMGT3 tab itself: any element whose own text is just LMGT3 (links, buttons, list items)
+    tabs = [n for n in soup.find_all(True) if text_of(n).lower() == "lmgt3" and n.name not in ("html", "body")]
+    for n in tabs[:3]:
+        for el_ in (n, n.parent):
+            for k, v in (el_.attrs or {}).items():
+                v = " ".join(v) if isinstance(v, list) else str(v)
+                if isinstance(v, str) and v.startswith(("/en/", "?", "http")) and "lmgt3" not in v.lower():
+                    notes.append(f"tab {k}={v[:80]}")
+    for node in soup.find_all(["a", "option"] + [t.name for t in tabs[:3]]):
+        ref = node.get("href") or node.get("value") or node.get("data-href") or node.get("data-url") or ""
+        label = text_of(node)
+        if ("lmgt3" in label.lower() or "lmgt3" in ref.lower()) and ref:
+            notes.append(f"{label[:20]} -> {ref[:90]}")
+            u = urljoin(BASE, ref)
+            if u not in urls and "resultats" in u:
+                urls.append(u)
+    rows = []
+    for u in urls[:2]:
+        html = fetch(u)
+        if html:
+            rows += [r for r in parse_results(html, crews, "LMGT3") if r["cls"] == "LMGT3"]
+        if rows:
+            break
+    if not rows:
+        print("  ! no LMGT3 table found in the page or by link", flush=True)
+        for n in tabs[:2]:
+            print("    tab html:", re.sub(r"\s+", " ", str(n))[:240], flush=True)
+            print("    tab parent:", re.sub(r"\s+", " ", str(n.parent))[:240], flush=True)
+        for sc in soup.find_all("script"):
+            t = sc.string or ""
+            if re.search(r"categor|lmgt3|ajax|fetch\(", t, re.I):
+                i = re.search(r"categor|lmgt3|ajax|fetch\(", t, re.I).start()
+                print("    script:", re.sub(r"\s+", " ", t[max(0, i - 80):i + 200]), flush=True)
+                break
+        hidden = [n for n in soup.find_all(True) if "lmgt3" in " ".join(str(v) for v in (n.attrs or {}).values()).lower()]
+        for n in hidden[:3]:
+            print("    lmgt3 element:", n.name, str(n.attrs)[:160], flush=True)
+    return rows
+
+
 def scrape_results(old, rounds, schedule, latest_done, crews):
     have = {r["round"]: r for r in old.get("rounds", [])}
     refresh = set(sorted(have)[-2:])
@@ -514,6 +611,8 @@ def scrape_results(old, rounds, schedule, latest_done, crews):
             continue
         page = fetch(link)
         rows = parse_results(page, crews) if page else []
+        if page and not any(r["cls"] == "LMGT3" for r in rows):
+            rows += extra_class_rows(page, crews)
         if page and not rows:
             tabs = BeautifulSoup(page, "lxml").find_all("table")
             print(f"  ! results page has {len(tabs)} tables; headers: {[table_headers(t)[:6] for t in tabs[:2]]}", flush=True)
