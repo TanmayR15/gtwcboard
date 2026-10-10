@@ -7,157 +7,157 @@
      {
       "pos": 1,
       "name": "#8 HARTLEY / HIRAKAWA / BUEMI",
-      "team": "TOYOTA",
+      "team": "TOYOTA RACING",
       "total": 89
      },
      {
       "pos": 2,
       "name": "#7 KOBAYASHI / CONWAY / DE VRIES",
-      "team": "TOYOTA",
+      "team": "TOYOTA RACING",
       "total": 79
      },
      {
       "pos": 3,
       "name": "#20 RAST / FRIJNS",
-      "team": "BMW",
+      "team": "BMW M TEAM WRT",
       "total": 75
      },
      {
       "pos": 4,
       "name": "#15 MAGNUSSEN / MARCIELLO",
-      "team": "BMW",
+      "team": "BMW M TEAM WRT",
       "total": 69
      },
      {
       "pos": 5,
       "name": "#20 VAN DER LINDE",
-      "team": "BMW",
+      "team": "BMW M TEAM WRT",
       "total": 65
      },
      {
       "pos": 6,
       "name": "#15 VANTHOOR",
-      "team": "BMW",
+      "team": "BMW M TEAM WRT",
       "total": 63
      },
      {
       "pos": 7,
       "name": "#51 GUIDI / GIOVINAZZI / CALADO",
-      "team": "FERRARI",
+      "team": "FERRARI AF CORSE",
       "total": 59
      },
      {
       "pos": 8,
       "name": "#35 MILESI / HABSBURG",
-      "team": "ALPINE",
+      "team": "ALPINE ENDURANCE TEAM",
       "total": 56
      },
      {
       "pos": 9,
       "name": "#50 FUOCO / MOLINA / NIELSEN",
-      "team": "FERRARI",
+      "team": "FERRARI AF CORSE",
       "total": 54
      },
      {
       "pos": 10,
       "name": "#12 NATO / STEVENS",
-      "team": "CADILLAC",
+      "team": "CADILLAC HERTZ TEAM JOTA",
       "total": 50
      },
      {
       "pos": 11,
       "name": "#38 BAMBER / BOURDAIS",
-      "team": "CADILLAC",
+      "team": "CADILLAC HERTZ TEAM JOTA",
       "total": 44
      },
      {
       "pos": 12,
       "name": "#35 DA COSTA",
-      "team": "ALPINE",
+      "team": "ALPINE ENDURANCE TEAM",
       "total": 44
      },
      {
       "pos": 13,
       "name": "#007 TINCKNELL / GAMBLE",
-      "team": "ASTON MARTIN",
+      "team": "ASTON MARTIN THOR TEAM",
       "total": 42
      },
      {
       "pos": 14,
       "name": "#38 AITKEN",
-      "team": "CADILLAC",
+      "team": "CADILLAC HERTZ TEAM JOTA",
       "total": 40
      },
      {
       "pos": 15,
       "name": "#36 GOUNON / MARTINS",
-      "team": "ALPINE",
+      "team": "ALPINE ENDURANCE TEAM",
       "total": 32
      },
      {
       "pos": 16,
       "name": "#83 HANSON / KUBICA / YE",
-      "team": "FERRARI",
+      "team": "AF CORSE",
       "total": 31
      },
      {
       "pos": 17,
       "name": "#12 DELÉTRAZ",
-      "team": "CADILLAC",
+      "team": "CADILLAC HERTZ TEAM JOTA",
       "total": 26
      },
      {
       "pos": 18,
       "name": "#36 MAKOWIECKI",
-      "team": "ALPINE",
+      "team": "ALPINE ENDURANCE TEAM",
       "total": 14
      },
      {
       "pos": 19,
       "name": "#94 DUVAL / JAKOBSEN / POURCHAIRE",
-      "team": "PEUGEOT",
+      "team": "PEUGEOT TOTALENERGIES",
       "total": 12
      },
      {
       "pos": 20,
       "name": "#17 LOTTERER / DERANI / JAUBERT",
-      "team": "GENESIS",
+      "team": "GENESIS MAGMA RACING",
       "total": 10
      },
      {
       "pos": 21,
       "name": "#007 GUNN",
-      "team": "ASTON MARTIN",
+      "team": "ASTON MARTIN THOR TEAM",
       "total": 8
      },
      {
       "pos": 22,
       "name": "#93 CASSIDY / DI RESTA / VANDOORNE",
-      "team": "PEUGEOT",
+      "team": "PEUGEOT TOTALENERGIES",
       "total": 6
      },
      {
       "pos": 23,
       "name": "#009 RIBERAS / SØRENSEN",
-      "team": "ASTON MARTIN",
+      "team": "ASTON MARTIN THOR TEAM",
       "total": 4
      },
      {
       "pos": 24,
       "name": "#101 TAYLOR",
-      "team": "CADILLAC",
+      "team": "CADILLAC WTR",
       "total": 2
      },
      {
       "pos": 25,
       "name": "#19 JUNCADELLA / JAMINET / CHATIN",
-      "team": "GENESIS",
+      "team": "GENESIS MAGMA RACING",
       "total": 0
      },
      {
       "pos": 26,
       "name": "#009 DE ANGELIS",
-      "team": "ASTON MARTIN",
+      "team": "ASTON MARTIN THOR TEAM",
       "total": 0
      }
     ],
@@ -458,5 +458,5 @@
    }
   }
  },
- "updated": "2026-10-10 18:54 UTC"
+ "updated": "2026-10-10 19:00 UTC"
 }
