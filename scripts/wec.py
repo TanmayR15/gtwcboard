@@ -550,9 +550,12 @@ def parse_results(html, crews, default_cls=None):
     return rows
 
 
-def live_component_rows(page, crews, class_label="LMGT3"):
-    """The results page is a Symfony Live Component: the category <select> asks the server for a re-render.
-    Ask the same way: GET <component url>?props=<props>&updated={"categoryId": <LMGT3 id>}."""
+LIVE_DEFAULT = "/en/_components/Editorial:CMS:CompleteResultsComponent"
+
+
+def live_component_rows(page, crews, page_url="", class_label="LMGT3"):
+    """The results page is a Symfony Live Component. Switching the category <select> POSTs to
+    <component url>/changeCategory with the component's props and the new categoryId (seen in the browser)."""
     soup = BeautifulSoup(page, "lxml")
     root = soup.find(attrs={"data-live-props-value": True})
     sel = next((x for x in soup.find_all("select") if x.get("data-model") and
@@ -560,25 +563,32 @@ def live_component_rows(page, crews, class_label="LMGT3"):
     if root is None or sel is None:
         print(f"  ! live component not found (root={root is not None}, select={sel is not None})", flush=True)
         return []
-    url = urljoin(BASE, root.get("data-live-url-value") or "")
-    props, model = root.get("data-live-props-value") or "{}", sel.get("data-model")
+    try:
+        props = json.loads(root.get("data-live-props-value") or "{}")
+    except ValueError:
+        print("  ! live component props are not JSON", flush=True)
+        return []
+    model = sel.get("data-model") or "categoryId"
+    action = sel.get("data-live-action-param") or "changeCategory"
     value = next(o.get("value") for o in sel.find_all("option") if text_of(o).lower() == class_label.lower())
-    attempts = [("GET", {"props": props, "updated": json.dumps({model: value})})]
-    for method, params in attempts:
-        try:
-            r = requests.get(url, params=params, headers={**HEADERS, "Accept": "application/vnd.live-component+html"},
-                             timeout=(10, 25))
-            time.sleep(DELAY)
-        except requests.RequestException as e:
-            print(f"  ! live component {type(e).__name__}", flush=True)
-            continue
-        rows = [x for x in parse_results(r.text, crews, class_label) if x["cls"] == class_label] if r.status_code == 200 else []
-        print(f"  live component {method} -> {r.status_code}, {len(rows)} {class_label} rows", flush=True)
-        if rows:
-            return rows
-        if r.status_code != 200:
-            print("    reply:", re.sub(r"\s+", " ", r.text)[:160], flush=True)
-    return []
+    url = urljoin(BASE, (root.get("data-live-url-value") or LIVE_DEFAULT).rstrip("/")) + "/" + action
+    updated = {k: str(props[k]) for k in ("seasonId", "raceId", "sessionId") if k in props}
+    updated[model] = str(value)
+    payload = json.dumps({"props": props, "updated": updated, "args": {}}, separators=(",", ":"))
+    path = re.sub(r"^https?://[^/]+", "", page_url) or "/en/page/resultats-1"
+    headers = {**HEADERS, "Accept": "application/vnd.live-component+html", "Origin": BASE, "Referer": BASE + path,
+               "X-Live-Url": path, "X-Requested-With": "XMLHttpRequest"}
+    try:
+        r = requests.post(url, files={"data": (None, payload)}, headers=headers, timeout=(10, 30))
+        time.sleep(DELAY)
+    except requests.RequestException as e:
+        print(f"  ! live component {type(e).__name__}", flush=True)
+        return []
+    rows = [x for x in parse_results(r.text, crews, class_label) if x["cls"] == class_label] if r.status_code == 200 else []
+    print(f"  live component POST -> {r.status_code}, {len(rows)} {class_label} rows", flush=True)
+    if not rows:
+        print("    reply:", re.sub(r"\s+", " ", r.text)[:200], flush=True)
+    return rows
 
 
 def extra_class_rows(page, crews):
@@ -643,7 +653,7 @@ def scrape_results(old, rounds, schedule, latest_done, crews):
         page = fetch(link)
         rows = parse_results(page, crews) if page else []
         if page and not any(r["cls"] == "LMGT3" for r in rows):
-            rows += live_component_rows(page, crews) or extra_class_rows(page, crews)
+            rows += live_component_rows(page, crews, link) or extra_class_rows(page, crews)
         if page and not rows:
             tabs = BeautifulSoup(page, "lxml").find_all("table")
             print(f"  ! results page has {len(tabs)} tables; headers: {[table_headers(t)[:6] for t in tabs[:2]]}", flush=True)
