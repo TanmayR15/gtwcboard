@@ -88,6 +88,9 @@
     flex: 1 1 220px; max-width: 360px;
     border: 3px solid var(--panel-edge); background: var(--panel); color: var(--ink);
   }
+  .seriessel { font-family: 'Press Start 2P', monospace; font-size: 9px; padding: 10px 12px; border: 3px solid var(--overall); background: var(--panel); color: var(--overall);
+    box-shadow: 4px 4px 0 var(--shadow); cursor: pointer; }
+  .seriessel:focus { outline: none; border-color: #F2F2F2; }
   .search::placeholder { color: var(--ink-muted); }
 
   /* compact control bar on the Standings page */
@@ -290,7 +293,26 @@ const ENTITIES = [
   { key: "teams",   label: "TEAMS" },
 ];
 
+// Series the site can show. GTWC keeps its files in data/; the others use their own folder.
+const SERIES = [
+  { id: "gtwc", label: "GTWC EUROPE", dir: "data" },
+  { id: "f1",   label: "FORMULA 1",   dir: "data/f1" },
+  { id: "wec",  label: "WEC",         dir: "data/wec" },
+  { id: "igtc", label: "IGTC",        dir: "data/igtc" },
+];
+function seriesInfo(id) { return SERIES.find((x) => x.id === id) || SERIES[0]; }
+function initialSeries() {
+  try {
+    const q = new URLSearchParams(location.search).get("series");
+    if (q && SERIES.some((x) => x.id === q)) return q;
+    const v = localStorage.getItem("gtwcSeries");
+    if (v && SERIES.some((x) => x.id === v)) return v;
+  } catch (e) { /* storage blocked: use the default */ }
+  return "gtwc";
+}
+
 const state = {
+  series: initialSeries(), noData: false,
   page: "home",               // "home" | "standings" | "results" | "schedule" | "points" | "progress"
   cup: "overall", cls: "overall", entity: "drivers",
   roundId: null, sessionId: null, resultClass: "ALL",
@@ -366,22 +388,27 @@ function fmtPoints(n) { return Number.isInteger(n) ? String(n) : n.toFixed(1); }
 
 /* ---------- data loading ---------- */
 async function loadData() {
+  const mine = state.series;
+  const dir = seriesInfo(mine).dir;
+  const stale = () => state.series !== mine;      // the visitor switched series while this was loading
   try {
     const [s, r] = await Promise.all([
-      fetch("data/standings.json", { cache: "no-cache" }).then((x) => { if (!x.ok) throw new Error("standings.json " + x.status); return x.json(); }),
-      fetch("data/results.json", { cache: "no-cache" }).then((x) => { if (!x.ok) throw new Error("results.json " + x.status); return x.json(); }),
+      fetch(dir + "/standings.json", { cache: "no-cache" }).then((x) => { if (!x.ok) throw new Error("standings.json " + x.status); return x.json(); }),
+      fetch(dir + "/results.json", { cache: "no-cache" }).then((x) => { if (!x.ok) throw new Error("results.json " + x.status); return x.json(); }),
     ]);
+    if (stale()) return;
     state.standings = s;
     state.results = r;
-    // The schedule is a bonus: the rest of the site still works without it.
+    // History and schedule are bonuses: the rest of the site still works without them.
     try {
-      const hs = await fetch("data/history.json", { cache: "no-cache" });
+      const hs = await fetch(dir + "/history.json", { cache: "no-cache" });
       if (hs.ok) state.history = await hs.json();
     } catch (e) { state.history = null; }
     try {
-      const sc = await fetch("data/schedule.json", { cache: "no-cache" });
+      const sc = await fetch(dir + "/schedule.json", { cache: "no-cache" });
       if (sc.ok) state.schedule = await sc.json();
     } catch (e) { state.schedule = null; }
+    if (stale()) return;
     state.teamByDriver = buildTeamMap(r);
     const rounds = (r.rounds || []);
     if (rounds.length) {
@@ -390,9 +417,24 @@ async function loadData() {
       state.sessionId = defaultSessionId(last);          // its first race
     }
   } catch (err) {
-    state.error = err.message;
+    if (stale()) return;
+    if (mine === "gtwc") state.error = err.message;
+    else state.noData = true;                            // other series: no data files yet
   }
   render();
+}
+
+function setSeries(id) {
+  if (id === state.series) return;
+  state.series = id;
+  try { localStorage.setItem("gtwcSeries", id); } catch (e) { /* ignore */ }
+  Object.assign(state, {
+    standings: null, results: null, schedule: null, history: null, error: null, noData: false,
+    roundId: null, sessionId: null, teamByDriver: {}, schedOpen: new Set(),
+    cup: "overall", cls: "overall", entity: "drivers", stdQuery: "", resQuery: "", resultClass: "ALL",
+  });
+  render();          // shows "Loading..." straight away; the page the visitor is on stays the same
+  loadData();
 }
 
 /* ---------- pieces ---------- */
@@ -1151,7 +1193,11 @@ function render() {
   ]));
 
   {
+    const seriesSel = el("select", { class: "seriessel", "aria-label": "Series", title: "Series", onchange: (e) => setSeries(e.target.value) },
+      SERIES.map((x) => el("option", { value: x.id, text: x.label })));
+    seriesSel.value = state.series;
     app.appendChild(el("div", { class: "toolbar" }, [
+      seriesSel,
       el("button", { class: "btn main" + (state.page === "standings" ? " active" : ""), text: "STANDINGS", onclick: () => go("standings") }),
       el("button", { class: "btn main" + (state.page === "results" ? " active" : ""), text: "RESULTS", onclick: () => go("results") }),
       el("button", { class: "btn main" + (state.page === "schedule" ? " active" : ""), text: "SCHEDULE", onclick: () => go("schedule") }),
@@ -1160,11 +1206,19 @@ function render() {
     ]));
   }
 
-  if (onHome && !state.error) {
+  if (onHome && !state.error && !state.noData) {
     app.appendChild(el("div", { class: "styles" }, [el("span", { text: "HOME STYLE" })].concat([1, 2].map((n) =>
       el("button", { class: "btn main" + (state.homeStyle === n ? " active" : ""), text: String(n), title: "Home style " + n, onclick: () => setHomeStyle(n) })))));
   }
 
+  if (state.noData) {
+    const nm = seriesInfo(state.series).label;
+    app.appendChild(el("div", { class: "box" }, [
+      el("span", { class: "box-title pixel", text: nm }),
+      el("div", { class: "empty", text: "No data for this series yet. It will show up here once its updater has been added." }),
+    ]));
+    return;
+  }
   if (state.error) {
     app.appendChild(el("div", { class: "box err" }, [
       el("div", { class: "empty err", text: "Could not load data (" + state.error + "). If you opened this file directly, run a local server instead: python -m http.server" }),
