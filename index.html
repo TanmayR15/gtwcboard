@@ -278,6 +278,8 @@ const CLASSES = [
   { key: "gold",    label: "GOLD",    accent: "var(--gold)",        tint: "#2A2410" },
   { key: "silver",  label: "SILVER",  accent: "var(--silver)",      tint: "#2A2B2D" },
   { key: "bronze",  label: "BRONZE",  accent: "var(--bronze)",      tint: "#2A1C10" },
+  { key: "hypercar", label: "HYPERCAR", accent: "#FF4D4D",             tint: "#2A1212" },
+  { key: "lmgt3",    label: "LMGT3",    accent: "#7ED957",             tint: "#14230E" },
 ];
 const CLASS_STYLE = {   // race-result class names -> colours
   "all":        { accent: "var(--bar-overall)", tint: "var(--panel-edge)" },
@@ -286,6 +288,8 @@ const CLASS_STYLE = {   // race-result class names -> colours
   "silver cup": { accent: "var(--silver)",      tint: "#2A2B2D" },
   "bronze cup": { accent: "var(--bronze)",      tint: "#2A1C10" },
   "pro-am cup": { accent: "var(--blue)",        tint: "var(--blue-tint)" },
+  "hypercar":   { accent: "#FF4D4D",            tint: "#2A1212" },
+  "lmgt3":      { accent: "#7ED957",            tint: "#14230E" },
 };
 function classStyle(label) { return CLASS_STYLE[(label || "").toLowerCase()] || CLASS_STYLE["all"]; }
 const ENTITIES = [
@@ -299,7 +303,8 @@ const SERIES = [
     tags: { sprint: "SPRINT CUP", endurance: "ENDURANCE CUP" } },
   { id: "f1",   label: "FORMULA 1",   dir: "data/f1", cups: ["overall"], classes: ["overall"],
     tags: { sprint: "SPRINT WEEKEND", endurance: "GRAND PRIX" } },
-  { id: "wec",  label: "WEC",         dir: "data/wec", cups: ["overall"], classes: ["overall"], tags: { sprint: "SPRINT", endurance: "RACE" } },
+  { id: "wec",  label: "WEC",         dir: "data/wec", cups: ["overall"], classes: ["hypercar", "lmgt3"], resultClass: "Hypercar",
+    tags: { sprint: "SPRINT", endurance: "RACE" } },
   { id: "igtc", label: "IGTC",        dir: "data/igtc", cups: ["overall"], classes: ["overall"], tags: { sprint: "SPRINT", endurance: "RACE" } },
 ];
 function seriesInfo(id) { return SERIES.find((x) => x.id === id) || SERIES[0]; }
@@ -308,6 +313,11 @@ function curSeries() { return seriesInfo(state.series); }
 function cupList() { return CUPS.filter((c) => curSeries().cups.includes(c.key)); }
 function classList() { return CLASSES.filter((c) => curSeries().classes.includes(c.key)); }
 function tagLabel(key) { return curSeries().tags[key] || key.toUpperCase(); }
+// Standings entities. In the WEC the Hypercar "teams" table is the manufacturers' championship.
+function entList() {
+  return ENTITIES.map((e) => (e.key === "teams" && state.series === "wec" && state.cls === "hypercar")
+    ? { key: "teams", label: "MANUFACTURERS" } : e);
+}
 function isGtwc() { return state.series === "gtwc"; }
 function initialSeries() {
   try {
@@ -322,8 +332,8 @@ function initialSeries() {
 const state = {
   series: initialSeries(), noData: false,
   page: "home",               // "home" | "standings" | "results" | "schedule" | "points" | "progress"
-  cup: "overall", cls: "overall", entity: "drivers",
-  roundId: null, sessionId: null, resultClass: "ALL",
+  cup: "overall", cls: seriesInfo(initialSeries()).classes[0], entity: "drivers",
+  roundId: null, sessionId: null, resultClass: seriesInfo(initialSeries()).resultClass || "ALL",
   stdQuery: "", resQuery: "",
   standings: null, results: null, error: null,
   teamByDriver: {}, homeStyle: 1, schedule: null, schedOpen: new Set(), timer: null,
@@ -439,7 +449,7 @@ function setSeries(id) {
   Object.assign(state, {
     standings: null, results: null, schedule: null, history: null, error: null, noData: false,
     roundId: null, sessionId: null, teamByDriver: {}, schedOpen: new Set(),
-    cup: "overall", cls: "overall", entity: "drivers", stdQuery: "", resQuery: "", resultClass: "ALL",
+    cup: "overall", cls: seriesInfo(id).classes[0], entity: "drivers", stdQuery: "", resQuery: "", resultClass: seriesInfo(id).resultClass || "ALL",
   });
   render();          // shows "Loading..." straight away; the page the visitor is on stays the same
   loadData();
@@ -493,7 +503,7 @@ function renderStandings() {
 
   const cup = CUPS.find((c) => c.key === state.cup);
   const cls = CLASSES.find((c) => c.key === state.cls);
-  const ent = ENTITIES.find((e) => e.key === state.entity);
+  const ent = entList().find((e) => e.key === state.entity);
   const rows = (((state.standings.tables || {})[state.cup] || {})[state.cls] || {})[state.entity] || [];
   const teamOf = (r) => r.team || state.teamByDriver[normName(r.name)] || "";
 
@@ -529,6 +539,11 @@ function renderStandings() {
     if (state.stdQuery.trim() && rows.length) {
       box.appendChild(el("div", { class: "note", text: `Showing ${shown.length} of ${rows.length}. Positions are the official ones.` }));
     }
+    if (state.series === "wec") {
+      box.appendChild(el("div", { class: "note", text: state.cls === "hypercar" && ent.key === "teams"
+        ? "MANUFACTURERS: a manufacturer scores with its two best-placed cars in each race."
+        : "Each crew is listed by car number and driver surnames. A driver who shared cars in different races has a separate line." }));
+    }
     if (isGtwc()) box.appendChild(el("div", { class: "note", text: "Overall is the Pro-inclusive table. The official site does not publish a separate Pro table." }));
     if (ent.key === "drivers" && isGtwc()) {
       box.appendChild(el("div", { class: "note", text: "TEAM = entry name from the driver's most recent race result. The official driver standings do not list teams." }));
@@ -539,7 +554,7 @@ function renderStandings() {
   wrap.appendChild(el("div", { class: "controls" }, [
     cupList().length > 1 ? selectField("CHAMPIONSHIP", cupList(), state.cup, cup.edge || cup.accent, (k) => { state.cup = k; render(); }) : null,
     classList().length > 1 ? selectField("CLASS", classList(), state.cls, cls.edge || cls.accent, (k) => { state.cls = k; render(); }) : null,
-    toggleField("SHOW", ENTITIES, state.entity, (k) => { state.entity = k; render(); }),
+    toggleField("SHOW", entList(), state.entity, (k) => { state.entity = k; render(); }),
     searchField(state.stdQuery, ent.key === "drivers" ? "SEARCH DRIVER OR TEAM" : "SEARCH TEAM", (q) => { state.stdQuery = q; paint(); }),
   ]));
   paint();
@@ -551,12 +566,12 @@ function renderProgression() {
   const wrap = el("div");
   const cup = CUPS.find((c) => c.key === state.cup);
   const cls = CLASSES.find((c) => c.key === state.cls);
-  const ent = ENTITIES.find((e) => e.key === state.entity);
+  const ent = entList().find((e) => e.key === state.entity);
   const rows = (((state.standings.tables || {})[state.cup] || {})[state.cls] || {})[state.entity] || [];
   wrap.appendChild(el("div", { class: "controls" }, [
     cupList().length > 1 ? selectField("CHAMPIONSHIP", cupList(), state.cup, cup.edge || cup.accent, (k) => { state.cup = k; render(); }) : null,
     classList().length > 1 ? selectField("CLASS", classList(), state.cls, cls.edge || cls.accent, (k) => { state.cls = k; render(); }) : null,
-    toggleField("SHOW", ENTITIES, state.entity, (k) => { state.entity = k; render(); }),
+    toggleField("SHOW", entList(), state.entity, (k) => { state.entity = k; render(); }),
   ]));
   if (!rows.length) {
     wrap.appendChild(el("div", { class: "box" }, [el("div", { class: "empty", text: "No data yet for this table. It fills in after the next scheduled update." })]));
@@ -698,7 +713,7 @@ function renderResults() {
       });
       box.appendChild(el("div", { class: "tablewrap" }, [el("table", {}, [el("thead", {}, [head]), body])]));
       if (state.resQuery.trim() || active !== "ALL") {
-        box.appendChild(el("div", { class: "note", text: `Showing ${shown.length} of ${rows.length}. Positions are the official overall ones.` }));
+        box.appendChild(el("div", { class: "note", text: `Showing ${shown.length} of ${rows.length}. ${isGtwc() ? "Positions are the official overall ones." : "Positions are the official class positions."}` }));
       }
       box.appendChild(el("div", { class: "note", text: isGtwc()
         ? "BEST LAP is each car's fastest lap. The official table does not list total race times or gaps."
@@ -769,7 +784,9 @@ function cupTag(r) {
   const c = roundCup(r);
   if (!c) return null;
   const cup = CUPS.find((x) => x.key === c);
-  return el("span", { class: "cuptag", style: `color:${cup.accent}`, text: "\u00b7 " + tagLabel(c) });
+  let label = tagLabel(c);
+  if (state.series === "wec") { const m = /(\d+)\s*hours?/i.exec(r.name || ""); label = m ? m[1] + " HOURS" : "RACE"; }
+  return el("span", { class: "cuptag", style: `color:${cup.accent}`, text: "\u00b7 " + label });
 }
 function scheduleRounds() { return ((state.schedule || {}).rounds || []).slice().sort((a, b) => a.round - b.round); }
 function nextRound(now) { return scheduleRounds().find((r) => roundStatus(r, now) !== "done") || null; }
@@ -815,7 +832,7 @@ function homeFacts() {
   const rounds = scheduleRounds();
   const nxt = nextRound(now);
   const tables = (state.standings || {}).tables || {};
-  const all = (((tables.overall || {}).overall || {}));
+  const all = (((tables.overall || {})[curSeries().classes[0]] || {}));
   return { now, rounds, nxt, doneCount: rounds.filter((r) => roundStatus(r, now) === "done").length,
     target: nxt ? countdownTarget(nxt, now) : null, drivers: (all.drivers || []).slice(0, 6), teams: (all.teams || []).slice(0, 5) };
 }
@@ -1066,8 +1083,24 @@ const F1_TABLES = [
   { id: "sprint", title: "SPRINT", sub: "The short Saturday race · top 8 score", c: "var(--orange)", ct: "var(--orange-tint)",
     pts: [8, 7, 6, 5, 4, 3, 2, 1], max: 8, maxNote: "a win", note: "Sprint weekends only." },
 ];
+const WEC_TABLES = [
+  { id: "r6", title: "6-HOUR RACES", sub: "The usual race length · top 10 score", c: "var(--blue)", ct: "var(--blue-tint)",
+    pts: [25, 18, 15, 12, 10, 8, 6, 4, 2, 1], pole: "1 point for pole", max: 26, maxNote: "win + pole",
+    note: "Imola, Spa, São Paulo, Lone Star Le Mans, Fuji, Barcelona and Monza." },
+  { id: "lm", title: "24 HOURS OF LE MANS", sub: "Double-length race · the biggest points haul", c: "var(--overall)", ct: "#33230A",
+    pts: [50, 36, 30, 24, 20, 16, 12, 8, 4, 2], pole: "1 point for pole", max: 51, maxNote: "win + pole",
+    note: "Worth twice as much as a normal round." },
+];
 const POINT_GUIDES = {
   gtwc: { tables: POINT_TABLES },
+  wec: { tables: WEC_TABLES,
+    intro: "How the championship points are awarded. Hypercar and LMGT3 are scored separately, each with the same scale for its own class positions.",
+    legend: [["var(--blue)", "6 HOURS"], ["var(--overall)", "24 HOURS"], ["#FF4D4D", "HYPERCAR"], ["#7ED957", "LMGT3"]],
+    rules: ["Points are awarded for class positions, and the winner of each class gets the top score.",
+      "One bonus point goes to the pole position of each class.",
+      "Hypercar manufacturers score with the two best-placed cars of each brand in a race.",
+      "LMGT3 has its own teams' and drivers' trophies. Hypercar has a drivers' title and a manufacturers' title.",
+      "Scales shown are the ones used in the 2026 standings. Longer races, such as an 8-hour round, may use a different scale. Check the official regulations for the final word."] },
   f1: { tables: F1_TABLES,
     intro: "How the championship points are awarded. Each driver scores for the drivers' title, and a constructor adds up the points of both its cars.",
     legend: [["var(--blue)", "GRAND PRIX"], ["var(--orange)", "SPRINT"]],
