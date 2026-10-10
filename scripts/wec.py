@@ -58,7 +58,7 @@ COUNTRY = [
 WEEKDAYS = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
 MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september",
           "october", "november", "december"]
-DT_RE = re.compile(r"(%s)\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{1,2}):(\d{2})\s*(AM|PM)" % "|".join(m.title() for m in MONTHS), re.I)
+DT_RE = re.compile(r"(%s)\s+(\d{1,2})(?:st|nd|rd|th)?[\s,|]+(\d{1,2}):(\d{2})\s*(AM|PM)" % "|".join(m.title() for m in MONTHS), re.I)
 SESSION_WORDS = re.compile(r"practice|qualif|hyperpole|race|warm|test", re.I)
 PARTICLES = {"van", "de", "di", "da", "von", "der", "del", "dos", "den", "le", "la", "du", "ten", "ter"}
 
@@ -202,24 +202,26 @@ def session_kind_len(name, round_name):
 
 
 def parse_sessions(html, slug, round_name):
+    """Sessions from the race page text. The date and the time may sit in different elements."""
     tz = ZoneInfo(lookup(TRACK_TZ, slug, "UTC"))
     soup = BeautifulSoup(html, "lxml")
     lines = [re.sub(r"\s+", " ", x).strip() for x in soup.get_text("\n").split("\n")]
-    lines = [x for x in lines if x]
-    out, seen = [], set()
-    for i, line in enumerate(lines):
-        m = DT_RE.search(line)
-        if not m:
-            continue
-        name = line[:m.start()].strip(" -:·|,")
-        if not name:
-            j = i - 1
-            while j >= 0 and (DT_RE.search(lines[j]) or lines[j].lower() in ("live", "replay")):
-                j -= 1
-            name = lines[j] if j >= 0 else ""
+    text = " | ".join(x for x in lines if x)
+    out, seen, prev_end = [], set(), 0
+    matches = list(DT_RE.finditer(text))
+    if not matches:
+        print(f"  ! {slug}: no session times found in the page text", flush=True)
+        for x in [l for l in lines if re.search(r"\d{1,2}:\d{2}|%s" % "|".join(m.title() for m in MONTHS), l)][:6]:
+            print("    sample line:", x[:110], flush=True)
+    for m in matches:
+        pieces = [p.strip(" -:·,") for p in text[prev_end:m.start()].split("|")]
+        pieces = [p for p in pieces if p and p.lower() not in ("live", "replay")]
+        prev_end = m.end()
+        name = pieces[-1] if pieces else ""
         if not SESSION_WORDS.search(name) or len(name) > 60:
             continue
-        if any("cancel" in x.lower() for x in lines[i:i + 3]):
+        after = [p for p in text[m.end():m.end() + 80].split("|") if p.strip()]
+        if after and "cancel" in after[0].lower():      # "Session cancelled" sits right after the time
             continue
         month = MONTHS.index(m.group(1).lower()) + 1
         hour = int(m.group(3)) % 12 + (12 if m.group(5).upper() == "PM" else 0)
@@ -434,19 +436,32 @@ def scrape_history(old, tables, schedule):
 
 
 # ------------------------------------------------------------------ results
+RESULT_RE = re.compile(r"resultats[^\"'\s<>]*?raceId=(\d+)(?:&amp;|&)sessionId=(\d+)", re.I)
+
+
 def result_link(html):
-    """URL of the race classification page, from the race page links."""
+    """URL of the race classification page. Prefers a link called Race, else the latest session of the race."""
     soup = BeautifulSoup(html, "lxml")
-    best = None
     for a in soup.find_all("a", href=True):
-        if "raceId=" not in a["href"] or "sessionId=" not in a["href"]:
-            continue
-        t = text_of(a).lower()
-        if t == "race":
+        if re.search(r"raceId=\d+", a["href"], re.I) and re.search(r"sessionId=\d+", a["href"], re.I) \
+                and text_of(a).lower() == "race":
             return urljoin(BASE, a["href"])
-        if "race" in t and "recap" not in t and "summary" not in t and best is None:
-            best = urljoin(BASE, a["href"])
-    return best
+    found = RESULT_RE.findall(html)
+    if found:
+        race_id, _ = found[0]
+        session_id = max(int(sid) for rid, sid in found if rid == race_id)
+        return f"{BASE}/en/page/resultats-1?raceId={race_id}&sessionId={session_id}"
+    m = re.search(r"/race/summary/(\d+)", html) or re.search(r"/race/show/(\d+)", html)
+    if m:
+        print(f"  (no session links in the page; trying raceId={m.group(1)} only)", flush=True)
+        return f"{BASE}/en/page/resultats-1?raceId={m.group(1)}"
+    n = len(soup.find_all("a", href=True))
+    print(f"  ! no result links in the race page ({n} links, {len(html)} bytes)", flush=True)
+    for a in soup.find_all("a", href=True):
+        if re.search(r"result|summary|session", a["href"], re.I):
+            print("    link:", a["href"][:110], "|", text_of(a)[:30], flush=True)
+            break
+    return None
 
 
 def parse_results(html, crews):
@@ -499,6 +514,9 @@ def scrape_results(old, rounds, schedule, latest_done, crews):
             continue
         page = fetch(link)
         rows = parse_results(page, crews) if page else []
+        if page and not rows:
+            tabs = BeautifulSoup(page, "lxml").find_all("table")
+            print(f"  ! results page has {len(tabs)} tables; headers: {[table_headers(t)[:6] for t in tabs[:2]]}", flush=True)
         info = names.get(n, {})
         rname = info.get("name") or pretty_name(slug)
         print(f"results round {n} {rname}: {len(rows)} rows", flush=True)
