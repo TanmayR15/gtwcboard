@@ -2,11 +2,11 @@
 
 # 🏁 GTWC EUROPE PIT BOARD
 
-**A retro pixel-style dashboard for the 2026 GT World Challenge Europe season.**
+**A retro pixel-style dashboard for the GT World Challenge Europe season.**
 Standings, race results, schedule in IST, points guide and points progression. All in one fast static page.
 
 [![Live site](https://img.shields.io/badge/LIVE%20SITE-open-FF9F1C?style=for-the-badge)](https://tanmayr15.github.io/gtwcboard/)
-![Season](https://img.shields.io/badge/SEASON-2026-38B6FF?style=for-the-badge)
+![Series](https://img.shields.io/badge/SERIES-GTWC%20EUROPE-38B6FF?style=for-the-badge)
 ![Updates](https://img.shields.io/badge/UPDATES-AUTOMATIC-7ED957?style=for-the-badge)
 ![Cost](https://img.shields.io/badge/COST-FREE-FF5A36?style=for-the-badge)
 
