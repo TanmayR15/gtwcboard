@@ -500,9 +500,10 @@ def result_link(html):
             return urljoin(BASE, a["href"])
     found = RESULT_RE.findall(html)
     if found:
-        race_id, _ = found[0]
-        session_id = max(int(sid) for rid, sid in found if rid == race_id)
-        return f"{BASE}/en/page/resultats-1?raceId={race_id}&sessionId={session_id}"
+        # The race's own session links appear most often. The results page opens on the Race when no
+        # sessionId is given, which is safer than guessing which sessionId is the race.
+        race_id = max({rid for rid, _ in found}, key=lambda rid: sum(1 for r, _ in found if r == rid))
+        return f"{BASE}/en/page/resultats-1?raceId={race_id}"
     m = re.search(r"/race/summary/(\d+)", html) or re.search(r"/race/show/(\d+)", html)
     if m:
         print(f"  (no session links in the page; trying raceId={m.group(1)} only)", flush=True)
