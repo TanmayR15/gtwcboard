@@ -741,7 +741,54 @@
      }
     }
    }
+  },
+  {
+   "round": 17,
+   "name": "Singapore GP",
+   "estimated": false,
+   "tables": {
+    "overall/overall": {
+     "drivers": {
+      "andrea kimi antonelli": 325,
+      "george russell": 236,
+      "lewis hamilton": 221,
+      "charles leclerc": 197,
+      "max verstappen": 196,
+      "lando norris": 189,
+      "oscar piastri": 128,
+      "isack hadjar": 96,
+      "liam lawson": 69,
+      "pierre gasly": 41,
+      "arvid lindblad": 38,
+      "franco colapinto": 27,
+      "oliver bearman": 23,
+      "gabriel bortoleto": 10,
+      "nico hulkenberg": 9,
+      "esteban ocon": 7,
+      "fernando alonso": 7,
+      "carlos sainz": 7,
+      "alexander albon": 5,
+      "yuki tsunoda": 1,
+      "lance stroll": 0,
+      "valtteri bottas": 0,
+      "sergio perez": 0
+     },
+     "teams": {
+      "mercedes": 561,
+      "ferrari": 418,
+      "mclaren": 317,
+      "red bull": 306,
+      "rb f1 team": 94,
+      "alpine f1 team": 68,
+      "haas f1 team": 30,
+      "audi": 19,
+      "williams": 12,
+      "aston martin": 7,
+      "cadillac f1 team": 0
+     }
+    }
+   }
   }
  ],
- "updated": "2026-10-10 12:41 UTC"
+ "updated": "2026-10-11 00:25 UTC"
 }
