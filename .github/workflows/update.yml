@@ -38,6 +38,14 @@ jobs:
         continue-on-error: true
         run: python scripts/wec.py
 
+      # Intercontinental GT Challenge: results are PDFs, so install the PDF text tool first.
+      - name: Install PDF tools
+        continue-on-error: true
+        run: sudo apt-get install -y poppler-utils
+      - name: Update IGTC data
+        continue-on-error: true
+        run: python scripts/igtc.py
+
       - name: Commit changes
         run: |
           if [ -n "$(git status --porcelain data)" ]; then
