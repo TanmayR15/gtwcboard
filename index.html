@@ -280,6 +280,7 @@ const CLASSES = [
   { key: "bronze",  label: "BRONZE",  accent: "var(--bronze)",      tint: "#2A1C10" },
   { key: "hypercar", label: "HYPERCAR", accent: "#FF4D4D",             tint: "#2A1212" },
   { key: "lmgt3",    label: "LMGT3",    accent: "#7ED957",             tint: "#14230E" },
+  { key: "independent", label: "INDEPENDENT CUP", accent: "#C77DFF",      tint: "#1F1429" },
 ];
 const CLASS_STYLE = {   // race-result class names -> colours
   "all":        { accent: "var(--bar-overall)", tint: "var(--panel-edge)" },
@@ -290,6 +291,13 @@ const CLASS_STYLE = {   // race-result class names -> colours
   "pro-am cup": { accent: "var(--blue)",        tint: "var(--blue-tint)" },
   "hypercar":   { accent: "#FF4D4D",            tint: "#2A1212" },
   "lmgt3":      { accent: "#7ED957",            tint: "#14230E" },
+  "pro":        { accent: "var(--bar-overall)", tint: "var(--panel-edge)" },
+  "gold":       { accent: "var(--gold)",        tint: "#2A2410" },
+  "silver":     { accent: "var(--silver)",      tint: "#2A2B2D" },
+  "bronze":     { accent: "var(--bronze)",      tint: "#2A1C10" },
+  "pro-am":     { accent: "var(--blue)",        tint: "var(--blue-tint)" },
+  "am":         { accent: "#7ED957",            tint: "#14230E" },
+  "independent": { accent: "#C77DFF",           tint: "#1F1429" },
 };
 function classStyle(label) { return CLASS_STYLE[(label || "").toLowerCase()] || CLASS_STYLE["all"]; }
 const ENTITIES = [
@@ -305,7 +313,8 @@ const SERIES = [
     tags: { sprint: "SPRINT WEEKEND", endurance: "GRAND PRIX" } },
   { id: "wec",  label: "WEC",         dir: "data/wec", cups: ["overall"], classes: ["hypercar", "lmgt3"], resultClass: "Hypercar",
     tags: { sprint: "SPRINT", endurance: "RACE" } },
-  { id: "igtc", label: "IGTC",        dir: "data/igtc", cups: ["overall"], classes: ["overall"], tags: { sprint: "SPRINT", endurance: "RACE" } },
+  { id: "igtc", label: "IGTC",        dir: "data/igtc", cups: ["overall"], classes: ["overall", "independent"], resultClass: "ALL",
+    tags: { sprint: "SPRINT", endurance: "RACE" } },
 ];
 function seriesInfo(id) { return SERIES.find((x) => x.id === id) || SERIES[0]; }
 function curSeries() { return seriesInfo(state.series); }
@@ -315,7 +324,7 @@ function classList() { return CLASSES.filter((c) => curSeries().classes.includes
 function tagLabel(key) { return curSeries().tags[key] || key.toUpperCase(); }
 // Standings entities. In the WEC the Hypercar "teams" table is the manufacturers' championship.
 function entList() {
-  return ENTITIES.map((e) => (e.key === "teams" && state.series === "wec" && state.cls === "hypercar")
+  return ENTITIES.map((e) => (e.key === "teams" && ((state.series === "wec" && state.cls === "hypercar") || state.series === "igtc"))
     ? { key: "teams", label: "MANUFACTURERS" } : e);
 }
 function isGtwc() { return state.series === "gtwc"; }
@@ -381,7 +390,7 @@ function defaultSessionId(round) {
   const pick = main || finals[0] || sessions[0];
   return pick ? pick.id : null;
 }
-const CLASS_ORDER = ["pro cup", "pro-am cup", "gold cup", "silver cup", "bronze cup"];
+const CLASS_ORDER = ["pro cup", "pro-am cup", "gold cup", "silver cup", "bronze cup", "pro", "gold", "silver", "bronze", "pro-am", "am"];
 function sortClasses(list) {
   const rank = (c) => { const i = CLASS_ORDER.indexOf(c.toLowerCase()); return i === -1 ? 99 : i; };
   return list.slice().sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
@@ -538,6 +547,11 @@ function renderStandings() {
     }
     if (state.stdQuery.trim() && rows.length) {
       box.appendChild(el("div", { class: "note", text: `Showing ${shown.length} of ${rows.length}. Positions are the official ones.` }));
+    }
+    if (state.series === "igtc") {
+      box.appendChild(el("div", { class: "note", text: ent.key === "teams"
+        ? "GT3 MANUFACTURERS: a manufacturer scores with its two best-placed cars in each race."
+        : "TEAM column = the car brand. The Independent Cup is a separate table for independent entries." }));
     }
     if (state.series === "wec") {
       box.appendChild(el("div", { class: "note", text: state.cls === "hypercar" && ent.key === "teams"
@@ -696,7 +710,7 @@ function renderResults() {
     } else {
       const head = el("tr", {}, [
         el("th", { text: "POS" }), el("th", { text: "#" }), el("th", { text: "DRIVERS" }),
-        el("th", { text: "TEAM" }), el("th", { text: isGtwc() ? "CAR" : "" }), el("th", { class: "num", text: isGtwc() ? "BEST LAP" : "TIME / GAP" }), el("th", { class: "num", text: "LAPS" }),
+        el("th", { text: "TEAM" }), el("th", { text: (isGtwc() || state.series === "igtc") ? "CAR" : "" }), el("th", { class: "num", text: isGtwc() ? "BEST LAP" : "TIME / GAP" }), el("th", { class: "num", text: "LAPS" }),
       ]);
       const body = el("tbody");
       shown.forEach((r, i) => {
@@ -762,7 +776,7 @@ function roundEndMs(r) {
   const ss = r.sessions || [];
   if (!ss.length) return Date.parse(r.end + "T23:59:59Z");
   const last = Math.max(...ss.map((x) => (x.end_utc ? Date.parse(x.end_utc) : sessionMs(x))));
-  return last + (/24 hours/i.test(r.name || "") ? 26 : 4) * 36e5;   // allow for the race itself
+  return last + (/24\s*(hours?|h)\b/i.test(r.name || "") ? 26 : 4) * 36e5;   // allow for the race itself
 }
 function roundStatus(r, now) {
   if (now > roundEndMs(r)) return "done";
@@ -785,7 +799,10 @@ function cupTag(r) {
   if (!c) return null;
   const cup = CUPS.find((x) => x.key === c);
   let label = tagLabel(c);
-  if (state.series === "wec") { const m = /(\d+)\s*hours?/i.exec(r.name || ""); label = m ? m[1] + " HOURS" : "RACE"; }
+  if (state.series === "wec" || state.series === "igtc") {
+    const m = /(\d+)\s*(hours?|h)\b/i.exec(r.name || ""), k = /(\d+)\s*km/i.exec(r.name || "");
+    label = m ? m[1] + " HOURS" : (k ? k[1] + " KM" : "RACE");
+  }
   return el("span", { class: "cuptag", style: `color:${cup.accent}`, text: "\u00b7 " + label });
 }
 function scheduleRounds() { return ((state.schedule || {}).rounds || []).slice().sort((a, b) => a.round - b.round); }
@@ -1091,8 +1108,22 @@ const WEC_TABLES = [
     pts: [50, 36, 30, 24, 20, 16, 12, 8, 4, 2], pole: "1 point for pole", max: 51, maxNote: "win + pole",
     note: "Worth twice as much as a normal round." },
 ];
+const IGTC_TABLES = [
+  { id: "race", title: "EVERY RACE", sub: "12-hour, 24-hour, 1000 km and 8-hour rounds · top 10 score", c: "var(--blue)", ct: "var(--blue-tint)",
+    pts: [25, 18, 15, 12, 10, 8, 6, 4, 2, 1], max: 25, maxNote: "a win",
+    note: "The same scale is used at Bathurst, the Nürburgring, Spa, Suzuka and Indianapolis." },
+];
 const POINT_GUIDES = {
   gtwc: { tables: POINT_TABLES },
+  igtc: { tables: IGTC_TABLES,
+    intro: "How the championship points are awarded. Each driver scores for the drivers' standings, and a manufacturer adds up the points of its two best cars.",
+    legend: [["var(--blue)", "RACE POINTS"], ["#C77DFF", "INDEPENDENT CUP"]],
+    rules: ["Only the top 10 in each race score.",
+      "A car must complete 75% of the winner's race distance to be classified and score.",
+      "Each driver must drive at least 25 minutes in a race to earn points.",
+      "A manufacturer scores with its two highest-placed cars in each round.",
+      "The Independent Cup is its own table for independent entries.",
+      "Source: published IGTC rules summary. Manufacturer totals can include other bonus points, so check the official regulations for the final word."] },
   wec: { tables: WEC_TABLES,
     intro: "How the championship points are awarded. Hypercar and LMGT3 are scored separately, each with the same scale for its own class positions.",
     legend: [["var(--blue)", "6 HOURS"], ["var(--overall)", "24 HOURS"], ["#FF4D4D", "HYPERCAR"], ["#7ED957", "LMGT3"]],
