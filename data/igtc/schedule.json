@@ -1,0 +1,408 @@
+{
+ "season": 2026,
+ "rounds": [
+  {
+   "round": 1,
+   "name": "Event Info",
+   "country": "Australia",
+   "start": "2026-02-11",
+   "end": "2026-02-15",
+   "sessions": [
+    {
+     "name": "Parade",
+     "kind": "practice",
+     "day": "THU",
+     "utc": "2026-02-12T00:30:00Z",
+     "end_utc": "2026-02-12T01:30:00Z"
+    },
+    {
+     "name": "Free Practice 1",
+     "kind": "practice",
+     "day": "THU",
+     "utc": "2026-02-12T22:45:00Z",
+     "end_utc": "2026-02-12T23:45:00Z"
+    },
+    {
+     "name": "Free Practice 2 (Bronze Drivers)",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-02-13T01:00:00Z",
+     "end_utc": "2026-02-13T02:00:00Z"
+    },
+    {
+     "name": "Free Practice 3",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-02-13T04:10:00Z",
+     "end_utc": "2026-02-13T05:10:00Z"
+    },
+    {
+     "name": "Free Practice 4 (Bronze Drivers)",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-02-13T06:40:00Z",
+     "end_utc": "2026-02-13T07:40:00Z"
+    },
+    {
+     "name": "Free Practice 5",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-02-13T22:05:00Z",
+     "end_utc": "2026-02-13T23:05:00Z"
+    },
+    {
+     "name": "Free Practice 6",
+     "kind": "practice",
+     "day": "SAT",
+     "utc": "2026-02-14T00:05:00Z",
+     "end_utc": "2026-02-14T01:05:00Z"
+    },
+    {
+     "name": "Qualifying 1",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-02-14T03:05:00Z",
+     "end_utc": "2026-02-14T03:25:00Z"
+    },
+    {
+     "name": "Qualifying 2",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-02-14T03:50:00Z",
+     "end_utc": "2026-02-14T04:10:00Z"
+    },
+    {
+     "name": "Qualifying 3",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-02-14T06:15:00Z",
+     "end_utc": "2026-02-14T06:35:00Z"
+    },
+    {
+     "name": "Race",
+     "kind": "race",
+     "day": "SAT",
+     "utc": "2026-02-14T19:45:00Z",
+     "end_utc": "2026-02-15T03:45:00Z"
+    }
+   ]
+  },
+  {
+   "round": 2,
+   "name": "Event Info",
+   "country": "Germany",
+   "start": "2026-05-14",
+   "end": "2026-05-17",
+   "sessions": [
+    {
+     "name": "Qualifying 1",
+     "kind": "qualifying",
+     "day": "THU",
+     "utc": "2026-05-14T11:15:00Z",
+     "end_utc": "2026-05-14T11:35:00Z"
+    },
+    {
+     "name": "Qualifying 2",
+     "kind": "qualifying",
+     "day": "THU",
+     "utc": "2026-05-14T18:00:00Z",
+     "end_utc": "2026-05-14T18:20:00Z"
+    },
+    {
+     "name": "Top Qualifying 1",
+     "kind": "qualifying",
+     "day": "FRI",
+     "utc": "2026-05-15T08:15:00Z",
+     "end_utc": "2026-05-15T08:35:00Z"
+    },
+    {
+     "name": "Top Qualifying 2",
+     "kind": "qualifying",
+     "day": "FRI",
+     "utc": "2026-05-15T09:00:00Z",
+     "end_utc": "2026-05-15T09:20:00Z"
+    },
+    {
+     "name": "Qualifying 3",
+     "kind": "qualifying",
+     "day": "FRI",
+     "utc": "2026-05-15T10:00:00Z",
+     "end_utc": "2026-05-15T10:20:00Z"
+    },
+    {
+     "name": "Top Qualifying 3",
+     "kind": "qualifying",
+     "day": "FRI",
+     "utc": "2026-05-15T11:35:00Z",
+     "end_utc": "2026-05-15T11:55:00Z"
+    },
+    {
+     "name": "Warm-up",
+     "kind": "practice",
+     "day": "SAT",
+     "utc": "2026-05-16T08:00:00Z",
+     "end_utc": "2026-05-16T09:00:00Z"
+    },
+    {
+     "name": "Race",
+     "kind": "race",
+     "day": "SAT",
+     "utc": "2026-05-16T13:00:00Z",
+     "end_utc": "2026-05-16T21:00:00Z"
+    }
+   ]
+  },
+  {
+   "round": 3,
+   "name": "Event Info",
+   "country": "Belgium",
+   "start": "2026-06-23",
+   "end": "2026-06-28",
+   "sessions": [
+    {
+     "name": "Paid Test Session 1",
+     "kind": "practice",
+     "day": "TUE",
+     "utc": "2026-06-23T12:40:00Z",
+     "end_utc": "2026-06-23T14:10:00Z"
+    },
+    {
+     "name": "Bronze Test",
+     "kind": "practice",
+     "day": "TUE",
+     "utc": "2026-06-23T14:55:00Z",
+     "end_utc": "2026-06-23T16:25:00Z"
+    },
+    {
+     "name": "Parade",
+     "kind": "practice",
+     "day": "WED",
+     "utc": "2026-06-24T16:00:00Z",
+     "end_utc": "2026-06-24T17:00:00Z"
+    },
+    {
+     "name": "Free Practice 1",
+     "kind": "practice",
+     "day": "THU",
+     "utc": "2026-06-25T08:10:00Z",
+     "end_utc": "2026-06-25T09:10:00Z"
+    },
+    {
+     "name": "Free Practice 2",
+     "kind": "practice",
+     "day": "THU",
+     "utc": "2026-06-25T12:00:00Z",
+     "end_utc": "2026-06-25T13:00:00Z"
+    },
+    {
+     "name": "Qualifying 1",
+     "kind": "qualifying",
+     "day": "THU",
+     "utc": "2026-06-25T17:45:00Z",
+     "end_utc": "2026-06-25T18:05:00Z"
+    },
+    {
+     "name": "Qualifying 2",
+     "kind": "qualifying",
+     "day": "THU",
+     "utc": "2026-06-25T18:05:00Z",
+     "end_utc": "2026-06-25T18:25:00Z"
+    },
+    {
+     "name": "Qualifying 3",
+     "kind": "qualifying",
+     "day": "THU",
+     "utc": "2026-06-25T18:35:00Z",
+     "end_utc": "2026-06-25T18:55:00Z"
+    },
+    {
+     "name": "Qualifying 4",
+     "kind": "qualifying",
+     "day": "THU",
+     "utc": "2026-06-25T19:05:00Z",
+     "end_utc": "2026-06-25T19:25:00Z"
+    },
+    {
+     "name": "Night Practice",
+     "kind": "practice",
+     "day": "THU",
+     "utc": "2026-06-25T20:30:00Z",
+     "end_utc": "2026-06-25T21:30:00Z"
+    },
+    {
+     "name": "Super Pole",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-06-26T13:05:00Z",
+     "end_utc": "2026-06-26T14:05:00Z"
+    },
+    {
+     "name": "Warm-up",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-06-26T17:20:00Z",
+     "end_utc": "2026-06-26T18:20:00Z"
+    },
+    {
+     "name": "Race",
+     "kind": "race",
+     "day": "SAT",
+     "utc": "2026-06-27T14:30:00Z",
+     "end_utc": "2026-06-27T22:30:00Z"
+    }
+   ]
+  },
+  {
+   "round": 4,
+   "name": "Event Info",
+   "country": "Japan",
+   "start": "2026-09-11",
+   "end": "2026-09-13",
+   "sessions": [
+    {
+     "name": "Test Session 1",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-09-11T00:10:00Z",
+     "end_utc": "2026-09-11T01:40:00Z"
+    },
+    {
+     "name": "Test Session 2",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-09-11T03:10:00Z",
+     "end_utc": "2026-09-11T04:40:00Z"
+    },
+    {
+     "name": "Night Practice",
+     "kind": "practice",
+     "day": "FRI",
+     "utc": "2026-09-11T08:50:00Z",
+     "end_utc": "2026-09-11T09:50:00Z"
+    },
+    {
+     "name": "Pre Qualifying",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-09-12T01:40:00Z",
+     "end_utc": "2026-09-12T02:10:00Z"
+    },
+    {
+     "name": "Qualifying 1",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-09-12T08:40:00Z",
+     "end_utc": "2026-09-12T09:00:00Z"
+    },
+    {
+     "name": "Qualifying 2",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-09-12T09:02:00Z",
+     "end_utc": "2026-09-12T09:22:00Z"
+    },
+    {
+     "name": "Qualifying 3",
+     "kind": "qualifying",
+     "day": "SAT",
+     "utc": "2026-09-12T09:25:00Z",
+     "end_utc": "2026-09-12T09:45:00Z"
+    },
+    {
+     "name": "Race",
+     "kind": "race",
+     "day": "SUN",
+     "utc": "2026-09-13T03:50:00Z",
+     "end_utc": "2026-09-13T11:50:00Z"
+    }
+   ]
+  },
+  {
+   "round": 5,
+   "name": "Event Info",
+   "country": "United States",
+   "start": "2026-10-08",
+   "end": "2026-10-10",
+   "sessions": [
+    {
+     "name": "Test Session 1",
+     "kind": "practice",
+     "day": "WED",
+     "utc": "2026-10-07T19:25:00Z",
+     "end_utc": "2026-10-07T20:55:00Z"
+    },
+    {
+     "name": "GMT",
+     "kind": "practice",
+     "day": "THU",
+     "utc": "2026-10-08T04:00:00Z",
+     "end_utc": "2026-10-08T05:00:00Z"
+    },
+    {
+     "name": "Test Session 2",
+     "kind": "practice",
+     "day": "THU",
+     "utc": "2026-10-08T14:45:00Z",
+     "end_utc": "2026-10-08T16:15:00Z"
+    },
+    {
+     "name": "Bronze Test",
+     "kind": "practice",
+     "day": "THU",
+     "utc": "2026-10-08T22:30:00Z",
+     "end_utc": "2026-10-09T00:00:00Z"
+    },
+    {
+     "name": "Free Practice",
+     "kind": "practice",
+     "day": "THU",
+     "utc": "2026-10-08T23:00:00Z",
+     "end_utc": "2026-10-09T00:00:00Z"
+    },
+    {
+     "name": "Pre Qualifying",
+     "kind": "qualifying",
+     "day": "FRI",
+     "utc": "2026-10-09T13:50:00Z",
+     "end_utc": "2026-10-09T14:20:00Z"
+    },
+    {
+     "name": "Qualifying 1",
+     "kind": "qualifying",
+     "day": "FRI",
+     "utc": "2026-10-09T19:35:00Z",
+     "end_utc": "2026-10-09T19:55:00Z"
+    },
+    {
+     "name": "Qualifying 2",
+     "kind": "qualifying",
+     "day": "FRI",
+     "utc": "2026-10-09T19:57:00Z",
+     "end_utc": "2026-10-09T20:17:00Z"
+    },
+    {
+     "name": "Qualifying 3",
+     "kind": "qualifying",
+     "day": "FRI",
+     "utc": "2026-10-09T20:20:00Z",
+     "end_utc": "2026-10-09T20:40:00Z"
+    },
+    {
+     "name": "Pole Shootout (Top-10)",
+     "kind": "qualifying",
+     "day": "FRI",
+     "utc": "2026-10-09T21:35:00Z",
+     "end_utc": "2026-10-09T21:50:00Z"
+    },
+    {
+     "name": "Race",
+     "kind": "race",
+     "day": "SAT",
+     "utc": "2026-10-10T16:30:00Z",
+     "end_utc": "2026-10-11T00:30:00Z"
+    }
+   ]
+  }
+ ],
+ "updated": "2026-10-13 01:31 UTC"
+}

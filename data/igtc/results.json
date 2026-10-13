@@ -1,0 +1,374 @@
+{
+ "season": 2026,
+ "rounds": [
+  {
+   "id": "event-info",
+   "round": 1,
+   "name": "Event Info",
+   "cup": "Race",
+   "sessions": [
+    {
+     "id": "main-race",
+     "name": "Race",
+     "rows": [
+      {
+       "pos": 1,
+       "car": "888",
+       "drivers": "M.Engel, M.Grenier, M.Martin",
+       "team": "Mercedes-AMG Team GMR",
+       "model": "Mercedes-AMG GT3 EVO",
+       "laps": 262,
+       "cls": "Pro",
+       "time": "12:01:39.8977"
+      },
+      {
+       "pos": 2,
+       "car": "86",
+       "drivers": "D.Boccolacci, A.Fjordbach, K.Li",
+       "team": "High Class Racing",
+       "model": "Porsche 911 GT3R",
+       "laps": 262,
+       "cls": "Bronze",
+       "time": "+1.037"
+      },
+      {
+       "pos": 3,
+       "car": "46",
+       "drivers": "A.Farfus, R.Marciello, V.Rossi",
+       "team": "Team WRT",
+       "model": "BMW M4 GT3 EVO",
+       "laps": 262,
+       "cls": "Pro",
+       "time": "+6.877"
+      },
+      {
+       "pos": 4,
+       "car": "55",
+       "drivers": "B.Schumacher, C.Haase, W.Brown",
+       "team": "Jamec Racing/Team MPC",
+       "model": "Audi RB LMS GT3 Evo",
+       "laps": 262,
+       "cls": "Pro",
+       "time": "+7.872"
+      },
+      {
+       "pos": 5,
+       "car": "89",
+       "drivers": "M.Hesse, M.Oosten, C.Ruan",
+       "team": "Team KRC",
+       "model": "BMW M4 GT3 EVO",
+       "laps": 262,
+       "cls": "Bronze",
+       "time": "+8.458"
+      },
+      {
+       "pos": 6,
+       "car": "911",
+       "drivers": "M.Campbell, A.Picariello, B.Buus",
+       "team": "Absolute Racing",
+       "model": "Porsche 911 GT3R",
+       "laps": 262,
+       "cls": "Pro",
+       "time": "+10.749"
+      },
+      {
+       "pos": 7,
+       "car": "75",
+       "drivers": "K.Habul, L.Stolz, J.Gounon",
+       "team": "75 Express",
+       "model": "Mercedes-AMG GT3 EVO",
+       "laps": 262,
+       "cls": "Pro",
+       "time": "+27.129"
+      },
+      {
+       "pos": 8,
+       "car": "61",
+       "drivers": "R.Feller, L.Heinrich, K.Bachler",
+       "team": "EBM",
+       "model": "Porsche 911 GT3R",
+       "laps": 262,
+       "cls": "Pro",
+       "time": "+27.856"
+      },
+      {
+       "pos": 9,
+       "car": "26",
+       "drivers": "J.Evans, D.Rigon, D.Serra",
+       "team": "Arise Racing GT",
+       "model": "Ferrari 296 GT3",
+       "laps": 262,
+       "cls": "Pro",
+       "time": "+28.242"
+      },
+      {
+       "pos": 10,
+       "car": "193",
+       "drivers": "R.Wood, C.Froggatt, J.Hui, L.Patrese",
+       "team": "Ziggo Sport Tempesta by ARGT",
+       "model": "Ferrari 296 GT3",
+       "laps": 262,
+       "cls": "Bronze",
+       "time": "+36.192"
+      },
+      {
+       "pos": 11,
+       "car": "21",
+       "drivers": "R.Renauer, A.Renauer, R.Bohn",
+       "team": "Herberth Motorsport",
+       "model": "Porsche 911 GT3R",
+       "laps": 262,
+       "cls": "Bronze",
+       "time": "+36.517"
+      },
+      {
+       "pos": 12,
+       "car": "32",
+       "drivers": "J.Pepper, K.van der Linde, C.Weerts",
+       "team": "Team WRT",
+       "model": "BMW M4 GT3 EVO",
+       "laps": 262,
+       "cls": "Pro",
+       "time": "+1:05.722"
+      },
+      {
+       "pos": 13,
+       "car": "45",
+       "drivers": "D.O'Keeffe, B.Hobson, G.Walden",
+       "team": "RAM Motorsport / GWR Australia",
+       "model": "Mercedes-AMG GT3 EVO",
+       "laps": 262,
+       "cls": "Pro-Am",
+       "time": "+1:09.478"
+      },
+      {
+       "pos": 14,
+       "car": "99",
+       "drivers": "B.Green, P.Ibrahim, P.Bakar, J.Love",
+       "team": "Johor Motorsports Racing JMR",
+       "model": "Chevrolet Z06 GT3.R",
+       "laps": 261,
+       "cls": "Pro-Am",
+       "time": "+1 Lap"
+      },
+      {
+       "pos": 15,
+       "car": "93",
+       "drivers": "M.Mapelli, T.D'Alberto, G.Denyer, A.Deitz",
+       "team": "Wall Racing",
+       "model": "Lamborghini Huracan",
+       "laps": 260,
+       "cls": "Bronze",
+       "time": "+2 Laps"
+      },
+      {
+       "pos": 16,
+       "car": "9",
+       "drivers": "L.Holdsworth, D.Fiore, M.Cini",
+       "team": "Hallmarc/Team MPC",
+       "model": "Audi R8 LMS GT3 Evo",
+       "laps": 260,
+       "cls": "Bronze",
+       "time": "+2 Laps"
+      },
+      {
+       "pos": 17,
+       "car": "27",
+       "drivers": "R.De Angelis, E.Barrichello, I.James",
+       "team": "Heart of Racing by SPS",
+       "model": "Mercedes-AMG GT3 EVO",
+       "laps": 254,
+       "cls": "Bronze",
+       "time": "+8 Laps"
+      },
+      {
+       "pos": 18,
+       "car": "101",
+       "drivers": "Klark Quinn, R.Quinn, T.Quinn, Kent Quinn",
+       "team": "Q/Team MPC",
+       "model": "Audi RB LMS GT3 Evo",
+       "laps": 254,
+       "cls": "Bronze",
+       "time": "+8 Laps"
+      },
+      {
+       "pos": 19,
+       "car": "14",
+       "drivers": "B.Fullwood, D.Hamilton, A.Pato, M.Robin",
+       "team": "Volante Rosso Motorsport",
+       "model": "Aston Martin Vantage",
+       "laps": 252,
+       "cls": "Pro-Am",
+       "time": "+10 Laps"
+      },
+      {
+       "pos": 20,
+       "car": "44",
+       "drivers": "B.Leitch, S.Pires, M.Zalloua, S.Andrews",
+       "team": "Geyer Valmont Racing/Tigani Mo",
+       "model": "Mercedes-AMG GT3 EVO",
+       "laps": 250,
+       "cls": "Pro-Am",
+       "time": "+12 Laps"
+      },
+      {
+       "pos": 21,
+       "car": "47",
+       "drivers": "Z.Bates, D.Russell, J.Koundouris, T.Koundouris",
+       "team": "Supabarn Supermarkets/Tigani",
+       "model": "Mercedes-AMG GT3 EVO",
+       "laps": 249,
+       "cls": "Bronze",
+       "time": "+13 Laps"
+      },
+      {
+       "pos": 22,
+       "car": "111",
+       "drivers": "D.Currie, D.Stutterd, A.Donaldson",
+       "team": "111 Racing",
+       "model": "IRC GT",
+       "laps": 236,
+       "cls": "Other",
+       "time": "+26 Laps"
+      },
+      {
+       "pos": 24,
+       "car": "100",
+       "drivers": "B.Grove, K.Allen, W.Davison",
+       "team": "Grove Racing",
+       "model": "Mercedes-AMG GT3 EVO",
+       "laps": 230,
+       "cls": "Pro",
+       "time": "+32 Laps"
+      },
+      {
+       "pos": 0,
+       "car": "95",
+       "drivers": "G.Patterson, B.Barnicoat, M.KirchhoeferTiming by SupercarsElapsed Time    12:01:39_____________________________________________________________________________",
+       "team": "Optimum Motorsport",
+       "model": "McLaren 720S GT3 EVO",
+       "laps": 245,
+       "cls": "Pro",
+       "time": "NC"
+      },
+      {
+       "pos": 0,
+       "car": "6",
+       "drivers": "J.Ojeda, F.Schiller, P.Ellis",
+       "team": "Mercedes-AMG Team Tigani Motor",
+       "model": "Mercedes-AMG GT3 EVO",
+       "laps": 238,
+       "cls": "Pro",
+       "time": "NC"
+      },
+      {
+       "pos": 0,
+       "car": "222",
+       "drivers": "C.Waters, C.Mostert, T.Randle",
+       "team": "Scott Taylor Motorsport",
+       "model": "Mercedes-AMG GT3 EVO",
+       "laps": 238,
+       "cls": "Pro",
+       "time": "NC"
+      },
+      {
+       "pos": 0,
+       "car": "2",
+       "drivers": "A.Sims, N.Catsburg, E.Bamber",
+       "team": "Johor Motorsports Racing JMR",
+       "model": "Chevrolet Z06 GT3.R",
+       "laps": 223,
+       "cls": "Pro",
+       "time": "NC"
+      },
+      {
+       "pos": 0,
+       "car": "77",
+       "drivers": "M.Goetz, R.Aron, L.Auer",
+       "team": "Mercedes-AMG Team Craft Bamboo",
+       "model": "Mercedes-AMG GT3 EVO",
+       "laps": 195,
+       "cls": "Pro",
+       "time": "NC"
+      },
+      {
+       "pos": 0,
+       "car": "79",
+       "drivers": "A.Fontana, F.Babini, J.Zelger",
+       "team": "TSUNAMI RT",
+       "model": "Porsche 911 GT3R",
+       "laps": 192,
+       "cls": "Bronze",
+       "time": "NC"
+      },
+      {
+       "pos": 0,
+       "car": "268",
+       "drivers": "A.Peroni, M.Rosser, S.Brooks, J.Golding",
+       "team": "Team BRM",
+       "model": "Audi RB LMS GT3 Evo",
+       "laps": 148,
+       "cls": "Pro-Am",
+       "time": "NC"
+      },
+      {
+       "pos": 0,
+       "car": "15",
+       "drivers": "R.Gray, B.Hall, J.Simmenauer",
+       "team": "Volante Rosso Motorsport",
+       "model": "McLaren 720S GT3 EVO",
+       "laps": 130,
+       "cls": "Silver",
+       "time": "NC"
+      },
+      {
+       "pos": 0,
+       "car": "50",
+       "drivers": "David Crampton",
+       "team": "KTM Vantage Racing",
+       "model": "KTM X-BOW GT2",
+       "laps": 6,
+       "cls": "Other",
+       "time": "NC"
+      },
+      {
+       "pos": 0,
+       "car": "64",
+       "drivers": "Chris Mies",
+       "team": "HRT Ford Racing",
+       "model": "Ford Mustang GT3",
+       "laps": 3,
+       "cls": "Pro",
+       "time": "NC"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "event-info",
+   "round": 4,
+   "name": "Event Info",
+   "cup": "Race",
+   "sessions": [
+    {
+     "id": "main-race",
+     "name": "Race",
+     "rows": [
+      {
+       "pos": 1,
+       "car": "8",
+       "drivers": "2 64 Pro Christopher Mies, Dennis Olsen, Frédéric Ford Mustang Gt3 Evo 1002 51.416Miedecke Motorsport By Team Mpc-1184 51.4166:32:09.655 2:00.631163.471",
+       "team": "Alessio PICARIELLO",
+       "model": "(BEL) / Laurin HEINRICH (DEU) / Julien             Porsche 911 GT3 R (992) EVO                                                                                                                   1271   AO by Absolute Racing (USA)",
+       "laps": 5184,
+       "cls": "Pro",
+       "time": "6:31:18.239"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "updated": "2026-10-13 01:31 UTC"
+}

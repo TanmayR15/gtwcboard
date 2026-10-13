@@ -1,0 +1,756 @@
+{
+ "season": 2026,
+ "tables": {
+  "overall": {
+   "overall": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Maxime Martin",
+      "team": "Mercedes-AMG",
+      "total": 72
+     },
+     {
+      "pos": 2,
+      "name": "Maro Engel",
+      "team": "Mercedes-AMG",
+      "total": 68
+     },
+     {
+      "pos": 3,
+      "name": "Luca Stolz",
+      "team": "Mercedes-AMG",
+      "total": 61
+     },
+     {
+      "pos": 4,
+      "name": "Laurin Heinrich",
+      "team": "Porsche",
+      "total": 56
+     },
+     {
+      "pos": 5,
+      "name": "Ayhancan Guven",
+      "team": "Porsche",
+      "total": 52
+     },
+     {
+      "pos": 6,
+      "name": "Bastian Buus",
+      "team": "Porsche",
+      "total": 47
+     },
+     {
+      "pos": 7,
+      "name": "Ricardo Feller",
+      "team": "Porsche",
+      "total": 46
+     },
+     {
+      "pos": 8,
+      "name": "Alessio Picariello",
+      "team": "Porsche",
+      "total": 42
+     },
+     {
+      "pos": 9,
+      "name": "Dorian Boccolacci",
+      "team": "Porsche",
+      "total": 39
+     },
+     {
+      "pos": 10,
+      "name": "Max Hesse",
+      "team": "BMW",
+      "total": 38
+     },
+     {
+      "pos": 11,
+      "name": "Mikael Grenier",
+      "team": "Mercedes-AMG",
+      "total": 37
+     },
+     {
+      "pos": 12,
+      "name": "Daniel Harper",
+      "team": "BMW",
+      "total": 32
+     },
+     {
+      "pos": 13,
+      "name": "Nicklas Nielsen",
+      "team": "Ferrari",
+      "total": 30
+     },
+     {
+      "pos": 14,
+      "name": "Christopher Mies",
+      "team": "Ford",
+      "total": 28
+     },
+     {
+      "pos": 14,
+      "name": "Dennis Olsen",
+      "team": "Ford",
+      "total": 28
+     },
+     {
+      "pos": 14,
+      "name": "Frederic Vervisch",
+      "team": "Ford",
+      "total": 28
+     },
+     {
+      "pos": 15,
+      "name": "Fabien Schiller",
+      "team": "Mercedes-AMG",
+      "total": 25
+     },
+     {
+      "pos": 15,
+      "name": "Thomas Preining",
+      "team": "Porsche",
+      "total": 25
+     },
+     {
+      "pos": 15,
+      "name": "Julian Andlauer",
+      "team": "Porsche",
+      "total": 25
+     },
+     {
+      "pos": 15,
+      "name": "Kyle Washington",
+      "team": "Porsche",
+      "total": 25
+     },
+     {
+      "pos": 15,
+      "name": "Ricardo Pera",
+      "team": "Porsche",
+      "total": 25
+     },
+     {
+      "pos": 16,
+      "name": "Anders Fjordbach",
+      "team": "Porsche",
+      "total": 24
+     },
+     {
+      "pos": 16,
+      "name": "Kerong Li",
+      "team": "Porsche",
+      "total": 24
+     },
+     {
+      "pos": 17,
+      "name": "Valentino Rossi",
+      "team": "BMW",
+      "total": 23
+     },
+     {
+      "pos": 18,
+      "name": "Matt Campbell",
+      "team": "Porsche",
+      "total": 22
+     },
+     {
+      "pos": 19,
+      "name": "Augusto Farfus",
+      "team": "BMW",
+      "total": 19
+     },
+     {
+      "pos": 19,
+      "name": "Raffaele Marciello",
+      "team": "BMW",
+      "total": 19
+     },
+     {
+      "pos": 20,
+      "name": "Dries Vanthoor",
+      "team": "BMW",
+      "total": 18
+     },
+     {
+      "pos": 20,
+      "name": "Lucas Auer",
+      "team": "Mercedes-AMG",
+      "total": 18
+     },
+     {
+      "pos": 20,
+      "name": "Sheldon van der Linde",
+      "team": "BMW",
+      "total": 18
+     },
+     {
+      "pos": 20,
+      "name": "Justin Rothberg",
+      "team": "BMW",
+      "total": 18
+     },
+     {
+      "pos": 20,
+      "name": "Connor de Phillippi",
+      "team": "BMW",
+      "total": 18
+     },
+     {
+      "pos": 20,
+      "name": "Robby Foley",
+      "team": "BMW",
+      "total": 18
+     },
+     {
+      "pos": 21,
+      "name": "Joel Sturm",
+      "team": "Porsche",
+      "total": 16
+     },
+     {
+      "pos": 22,
+      "name": "Alessio Rovera",
+      "team": "Ferrari",
+      "total": 15
+     },
+     {
+      "pos": 22,
+      "name": "Laurens Vanthoor",
+      "team": "Porsche",
+      "total": 15
+     },
+     {
+      "pos": 22,
+      "name": "Tommaso Mosca",
+      "team": "Ferrari",
+      "total": 15
+     },
+     {
+      "pos": 22,
+      "name": "Alessandro Ghiretti",
+      "team": "Porsche",
+      "total": 15
+     },
+     {
+      "pos": 22,
+      "name": "Matias Perez Companc",
+      "team": "Ferrari",
+      "total": 15
+     },
+     {
+      "pos": 22,
+      "name": "Frederik Schandorff",
+      "team": "Ferrari",
+      "total": 15
+     },
+     {
+      "pos": 23,
+      "name": "Daan Arrow",
+      "team": "Porsche",
+      "total": 14
+     },
+     {
+      "pos": 24,
+      "name": "Cunfan Ruan",
+      "team": "BMW",
+      "total": 12
+     },
+     {
+      "pos": 24,
+      "name": "Frederic Makowiecki",
+      "team": "Porsche",
+      "total": 12
+     },
+     {
+      "pos": 24,
+      "name": "Maxime Oosten",
+      "team": "BMW",
+      "total": 12
+     },
+     {
+      "pos": 24,
+      "name": "Michael Christensen",
+      "team": "Porsche",
+      "total": 12
+     },
+     {
+      "pos": 24,
+      "name": "Alexander Sims",
+      "team": "Chevrolet",
+      "total": 12
+     },
+     {
+      "pos": 24,
+      "name": "Scott McLaughlin",
+      "team": "Chevrolet",
+      "total": 12
+     },
+     {
+      "pos": 24,
+      "name": "Nicky Catsburg",
+      "team": "Chevrolet",
+      "total": 12
+     },
+     {
+      "pos": 24,
+      "name": "Michai Stephens",
+      "team": "Mercedes-AMG",
+      "total": 12
+     },
+     {
+      "pos": 25,
+      "name": "Arthur Leclerc",
+      "team": "Ferrari",
+      "total": 10
+     },
+     {
+      "pos": 25,
+      "name": "Frank Stippler",
+      "team": "Ford",
+      "total": 10
+     },
+     {
+      "pos": 25,
+      "name": "Lilou Wadoux",
+      "team": "Ferrari",
+      "total": 10
+     },
+     {
+      "pos": 25,
+      "name": "Sean Gelael",
+      "team": "Ferrari",
+      "total": 10
+     },
+     {
+      "pos": 25,
+      "name": "Kakunoshin Ohta",
+      "team": "Mercedes-AMG",
+      "total": 10
+     },
+     {
+      "pos": 25,
+      "name": "Morris Schuring",
+      "team": "Porsche",
+      "total": 10
+     },
+     {
+      "pos": 25,
+      "name": "Dave Musial Jr.",
+      "team": "Porsche",
+      "total": 10
+     },
+     {
+      "pos": 25,
+      "name": "Ryan Yardley",
+      "team": "Porsche",
+      "total": 10
+     },
+     {
+      "pos": 26,
+      "name": "Charles Weerts",
+      "team": "BMW",
+      "total": 8
+     },
+     {
+      "pos": 26,
+      "name": "Jules Gounon",
+      "team": "Mercedes-AMG",
+      "total": 8
+     },
+     {
+      "pos": 26,
+      "name": "Kenny Habul",
+      "team": "Mercedes-AMG",
+      "total": 8
+     },
+     {
+      "pos": 26,
+      "name": "Marco Wittmann",
+      "team": "BMW",
+      "total": 8
+     },
+     {
+      "pos": 26,
+      "name": "Philipp Eng",
+      "team": "BMW",
+      "total": 8
+     },
+     {
+      "pos": 26,
+      "name": "Robin Frijns",
+      "team": "BMW",
+      "total": 8
+     },
+     {
+      "pos": 26,
+      "name": "Takuro Shinohara",
+      "team": "Ferrari",
+      "total": 8
+     },
+     {
+      "pos": 26,
+      "name": "Seita Nonaka",
+      "team": "Ferrari",
+      "total": 8
+     },
+     {
+      "pos": 26,
+      "name": "Tadasuke Makino",
+      "team": "Ferrari",
+      "total": 8
+     },
+     {
+      "pos": 26,
+      "name": "Alfred Renauer",
+      "team": "Porsche",
+      "total": 8
+     },
+     {
+      "pos": 26,
+      "name": "Ralf Bohn",
+      "team": "Porsche",
+      "total": 8
+     },
+     {
+      "pos": 26,
+      "name": "Robert Renauer",
+      "team": "Porsche",
+      "total": 8
+     },
+     {
+      "pos": 26,
+      "name": "Danny Dyszelski",
+      "team": "Porsche",
+      "total": 8
+     },
+     {
+      "pos": 26,
+      "name": "Jan Heylen",
+      "team": "Porsche",
+      "total": 8
+     },
+     {
+      "pos": 27,
+      "name": "Dylan Pereira",
+      "team": "Porsche",
+      "total": 6
+     },
+     {
+      "pos": 27,
+      "name": "Klaus Bachler",
+      "team": "Porsche",
+      "total": 6
+     },
+     {
+      "pos": 27,
+      "name": "Patrick Assenheimer",
+      "team": "Porsche",
+      "total": 6
+     },
+     {
+      "pos": 27,
+      "name": "Tobias Muller",
+      "team": "Porsche",
+      "total": 6
+     },
+     {
+      "pos": 27,
+      "name": "Anthony McIntosh",
+      "team": "BMW",
+      "total": 6
+     },
+     {
+      "pos": 27,
+      "name": "Parker Thompson",
+      "team": "BMW",
+      "total": 6
+     },
+     {
+      "pos": 28,
+      "name": "Daniel Serra",
+      "team": "Ferrari",
+      "total": 4
+     },
+     {
+      "pos": 28,
+      "name": "Davide Rigon",
+      "team": "Ferrari",
+      "total": 4
+     },
+     {
+      "pos": 28,
+      "name": "Jake Dennis",
+      "team": "BMW",
+      "total": 4
+     },
+     {
+      "pos": 28,
+      "name": "Jake Hill",
+      "team": "Porsche",
+      "total": 4
+     },
+     {
+      "pos": 28,
+      "name": "Jaxon Evans",
+      "team": "Ferrari",
+      "total": 4
+     },
+     {
+      "pos": 28,
+      "name": "Kyle Tilley",
+      "team": "Porsche",
+      "total": 4
+     },
+     {
+      "pos": 28,
+      "name": "Max Hofer",
+      "team": "Porsche",
+      "total": 4
+     },
+     {
+      "pos": 28,
+      "name": "Patrick Kolb",
+      "team": "Porsche",
+      "total": 4
+     },
+     {
+      "pos": 28,
+      "name": "Thomas Merrill",
+      "team": "Porsche",
+      "total": 4
+     },
+     {
+      "pos": 28,
+      "name": "Kevin Estre",
+      "team": "Porsche",
+      "total": 4
+     },
+     {
+      "pos": 29,
+      "name": "Alex Brundle",
+      "team": "Porsche",
+      "total": 2
+     },
+     {
+      "pos": 29,
+      "name": "Ben Bünnagel",
+      "team": "Porsche",
+      "total": 2
+     },
+     {
+      "pos": 29,
+      "name": "Ben Tuck",
+      "team": "Ferrari",
+      "total": 2
+     },
+     {
+      "pos": 29,
+      "name": "Chris Froggatt",
+      "team": "Ferrari",
+      "total": 2
+     },
+     {
+      "pos": 29,
+      "name": "Dennis Marschall",
+      "team": "Ferrari",
+      "total": 2
+     },
+     {
+      "pos": 29,
+      "name": "Dustin Blattner",
+      "team": "Ferrari",
+      "total": 2
+     },
+     {
+      "pos": 29,
+      "name": "Jonathan Hui",
+      "team": "Ferrari",
+      "total": 2
+     },
+     {
+      "pos": 29,
+      "name": "Lorenzo Patrese",
+      "team": "Ferrari",
+      "total": 2
+     },
+     {
+      "pos": 29,
+      "name": "Martin Rump",
+      "team": "Porsche",
+      "total": 2
+     },
+     {
+      "pos": 29,
+      "name": "Mathys Jaubert",
+      "team": "Ferrari",
+      "total": 2
+     },
+     {
+      "pos": 29,
+      "name": "Ryan Wood",
+      "team": "Ferrari",
+      "total": 2
+     },
+     {
+      "pos": 29,
+      "name": "Kei Nakanishi",
+      "team": "Ferrari",
+      "total": 2
+     },
+     {
+      "pos": 29,
+      "name": "Shigekazu Wakisaka",
+      "team": "Ferrari",
+      "total": 2
+     },
+     {
+      "pos": 29,
+      "name": "Giancarlo Fisichella",
+      "team": "Ferrari",
+      "total": 2
+     },
+     {
+      "pos": 29,
+      "name": "Hongli Ye",
+      "team": "Porsche",
+      "total": 2
+     },
+     {
+      "pos": 30,
+      "name": "Jens Klingmann",
+      "team": "BMW",
+      "total": 1
+     },
+     {
+      "pos": 30,
+      "name": "Jongjyum Kim",
+      "team": "Porsche",
+      "total": 1
+     },
+     {
+      "pos": 30,
+      "name": "Marco Seefried",
+      "team": "Porsche",
+      "total": 1
+     },
+     {
+      "pos": 30,
+      "name": "Roelof Bruins",
+      "team": "Porsche",
+      "total": 1
+     },
+     {
+      "pos": 30,
+      "name": "Steven Cho",
+      "team": "Porsche",
+      "total": 1
+     },
+     {
+      "pos": 30,
+      "name": "Tim Tramnitz",
+      "team": "BMW",
+      "total": 1
+     },
+     {
+      "pos": 30,
+      "name": "Ugo de Wilde",
+      "team": "BMW",
+      "total": 1
+     },
+     {
+      "pos": 30,
+      "name": "Michael McCann Jr.",
+      "team": "Porsche",
+      "total": 1
+     },
+     {
+      "pos": 30,
+      "name": "Zachary Vanier",
+      "team": "Porsche",
+      "total": 1
+     }
+    ],
+    "teams": [
+     {
+      "pos": 1,
+      "name": "Porsche",
+      "total": 167
+     },
+     {
+      "pos": 2,
+      "name": "Mercedes-AMG",
+      "total": 112
+     },
+     {
+      "pos": 3,
+      "name": "BMW",
+      "total": 100
+     },
+     {
+      "pos": 4,
+      "name": "Ferrari",
+      "total": 66
+     },
+     {
+      "pos": 5,
+      "name": "Ford",
+      "total": 32
+     },
+     {
+      "pos": 6,
+      "name": "Chevrolet",
+      "total": 18
+     }
+    ]
+   },
+   "independent": {
+    "drivers": [
+     {
+      "pos": 1,
+      "name": "Kerong Li",
+      "team": "Porsche",
+      "total": 93
+     },
+     {
+      "pos": 2,
+      "name": "Ralf Bohn",
+      "team": "Porsche",
+      "total": 55
+     },
+     {
+      "pos": 3,
+      "name": "Prince Jefri Ibrahim",
+      "team": "Chevrolet",
+      "total": 50
+     },
+     {
+      "pos": 4,
+      "name": "Johannes Zelger",
+      "team": "Porsche",
+      "total": 48
+     },
+     {
+      "pos": 5,
+      "name": "Jonathan Hui",
+      "team": "Ferrari",
+      "total": 27
+     },
+     {
+      "pos": 6,
+      "name": "Kenny Habul",
+      "team": "Mercedes-AMG",
+      "total": 18
+     },
+     {
+      "pos": 7,
+      "name": "Adrian D'Silva",
+      "team": "Porsche",
+      "total": 8
+     }
+    ]
+   }
+  }
+ },
+ "updated": "2026-10-13 01:31 UTC"
+}
