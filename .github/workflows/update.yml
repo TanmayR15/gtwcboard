@@ -1,4 +1,4 @@
-name: Update GTWC data
+name: Update Pit Board data
 
 on:
   schedule:
