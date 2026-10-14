@@ -1,12 +1,12 @@
 <div align="center">
 
-# 🏁 GTWC EUROPE PIT BOARD
+# 🏁 MOTORSPORT PIT BOARD
 
-**A retro pixel-style dashboard for the GT World Challenge Europe season.**
+**A retro pixel-style dashboard for GT World Challenge Europe, Formula 1 and the World Endurance Championship.**
 Standings, race results, schedule in IST, points guide and points progression. All in one fast static page.
 
 [![Live site](https://img.shields.io/badge/LIVE%20SITE-open-FF9F1C?style=for-the-badge)](https://tanmayr15.github.io/gtwcboard/)
-![Series](https://img.shields.io/badge/SERIES-GTWC%20EUROPE-38B6FF?style=for-the-badge)
+![Series](https://img.shields.io/badge/SERIES-GTWC%20%C2%B7%20F1%20%C2%B7%20WEC-38B6FF?style=for-the-badge)
 ![Updates](https://img.shields.io/badge/UPDATES-AUTOMATIC-7ED957?style=for-the-badge)
 ![Cost](https://img.shields.io/badge/COST-FREE-FF5A36?style=for-the-badge)
 
@@ -18,9 +18,9 @@ Standings, race results, schedule in IST, points guide and points progression. A
 
 ## 🕹️ What it does
 
-- **Series dropdown**: switch between GTWC Europe, Formula 1, WEC and IGTC. The choice is remembered on every page. Formula 1 is live; WEC and IGTC are coming.
+- **Series dropdown**: switch between GTWC Europe, Formula 1 and the WEC. The choice is remembered on every page.
 - **Home**: a landing page with a live countdown to the next session, the season progress, the championship leaders and a round selector. Two looks to pick from: the arcade style and the paddock tower.
-- **Standings**: Overall, Sprint Cup and Endurance Cup, split by class (Overall, Gold, Silver, Bronze), for drivers or teams, with search.
+- **Standings**: for GTWC Europe, Overall, Sprint Cup and Endurance Cup, split by class (Overall, Gold, Silver, Bronze). Formula 1 has drivers and constructors. The WEC has Hypercar (drivers and manufacturers) and LMGT3 (drivers and teams). Search works everywhere.
 - **Results**: every race classification, round by round, including the Spa 24 Hours checkpoints.
 - **Schedule**: every round with all sessions in **IST**, end times, days left, Sprint or Endurance tags, and DONE / LIVE NOW badges.
 - **Progression**: a line chart and a table of how points grew round by round.
@@ -36,13 +36,13 @@ Standings, race results, schedule in IST, points guide and points progression. A
 ## ⚙️ How it works
 
 ```
- official GTWC Europe site
-          │   (polite scraper, a few requests per run)
+ official sites and APIs
+ (GTWC Europe, fiawec.com, Jolpica F1 API)
+          │   (polite scrapers, a few requests per run)
           ▼
-   scripts/scrape.py ──► data/standings.json
-                    ├──► data/results.json
-                    ├──► data/schedule.json
-                    └──► data/history.json
+   scripts/scrape.py ──► data/*.json            (GTWC Europe)
+   scripts/f1.py     ──► data/f1/*.json         (Formula 1)
+   scripts/wec.py    ──► data/wec/*.json        (WEC)
           │
           ▼   committed by GitHub Actions
    index.html  reads the JSON files in the browser
@@ -51,7 +51,7 @@ Standings, race results, schedule in IST, points guide and points progression. A
    GitHub Pages serves the site
 ```
 
-1. A scheduled **GitHub Action** runs the scraper after every race day (Saturday and Sunday night, and Monday morning, UTC).
+1. A scheduled **GitHub Action** runs the scrapers after every race day (Saturday and Sunday night, and Monday morning, UTC).
 2. The scraper only commits when the data actually changed. If a fetch fails, the old data is kept.
 3. GitHub Pages redeploys, and the site shows the new numbers.
 
@@ -68,8 +68,10 @@ Standings, race results, schedule in IST, points guide and points progression. A
 | `scripts/history.py` | Builds the points history |
 | `scripts/f1.py` | Formula 1 updater (uses a free data API), writes `data/f1/` |
 | `data/f1/` | Formula 1 standings, results, schedule and history |
+| `scripts/wec.py` | WEC updater (reads fiawec.com), writes `data/wec/` |
+| `data/wec/` | WEC standings, results, schedule and history |
 | `scripts/show_pdf.py` | Helper to inspect an official timetable PDF |
-| `logo.svg` | Site logo and tab icon |
+| `logo.svg` | Site logo and tab icon (`logo_big.png` and `logo.png` are image copies) |
 | `.github/workflows/update.yml` | The scheduled update job |
 | `requirements.txt` | Python dependencies |
 
@@ -88,7 +90,7 @@ python scripts/scrape.py --only results  # or just one part: standings | results
 
 ## 🔄 Run an update by hand
 
-Go to **Actions → Update GTWC data → Run workflow**.
+Go to **Actions → Update Pit Board data → Run workflow**.
 
 ## 📝 Good to know
 
@@ -99,7 +101,7 @@ Go to **Actions → Update GTWC data → Run workflow**.
 
 ## ⚖️ Disclaimer
 
-This is an unofficial fan project and is not affiliated with, endorsed by or connected to SRO Motorsports Group or the GT World Challenge Europe. All series names and data belong to their owners. Data is read from the official public website at a very low rate for personal use.
+This is an unofficial fan project and is not affiliated with, endorsed by or connected to SRO Motorsports Group, the GT World Challenge Europe, Formula 1, the FIA or the World Endurance Championship. All series names and data belong to their owners. Data is read from the official public website at a very low rate for personal use.
 
 ## 📜 Licence
 
