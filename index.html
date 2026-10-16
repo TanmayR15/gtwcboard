@@ -194,6 +194,17 @@
   .k-race { color: var(--overall); } .k-qualifying { color: var(--blue); } .k-practice { color: var(--ink-muted); } .k-other { color: var(--ink-muted); }
   .srow.race .sname { color: #F2F2F2; }
 
+  /* live timing (GTWC only) */
+  a.btn { text-decoration: none; display: inline-block; }
+  .btn.live { border-color: var(--green); color: var(--green); }
+  .btn.live.on::before { content: "\25CF "; animation: blink 1s steps(2) infinite; }
+  .btn.live.active { background: var(--green-tint); }
+  .livebar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+  .livestate { font-family: 'Press Start 2P', monospace; font-size: 8px; padding: 7px 8px; border: 3px solid var(--panel-edge); color: var(--ink-muted); }
+  .livestate.on { border-color: var(--green); color: var(--green); animation: blink 1s steps(2) infinite; }
+  .livewrap { border: 3px solid var(--panel-edge); box-shadow: 5px 5px 0 var(--shadow); background: #fff; height: 78vh; min-height: 480px; }
+  .livewrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+
   /* home style switcher */
   .styles { display: flex; align-items: center; gap: 8px; margin: -6px 0 16px; font-size: 15px; color: var(--ink-muted); letter-spacing: 1px; flex-wrap: wrap; }
   .styles .btn { padding: 7px 10px; }
@@ -453,6 +464,7 @@ async function loadData() {
 function setSeries(id) {
   if (id === state.series) return;
   state.series = id;
+  if (state.page === "live") state.page = "home";
   try { localStorage.setItem("gtwcSeries", id); } catch (e) { /* ignore */ }
   Object.assign(state, {
     standings: null, results: null, schedule: null, history: null, error: null, noData: false,
@@ -1246,6 +1258,55 @@ function renderProgress(rows, entKey) {
   return box;
 }
 
+/* ---------- live timing (GTWC Europe only) ---------- */
+const LIVE_URL = "https://racing.liveresults.swisstiming.com/index.html?profile=sro";
+const LIVE_PAGE = "https://www.gt-world-challenge-europe.com/watch-live#live-timing";
+const DEFAULT_LEN = { practice: 90, qualifying: 75, race: 180, other: 60 };    // minutes, used only when no end time is known
+function sessionEnd(x) { return x.end_utc ? Date.parse(x.end_utc) : sessionMs(x) + (DEFAULT_LEN[x.kind] || 60) * 6e4; }
+// Returns null when there is nothing to watch. A listed session that is running counts as live.
+// Otherwise a race day (first session minus 30 min, to last session end plus 30 min) also counts, because
+// the official timetable can leave a session out (for example a practice with no time given yet).
+function liveInfo(now) {
+  if (state.series !== "gtwc") return null;
+  for (const r of scheduleRounds()) {
+    const ss = r.sessions || [];
+    if (!ss.length) continue;
+    const running = ss.find((x) => now >= sessionMs(x) && now <= sessionEnd(x));
+    if (running) return { round: r, session: running, running: true };
+    const days = {};
+    ss.forEach((x) => { const k = x.utc.slice(0, 10); (days[k] = days[k] || []).push(x); });
+    for (const k in days) {
+      const a = Math.min(...days[k].map(sessionMs)) - 30 * 6e4, b = Math.max(...days[k].map(sessionEnd)) + 30 * 6e4;
+      if (now >= a && now <= b) return { round: r, session: null, running: false };
+    }
+  }
+  return null;
+}
+function renderLive() {
+  const live = liveInfo(nowMs());
+  const box = el("div", { class: "box" }, [el("span", { class: "box-title pixel", text: "LIVE TIMING" })]);
+  if (state.series !== "gtwc") {
+    box.appendChild(el("div", { class: "empty", text: "Live timing is only available for GTWC Europe." }));
+    return box;
+  }
+  const label = live ? (live.running ? "LIVE NOW: " + live.session.name.toUpperCase() : "RACE DAY: " + live.round.name.toUpperCase())
+                     : "NO SESSION RUNNING RIGHT NOW";
+  box.appendChild(el("div", { class: "livebar" }, [
+    el("span", { class: "livestate" + (live && live.running ? " on" : ""), text: label }),
+    el("a", { class: "btn main", href: LIVE_URL, target: "_blank", rel: "noopener", text: "OPEN FULL SCREEN" }),
+    el("a", { class: "btn main", href: LIVE_PAGE, target: "_blank", rel: "noopener", text: "WATCH STREAM" }),
+  ]));
+  box.appendChild(el("div", { class: "livewrap" }, [el("iframe", { src: LIVE_URL, title: "GT World Challenge Europe live timing", allow: "fullscreen", referrerpolicy: "no-referrer" })]));
+  box.appendChild(el("div", { class: "note", text: "The timing table is the official one (Swiss Timing, via the GT World Challenge Europe site) and keeps its own look. If the box stays blank, use OPEN FULL SCREEN. Session times elsewhere on this site are in IST; the timing shows track time." }));
+  return box;
+}
+let _liveKey = null;
+setInterval(() => {     // show or hide the LIVE TIMING button as sessions start and end
+  const l = liveInfo(nowMs());
+  const k = l ? (l.running ? "run" : "day") : "";
+  if (k !== _liveKey) { const first = _liveKey === null; _liveKey = k; if (!first && state.schedule) render(); }
+}, 30000);
+
 function go(page) { state.page = page; render(); window.scrollTo(0, 0); }
 function openSchedule(roundNo) {
   if (roundNo != null) state.schedOpen.add(roundNo);
@@ -1296,6 +1357,7 @@ function render() {
       el("button", { class: "btn main" + (state.page === "schedule" ? " active" : ""), text: "SCHEDULE", onclick: () => go("schedule") }),
       el("button", { class: "btn main" + (state.page === "progress" ? " active" : ""), text: "PROGRESSION", onclick: () => go("progress") }),
       el("button", { class: "btn main" + (state.page === "points" ? " active" : ""), text: "?", title: "Points guide", "aria-label": "Points guide", onclick: () => go("points") }),
+      (() => { const l = liveInfo(nowMs()); return l ? el("button", { class: "btn live" + (l.running ? " on" : "") + (state.page === "live" ? " active" : ""), text: "LIVE TIMING", title: "Live timing", onclick: () => go("live") }) : null; })(),
     ]));
   }
 
@@ -1322,7 +1384,7 @@ function render() {
     app.appendChild(el("div", { class: "empty", text: "Loading..." }));
     return;
   }
-  const view = { home: renderHome, standings: renderStandings, results: renderResults, schedule: renderSchedule, points: renderPoints, progress: renderProgression }[state.page];
+  const view = { home: renderHome, standings: renderStandings, results: renderResults, schedule: renderSchedule, points: renderPoints, progress: renderProgression, live: renderLive }[state.page];
   app.appendChild(view());
 }
 
