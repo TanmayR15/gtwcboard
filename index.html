@@ -194,6 +194,12 @@
   .k-race { color: var(--overall); } .k-qualifying { color: var(--blue); } .k-practice { color: var(--ink-muted); } .k-other { color: var(--ink-muted); }
   .srow.race .sname { color: #F2F2F2; }
 
+  /* car numbers and team line-ups on the Standings page */
+  td.carcell { width: 56px; }
+  .carno { font-family: 'Press Start 2P', monospace; font-size: 8px; display: inline-block; min-width: 38px; text-align: center; padding: 6px 5px; background: var(--bg); border: 2px solid var(--panel-edge); color: var(--overall); }
+  td.crew div { line-height: 1.15; padding: 1px 0; }
+  td.crew b { font-weight: normal; color: var(--overall); margin-right: 4px; }
+
   /* home style switcher */
   .styles { display: flex; align-items: center; gap: 8px; margin: -6px 0 16px; font-size: 15px; color: var(--ink-muted); letter-spacing: 1px; flex-wrap: wrap; }
   .styles .btn { padding: 7px 10px; }
@@ -344,10 +350,48 @@ const state = {
   roundId: null, sessionId: null, resultClass: seriesInfo(initialSeries()).resultClass || "ALL",
   stdQuery: "", resQuery: "",
   standings: null, results: null, error: null,
-  teamByDriver: {}, homeStyle: 1, schedule: null, schedOpen: new Set(), timer: null,
+  teamByDriver: {}, entryMaps: null, homeStyle: 1, schedule: null, schedOpen: new Set(), timer: null,
 };
 
 /* ---------- helpers for names, sessions, classes ---------- */
+// Car numbers and line-ups from the race results.
+//  driverCar: driver -> {car, team, cls} from their most recent result.
+//  teamCars:  team  -> [{car, cls, drivers:[...]}] using the latest line-up each car number had for that team.
+function buildEntryMaps(results) {
+  const driverCar = {}, teams = {};
+  const rounds = (results.rounds || []).slice().sort((a, b) => (a.round || 0) - (b.round || 0));
+  rounds.forEach((round) => (round.sessions || []).forEach((sess) => (sess.rows || []).forEach((row) => {
+    const names = (row.drivers || "").split(/,\s*/).map((x) => x.trim()).filter(Boolean);
+    if (!names.length || !row.car) return;
+    names.forEach((n) => { driverCar[normName(n)] = { car: String(row.car), team: row.team || "", cls: row.cls || "" }; });
+    if (row.team) {
+      const tk = normName(row.team);
+      (teams[tk] = teams[tk] || {})[String(row.car)] = { car: String(row.car), cls: row.cls || "", drivers: names };
+    }
+  })));
+  const teamCars = {};
+  Object.keys(teams).forEach((k) => {
+    teamCars[k] = Object.values(teams[k]).sort((a, b) => (parseInt(a.car, 10) || 0) - (parseInt(b.car, 10) || 0));
+  });
+  return { driverCar, teamCars };
+}
+function classMatches(entryCls) {          // is this car in the class table being shown?
+  if (state.cls === "overall" || !entryCls) return true;
+  return normName(entryCls).startsWith(state.cls);
+}
+// Cars for a standings team row. Exact name first, then a name that contains the other (WEC manufacturers).
+function carsForTeam(name) {
+  const maps = state.entryMaps || { teamCars: {} }, k = normName(name);
+  let cars = maps.teamCars[k];
+  if (!cars && k.length >= 3) {
+    cars = [];
+    Object.keys(maps.teamCars).forEach((tk) => {
+      const a = " " + tk + " ", b = " " + k + " ";
+      if (a.includes(b) || b.includes(a)) cars = cars.concat(maps.teamCars[tk]);
+    });
+  }
+  return (cars || []).filter((c) => classMatches(c.cls));
+}
 function normName(s) {
   return (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
     .replace(/\u00f8/g, "o").replace(/\u00e6/g, "ae").replace(/\u0153/g, "oe")
@@ -436,6 +480,7 @@ async function loadData() {
     } catch (e) { state.schedule = null; }
     if (stale()) return;
     state.teamByDriver = buildTeamMap(r);
+    state.entryMaps = buildEntryMaps(r);
     const rounds = (r.rounds || []);
     if (rounds.length) {
       const last = rounds[rounds.length - 1];
@@ -456,7 +501,7 @@ function setSeries(id) {
   try { localStorage.setItem("gtwcSeries", id); } catch (e) { /* ignore */ }
   Object.assign(state, {
     standings: null, results: null, schedule: null, history: null, error: null, noData: false,
-    roundId: null, sessionId: null, teamByDriver: {}, schedOpen: new Set(),
+    roundId: null, sessionId: null, teamByDriver: {}, entryMaps: null, schedOpen: new Set(),
     cup: "overall", cls: seriesInfo(id).classes[0], entity: "drivers", stdQuery: "", resQuery: "", resultClass: seriesInfo(id).resultClass || "ALL",
   });
   render();          // shows "Loading..." straight away; the page the visitor is on stays the same
@@ -514,11 +559,16 @@ function renderStandings() {
   const ent = entList().find((e) => e.key === state.entity);
   const rows = (((state.standings.tables || {})[state.cup] || {})[state.cls] || {})[state.entity] || [];
   const teamOf = (r) => r.team || state.teamByDriver[normName(r.name)] || "";
+  const carOf = (r) => { const m = state.entryMaps && state.entryMaps.driverCar[normName(r.name)]; return m ? m.car : ""; };
+  const crewOf = (r) => carsForTeam(r.name);
+  const crewText = (r) => crewOf(r).map((c) => c.car + " " + c.drivers.join(" ")).join(" ");
+  // WEC driver names already start with the car number, so no extra column there.
+  const numbered = rows.some((r) => /^#/.test(r.name || ""));
 
   const holder = el("div");
   const paint = () => {
     holder.innerHTML = "";
-    const shown = rows.filter((r) => matchesQuery(state.stdQuery, r.name, ent.key === "drivers" ? teamOf(r) : ""));
+    const shown = rows.filter((r) => matchesQuery(state.stdQuery, r.name, ent.key === "drivers" ? teamOf(r) + " " + carOf(r) : crewText(r)));
     const box = el("div", { class: "box", style: `border-left:6px solid ${cls.accent}` });
     box.appendChild(el("span", { class: "box-title pixel", text: `${cup.label} / ${cls.label} / ${ent.label}` }));
 
@@ -529,16 +579,19 @@ function renderStandings() {
     } else {
       const head = el("tr", {}, [
         el("th", { text: "POS" }),
+        ent.key === "drivers" && !numbered ? el("th", { text: "NO." }) : null,
         el("th", { text: ent.key === "drivers" ? "DRIVER" : "TEAM" }),
-        ent.key === "drivers" ? el("th", { text: "TEAM" }) : null,
+        ent.key === "drivers" ? el("th", { text: "TEAM" }) : el("th", { text: "DRIVERS" }),
         el("th", { class: "num", text: "PTS" }),
       ]);
       const body = el("tbody");
       shown.forEach((r) => {
         body.appendChild(el("tr", { class: r.pos <= 3 ? "p" + r.pos : "" }, [
           el("td", { class: "pos", text: String(r.pos) }),
+          ent.key === "drivers" && !numbered ? el("td", { class: "carcell" }, carOf(r) ? [el("span", { class: "carno", text: "#" + carOf(r) })] : []) : null,
           el("td", { class: "name", text: r.name }),
-          ent.key === "drivers" ? el("td", { class: "sub", text: teamOf(r) }) : null,
+          ent.key === "drivers" ? el("td", { class: "sub", text: teamOf(r) })
+            : el("td", { class: "sub crew" }, crewOf(r).map((c) => el("div", {}, [el("b", { text: "#" + c.car }), " " + c.drivers.join(", ")]))),
           el("td", { class: "num", text: fmtPoints(r.total) }),
         ]));
       });
@@ -563,7 +616,7 @@ function renderStandings() {
     cupList().length > 1 ? selectField("CHAMPIONSHIP", cupList(), state.cup, cup.edge || cup.accent, (k) => { state.cup = k; render(); }) : null,
     classList().length > 1 ? selectField("CLASS", classList(), state.cls, cls.edge || cls.accent, (k) => { state.cls = k; render(); }) : null,
     toggleField("SHOW", entList(), state.entity, (k) => { state.entity = k; render(); }),
-    searchField(state.stdQuery, ent.key === "drivers" ? "SEARCH DRIVER OR TEAM" : "SEARCH TEAM", (q) => { state.stdQuery = q; paint(); }),
+    searchField(state.stdQuery, ent.key === "drivers" ? "SEARCH DRIVER, TEAM OR NUMBER" : "SEARCH TEAM OR DRIVER", (q) => { state.stdQuery = q; paint(); }),
   ]));
   paint();
   wrap.appendChild(holder);
